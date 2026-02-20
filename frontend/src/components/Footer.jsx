@@ -1,17 +1,28 @@
 import React, { useState } from 'react';
 import { footerLinks, contactInfo } from '../data/mock';
-import { Linkedin, Twitter, Facebook, Instagram, Send, MapPin, Phone, Mail } from 'lucide-react';
+import { Linkedin, Twitter, Facebook, Instagram, Send, MapPin, Phone, Mail, Loader2 } from 'lucide-react';
+import { submitNewsletter } from '../services/supabaseService';
 
 export const Footer = () => {
   const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
+  const [status, setStatus] = useState('idle'); // idle | loading | success | error
+  const [message, setMessage] = useState('');
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault();
-    if (email.trim()) {
-      setSubscribed(true);
+    if (!email.trim()) return;
+    setStatus('loading');
+    setMessage('');
+    try {
+      await submitNewsletter(email.trim());
+      setStatus('success');
+      setMessage('Subscribed!');
       setEmail('');
-      setTimeout(() => setSubscribed(false), 3000);
+      setTimeout(() => { setStatus('idle'); setMessage(''); }, 3000);
+    } catch (err) {
+      setStatus('error');
+      setMessage(err.message);
+      setTimeout(() => { setStatus('idle'); setMessage(''); }, 4000);
     }
   };
 
