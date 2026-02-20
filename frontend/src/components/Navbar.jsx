@@ -69,7 +69,7 @@ export const Navbar = ({ onContactClick }) => {
               className="btn-primary !py-2.5 !px-7 !text-[0.8125rem] no-underline"
             >
               Get in Touch
-            </button>
+            </Link>
           </div>
 
           {/* Hamburger */}
