@@ -45,37 +45,37 @@ export const services = [
     title: "Executive Search",
     subtitle: "Astral Honchos",
     icon: "Search",
-    description: "Committed to strategically place top-tier senior-level executives in pivotal roles. From global enterprises to early-stage startups, we find leaders who make an impact on your business.",
+    description: "Identifying and placing leaders who make a significant impact — from global enterprises to early-stage startups. Specializing in CEO Search, Board Level Positions, Leadership Hiring, and Diversity & Inclusion.",
   },
   {
     title: "Contingent Search",
     subtitle: "Astral Melance",
     icon: "Users",
-    description: "Our selection service is devoted to strategically position high-caliber executives at various levels, leveraging our exclusive proprietary database and research team.",
+    description: "Connecting clients with the right candidate by deeply understanding their needs, ethos, and work culture. Leveraging our exclusive proprietary database built through mapping and industry sources.",
   },
   {
     title: "Recruitment Process Outsourcing",
     subtitle: "Astral Bespoke",
     icon: "Settings",
-    description: "Dedicated to streamline recruitment processes through outsourcing. Ad Astra assumes full ownership of our client's recruitment process with our AI-powered A Cube platform.",
+    description: "World-class recruitment functions for large and mid-sized companies. Our proprietary cloud-based 'A Cube' platform integrates AI and ML for comprehensive recruitment lifecycle management.",
   },
   {
     title: "Temporary Staffing",
     subtitle: "Astral Temp",
     icon: "Clock",
-    description: "We tailor our temporary staffing services using a hybrid methodology crafted to precisely match the client's requirement, enabling workforce flexibility.",
+    description: "Enabling businesses to meet peaks in staffing needs, expand or contract workforce according to market dynamics. Flexi-staffing, temporary-to-permanent, and on-site/off-site workforce management.",
   },
   {
     title: "Payroll Management",
     subtitle: "Astral Payroll",
     icon: "BarChart3",
-    description: "We ensure accuracy, timeliness, and compliance with all local and international regulations, freeing your team to focus on core business activities.",
+    description: "Cost-effective payroll outsourcing for organizations of all sizes. Web payroll software, Employee Self Service portal, compliance support, e-TDS, Form 16 generation, and 100% accuracy guaranteed.",
   },
   {
     title: "HR Consulting",
     subtitle: "Astral Consult",
     icon: "TrendingUp",
-    description: "As a comprehensive HR solutions provider, we specialize in Systems, Training, Compensation, and Diagnostics, serving as the sole point of contact for our clients.",
+    description: "Single point HR solutions provider — Employee Referral Programs, Exit Management, HR Policies, Training, Compensation Benchmarking, Dipstick Surveys, and organizational restructuring support.",
   },
 ];
 
