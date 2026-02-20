@@ -133,8 +133,8 @@ export const CVModal = ({ isOpen, onClose }) => {
               <div>
                 <label className="block text-[12px] font-medium text-[#555] mb-1.5" style={{ fontFamily: 'Inter, sans-serif' }}>Current Role</label>
                 <input
-                  name="current_role"
-                  value={form.current_role}
+                  name="job_role"
+                  value={form.job_role}
                   onChange={handleChange}
                   className="w-full px-3.5 py-2.5 rounded-md border border-gray-200 text-[14px] text-[#2B2B2B] placeholder-[#CCC] focus:outline-none focus:border-[#F26522]/50 transition-colors"
                   style={{ fontFamily: 'Inter, sans-serif' }}
