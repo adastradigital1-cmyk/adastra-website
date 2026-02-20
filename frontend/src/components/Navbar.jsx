@@ -21,6 +21,7 @@ export const Navbar = ({ onContactClick }) => {
           ? 'bg-white/95 backdrop-blur-md shadow-[0_1px_3px_rgba(0,0,0,0.05)]'
           : 'bg-transparent'
       }`}
+      data-testid="navbar"
     >
       <div className="max-w-[1300px] mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
@@ -29,8 +30,7 @@ export const Navbar = ({ onContactClick }) => {
             <img
               src="/logo-color.png"
               alt="Ad Astra Consultants"
-              className="h-12 w-auto"
-              style={{ mixBlendMode: 'multiply' }}
+              className={`h-12 w-auto transition-all duration-500 ${scrolled ? '' : 'brightness-0 invert'}`}
             />
           </a>
 
@@ -40,7 +40,9 @@ export const Navbar = ({ onContactClick }) => {
               <a
                 key={item.label}
                 href={item.href}
-                className="nav-link-enhanced text-[13px] font-medium text-[#2B2B2B] hover:text-[#F26522] no-underline py-1 tracking-wide transition-colors duration-300"
+                className={`nav-link-enhanced text-[13px] font-medium no-underline py-1 tracking-wide transition-colors duration-300 hover:text-[#F26522] ${
+                  scrolled ? 'text-[#2B2B2B]' : 'text-white/90'
+                }`}
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
                 {item.label}
@@ -54,6 +56,7 @@ export const Navbar = ({ onContactClick }) => {
               className="px-7 py-2.5 text-[13px] font-semibold text-white rounded-md transition-all duration-300 hover:shadow-lg hover:-translate-y-[1px] active:translate-y-0"
               style={{ backgroundColor: '#F26522', fontFamily: 'Inter, sans-serif' }}
               onClick={onContactClick}
+              data-testid="navbar-contact-btn"
             >
               Contact Us
             </button>
@@ -61,7 +64,7 @@ export const Navbar = ({ onContactClick }) => {
 
           {/* Mobile menu button */}
           <button
-            className="lg:hidden p-2 text-[#2B2B2B]"
+            className={`lg:hidden p-2 transition-colors duration-300 ${scrolled ? 'text-[#2B2B2B]' : 'text-white'}`}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -75,12 +78,14 @@ export const Navbar = ({ onContactClick }) => {
             mobileOpen ? 'max-h-[400px] opacity-100 pb-6' : 'max-h-0 opacity-0'
           }`}
         >
-          <div className="border-t border-gray-100 pt-4">
+          <div className={`border-t pt-4 ${scrolled ? 'border-gray-100' : 'border-white/10'}`}>
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="block py-3 text-[14px] font-medium text-[#2B2B2B] hover:text-[#F26522] no-underline transition-colors duration-200"
+                className={`block py-3 text-[14px] font-medium hover:text-[#F26522] no-underline transition-colors duration-200 ${
+                  scrolled ? 'text-[#2B2B2B]' : 'text-white/90'
+                }`}
                 onClick={() => setMobileOpen(false)}
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
@@ -90,6 +95,7 @@ export const Navbar = ({ onContactClick }) => {
             <button
               className="mt-4 w-full px-6 py-2.5 text-[13px] font-semibold text-white rounded-md"
               style={{ backgroundColor: '#F26522' }}
+              onClick={onContactClick}
             >
               Contact Us
             </button>
