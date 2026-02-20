@@ -89,9 +89,9 @@ export const Navbar = ({ onContactClick }) => {
       {/* Mobile Overlay */}
       <div
         className={`lg:hidden fixed inset-0 top-20 transition-all duration-500 ${
-          mobileOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+          mobileOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
         }`}
-        style={{ backgroundColor: 'var(--black-rich)' }}
+        style={{ backgroundColor: 'var(--black-rich)', zIndex: 9998 }}
       >
         <div className="flex flex-col items-center justify-center h-full gap-8 pb-20">
           {navItems.filter(i => i.label !== 'Contact').map((item, i) => (
