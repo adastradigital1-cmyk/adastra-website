@@ -18,7 +18,7 @@ export default function HomePage() {
   const [consultationOpen, setConsultationOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ backgroundColor: 'var(--black-rich)' }}>
       <Navbar onContactClick={() => setContactOpen(true)} />
       <HeroSection
         onFindTalent={() => setContactOpen(true)}
@@ -28,9 +28,9 @@ export default function HomePage() {
         onContactClick={() => setContactOpen(true)}
         onCVClick={() => setCvOpen(true)}
       />
+      <DifferentiationSection />
       <ServicesSection />
       <IndustriesSection />
-      <DifferentiationSection />
       <TrustSection />
       <CTASection
         onConsultation={() => setConsultationOpen(true)}
