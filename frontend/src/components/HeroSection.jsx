@@ -90,7 +90,7 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
           {/* Subtitle */}
           <motion.p
             className="font-body text-[1.125rem] lg:text-[1.25rem] mt-7 max-w-[600px] mx-auto leading-[1.7]"
-            style={{ color: 'var(--text-on-dark-muted)' }}
+            style={{ color: 'var(--text-on-dark-muted)', textWrap: 'balance' }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.0, ease }}
