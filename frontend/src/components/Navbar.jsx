@@ -46,9 +46,9 @@ export const Navbar = ({ onContactClick }) => {
             />
           </Link>
 
-          {/* Desktop Nav */}
+          {/* Desktop Nav — exclude Contact (shown as CTA) */}
           <div className="hidden lg:flex items-center gap-10">
-            {navItems.map((item) => (
+            {navItems.filter(i => i.label !== 'Contact').map((item) => (
               <NavLink
                 key={item.label}
                 item={item}
@@ -63,10 +63,10 @@ export const Navbar = ({ onContactClick }) => {
 
           {/* CTA */}
           <div className="hidden lg:block">
-            <button
-              onClick={onContactClick}
+            <Link
+              to="/contact"
               data-testid="navbar-contact-btn"
-              className="btn-primary !py-2.5 !px-7 !text-[0.8125rem]"
+              className="btn-primary !py-2.5 !px-7 !text-[0.8125rem] no-underline"
             >
               Get in Touch
             </button>
