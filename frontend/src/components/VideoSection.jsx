@@ -13,11 +13,11 @@ export const VideoSection = () => {
   return (
     <section
       data-testid="video-section"
-      className="relative w-full overflow-hidden pt-20"
-      style={{ backgroundColor: 'var(--black-rich)', zIndex: 1 }}
+      className="relative w-full pt-20"
+      style={{ backgroundColor: 'var(--black-rich)', zIndex: 1, marginBottom: '-15vh' }}
     >
-      {/* Video Container */}
-      <div className="relative w-full" style={{ aspectRatio: '16/9', maxHeight: '80vh' }}>
+      {/* Video Container - extends into hero section */}
+      <div className="relative w-full" style={{ aspectRatio: '16/9', maxHeight: '90vh' }}>
         <video
           ref={videoRef}
           autoPlay
@@ -33,17 +33,18 @@ export const VideoSection = () => {
           />
         </video>
 
-        {/* Particle overlay on video */}
-        <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 2 }}>
-          <ParticleField id="video-particles" density="light" />
+        {/* Particle overlay on video - full coverage with pointer events */}
+        <div className="absolute inset-0" style={{ zIndex: 5 }}>
+          <ParticleField id="video-particles" density="normal" />
         </div>
 
-        {/* Gradient overlay at bottom for smooth transition */}
+        {/* Gradient overlay at bottom for seamless blend into hero */}
         <div 
-          className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
+          className="absolute bottom-0 left-0 right-0 pointer-events-none"
           style={{
-            background: 'linear-gradient(to bottom, transparent 0%, var(--black-rich) 100%)',
-            zIndex: 3
+            height: '40%',
+            background: 'linear-gradient(to bottom, transparent 0%, rgba(12,12,12,0.3) 40%, rgba(12,12,12,0.7) 70%, var(--black-rich) 100%)',
+            zIndex: 6
           }}
         />
       </div>
