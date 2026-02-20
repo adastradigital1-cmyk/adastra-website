@@ -145,10 +145,10 @@ const MissionVision = () => {
         </motion.div>
         <motion.div className="grid md:grid-cols-2 gap-8" initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} transition={{ staggerChildren: 0.12 }}>
           {[
-            { label: 'Our Mission', text: 'To build meaningful talent partnerships that create measurable organisational impact.' },
-            { label: 'Our Vision', text: 'To redefine recruitment as a strategic growth enabler rather than a transactional function.' },
+            { label: 'Our Mission', text: 'To change lives every day – one job at a time.' },
+            { label: 'Our Vision', text: 'To be the leading HR Solutions provider in Asia, a respected employer and the preferred vendor of choice.' },
           ].map((item) => (
-            <motion.div key={item.label} variants={fadeUp} transition={{ duration: 0.7, ease }} className="glass-card-dark" data-testid={`about-${item.label.toLowerCase().replace(/\s+/g, '-')}`}>
+            <motion.div key={item.label} variants={fadeUp} transition={{ duration: 0.7, ease }} className="glass-card-dark p-8" data-testid={`about-${item.label.toLowerCase().replace(/\s+/g, '-')}`}>
               <span className="font-mono text-[0.6875rem]" style={{ color: 'var(--orange-core)' }}>{item.label}</span>
               <p className="font-display text-[1.5rem] lg:text-[1.75rem] font-600 mt-4 leading-[1.35]" style={{ color: 'var(--text-on-dark)' }}>{item.text}</p>
             </motion.div>
