@@ -1,10 +1,10 @@
 export const navItems = [
-  { label: "Home", href: "#home" },
+  { label: "Home", href: "/" },
   { label: "Find Talent", href: "#talent" },
   { label: "Find Jobs", href: "#jobs" },
   { label: "Industries", href: "#industries" },
   { label: "Insights", href: "#insights" },
-  { label: "About", href: "#about" },
+  { label: "About", href: "/about" },
 ];
 
 export const heroStats = [

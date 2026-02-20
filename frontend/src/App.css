@@ -289,6 +289,40 @@ a#emergent-badge,
 .duration-400 { transition-duration: 400ms; }
 .duration-1500 { transition-duration: 1500ms; }
 
+/* ===== About page animations ===== */
+@keyframes about-line-pulse {
+  0%, 100% { opacity: 0.6; transform: scaleX(1); }
+  50% { opacity: 1; transform: scaleX(1.3); }
+}
+.about-line-pulse {
+  animation: about-line-pulse 3s ease-in-out infinite;
+}
+
+@keyframes about-dot-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+.about-dot-pulse {
+  animation: about-dot-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes about-dot-ring {
+  0% { r: 10; opacity: 0.3; }
+  100% { r: 22; opacity: 0; }
+}
+.about-dot-ring {
+  animation: about-dot-ring 3s ease-out infinite;
+}
+
+@keyframes about-line-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.about-line-grow {
+  animation: about-line-grow 1.5s ease-out forwards;
+  transform-origin: center;
+}
+
 /* ===== Section divider wave ===== */
 .section-wave {
   position: absolute;
