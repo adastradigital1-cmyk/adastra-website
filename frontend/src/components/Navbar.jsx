@@ -96,17 +96,15 @@ export const Navbar = ({ onContactClick }) => {
         >
           <div className={`border-t pt-4 ${scrolled ? 'border-gray-100' : 'border-white/10'}`}>
             {navItems.map((item) => (
-              <a
+              <NavLink
                 key={item.label}
-                href={item.href}
+                item={item}
                 className={`block py-3 text-[14px] font-medium hover:text-[#F26522] no-underline transition-colors duration-200 ${
                   scrolled ? 'text-[#2B2B2B]' : 'text-white/90'
                 }`}
                 onClick={() => setMobileOpen(false)}
                 style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                {item.label}
-              </a>
+              />
             ))}
             <button
               className="mt-4 w-full px-6 py-2.5 text-[13px] font-semibold text-white rounded-md"
