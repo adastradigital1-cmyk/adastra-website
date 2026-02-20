@@ -25,16 +25,15 @@ export const Navbar = ({ onContactClick }) => {
   return (
     <nav
       data-testid="navbar"
-      className={`fixed top-0 left-0 right-0 transition-all duration-500 ${
-        scrolled
-          ? 'backdrop-blur-[24px] shadow-[0_1px_0_rgba(255,255,255,0.06)]'
-          : ''
-      }`}
+      className={`fixed top-0 left-0 right-0 transition-all duration-500`}
       style={{
         background: scrolled 
-          ? 'rgba(12,12,12,0.85)' 
+          ? 'rgba(12, 12, 12, 0.7)' 
           : 'linear-gradient(to bottom, rgba(12,12,12,0.5) 0%, rgba(12,12,12,0.35) 40%, rgba(12,12,12,0.15) 70%, transparent 100%)',
-        borderBottom: scrolled ? '1px solid var(--border-dark)' : 'none',
+        backdropFilter: scrolled ? 'blur(20px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
+        boxShadow: scrolled ? '0 4px 30px rgba(0, 0, 0, 0.2)' : 'none',
         zIndex: 9999,
         paddingBottom: scrolled ? '0' : '20px',
       }}
