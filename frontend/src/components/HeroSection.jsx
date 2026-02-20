@@ -34,7 +34,7 @@ const StatCard = ({ stat, isVisible, delay }) => {
   );
 };
 
-export const HeroSection = () => {
+export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
   const [ref, isVisible] = useScrollAnimation({ threshold: 0.1 });
 
   return (
