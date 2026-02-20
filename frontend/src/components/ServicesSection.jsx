@@ -1,131 +1,75 @@
 import React from 'react';
 import { services } from '../data/mock';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import {
-  Search,
-  Users,
-  Settings,
-  Clock,
-  BarChart3,
-  TrendingUp,
-  ArrowRight,
-} from 'lucide-react';
+import { Search, Users, Settings, Clock, BarChart3, TrendingUp, ArrowRight } from 'lucide-react';
 
-const iconComponents = {
-  Search,
-  Users,
-  Settings,
-  Clock,
-  BarChart3,
-  TrendingUp,
-};
+const iconMap = { Search, Users, Settings, Clock, BarChart3, TrendingUp };
 
 export const ServicesSection = () => {
   const [ref, isVisible] = useScrollAnimation();
 
   return (
-    <section className="relative py-28 overflow-hidden" style={{ backgroundColor: '#F4F4F4' }} ref={ref}>
-      {/* Background pattern */}
-      <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.3 }}>
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="service-dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-              <circle cx="1" cy="1" r="0.8" fill="rgba(242,101,34,0.06)" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#service-dots)" />
-        </svg>
-      </div>
-
-      <div className="relative max-w-[1300px] mx-auto px-6 lg:px-8">
-        <div
-          className={`text-center mb-16 transition-all duration-700 ease-out ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-          }`}
-        >
-          <span
-            className="text-[11px] font-semibold tracking-[0.2em] uppercase text-[#F26522] mb-3 block"
-            style={{ fontFamily: 'Inter, sans-serif' }}
-          >
-            Our Expertise
-          </span>
-          <h2
-            className="text-[36px] lg:text-[42px] font-bold tracking-tight"
-            style={{ color: '#111111', fontFamily: 'Poppins, sans-serif' }}
-          >
-            Our Services
-          </h2>
-          <p
-            className="mt-4 text-[15px] text-[#888] max-w-lg mx-auto"
-            style={{ fontFamily: 'Inter, sans-serif' }}
-          >
-            Comprehensive, bespoke HR solutions built from proprietary tools, expertise and experience
-          </p>
-          <div className="mt-5 w-10 h-[3px] bg-[#F26522] mx-auto rounded-full" />
+    <section
+      ref={ref}
+      className="relative py-32 lg:py-40"
+      style={{ backgroundColor: 'var(--white-warm)' }}
+      data-testid="services-section"
+    >
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
+        {/* Header */}
+        <div className="grid lg:grid-cols-[2fr_1fr] gap-12 mb-20">
+          <div className={`transition-all duration-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+            <div className="accent-line mb-6" />
+            <span className="section-label">02 — Services</span>
+            <h2 className="font-display text-[2.5rem] lg:text-[3rem] font-700 mt-4 leading-[1.12]" style={{ color: 'var(--text-on-light)' }}>
+              Comprehensive Talent Solutions
+            </h2>
+          </div>
+          <div className={`flex items-end transition-all duration-800 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <p className="font-body text-[1rem] leading-[1.75] max-w-[60ch]" style={{ color: 'var(--text-on-light-muted)' }}>
+              From C-suite search to workforce outsourcing — proprietary tools, deep domain expertise, and 150+ years of combined leadership experience.
+            </p>
+          </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => {
-            const Icon = iconComponents[service.icon];
+        {/* Service Grid — 2-col asymmetric on large */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {services.map((service, i) => {
+            const Icon = iconMap[service.icon];
             return (
               <div
                 key={service.title}
-                className={`group relative p-8 rounded-lg bg-white border border-gray-100/80 transition-all duration-500 ease-out card-3d animated-border cursor-pointer overflow-hidden ${
-                  isVisible
-                    ? 'opacity-100 translate-y-0'
-                    : 'opacity-0 translate-y-6'
-                }`}
-                style={{ transitionDelay: `${index * 100}ms` }}
+                className={`glass-card-light group cursor-pointer transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                style={{ transitionDelay: `${300 + i * 100}ms` }}
+                data-testid={`service-card-${i}`}
               >
-                {/* Top accent that slides in */}
-                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#F26522] to-[#ff8a50] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                {/* Number */}
+                <span className="font-mono text-[0.6875rem]" style={{ color: 'var(--text-on-light-muted)' }}>
+                  {String(i + 1).padStart(2, '0')}
+                </span>
 
-                {/* Number badge */}
-                <div className="absolute top-6 right-6 text-[48px] font-bold text-gray-100/60 leading-none select-none group-hover:text-[#F26522]/[0.07] transition-colors duration-500"
-                  style={{ fontFamily: 'Poppins, sans-serif' }}>
-                  {String(index + 1).padStart(2, '0')}
-                </div>
-
-                <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-[#F4F4F4] group-hover:bg-[#FFF1E8] transition-all duration-300 mb-5">
-                  <div className="service-icon-hover">
-                    <Icon
-                      size={22}
-                      className="text-[#999] group-hover:text-[#F26522] transition-colors duration-300"
-                    />
+                <div className="flex items-center gap-3 mt-4">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: 'var(--orange-ghost)' }}>
+                    <Icon size={18} style={{ color: 'var(--orange-core)' }} />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-[1.125rem] font-600 leading-tight" style={{ color: 'var(--text-on-light)' }}>
+                      {service.title}
+                    </h3>
+                    {service.subtitle && (
+                      <span className="font-mono text-[0.625rem]" style={{ color: 'var(--orange-core)', letterSpacing: '0.1em' }}>
+                        {service.subtitle}
+                      </span>
+                    )}
                   </div>
                 </div>
 
-                <h3
-                  className="text-[17px] font-bold"
-                  style={{
-                    color: '#2B2B2B',
-                    fontFamily: 'Poppins, sans-serif',
-                  }}
-                >
-                  {service.title}
-                </h3>
-
-                {service.subtitle && (
-                  <span
-                    className="text-[11px] font-semibold uppercase tracking-[0.1em] text-[#F26522]/70 mt-1 block"
-                    style={{ fontFamily: 'Inter, sans-serif' }}
-                  >
-                    {service.subtitle}
-                  </span>
-                )}
-
-                <p
-                  className="mt-3 text-[13px] text-[#888] leading-[1.7] relative z-[1]"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
+                <p className="font-body text-[0.875rem] mt-4 leading-[1.7]" style={{ color: 'var(--text-on-light-muted)' }}>
                   {service.description}
                 </p>
 
-                <div
-                  className="mt-5 inline-flex items-center gap-1.5 text-[12px] font-semibold text-[#F26522] opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-400"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  Learn More <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform duration-300" />
+                <div className="mt-5 inline-flex items-center gap-1.5 font-body font-600 text-[0.8125rem] opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-400" style={{ color: 'var(--orange-core)' }}>
+                  Learn More <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-1" />
                 </div>
               </div>
             );
