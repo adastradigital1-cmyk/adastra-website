@@ -7,89 +7,63 @@ import { CVModal } from '../components/CVModal';
 import { ConsultationModal } from '../components/ConsultationModal';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { useCountUp } from '../hooks/useCountUp';
-import {
-  Shield, Brain, Zap, Heart,
-  Linkedin, Globe, Users, Layers,
-  ArrowRight, ChevronRight,
-} from 'lucide-react';
+import { Linkedin, ArrowRight, ChevronRight } from 'lucide-react';
 
-/* ─────────── DATA ─────────── */
+/* ─── DATA ─── */
 const values = [
-  { icon: Shield, title: 'Integrity', desc: 'We operate with transparency and accountability.' },
-  { icon: Brain, title: 'Strategic Thinking', desc: 'Every hiring decision aligns with long-term goals.' },
-  { icon: Zap, title: 'Execution Excellence', desc: 'Speed, precision, and measurable results.' },
-  { icon: Heart, title: 'People-Centric Approach', desc: 'We value both client ambition and candidate potential.' },
+  { title: 'Integrity', desc: 'We operate with transparency and accountability at every level.' },
+  { title: 'Strategic Thinking', desc: 'Every hiring decision aligns with long-term organisational goals.' },
+  { title: 'Execution Excellence', desc: 'Speed, precision, and measurable results — without compromise.' },
+  { title: 'People-Centric', desc: 'We value both client ambition and candidate potential equally.' },
 ];
 
 const leaders = [
   {
     name: 'Anuradha Das Mathur',
     role: 'Founder & Managing Director',
-    bio: 'A pioneer in India\'s recruitment industry, Anuradha has co-founded and built 3 of India\'s largest HR firms. She brings over 25 years of executive search and talent advisory experience.',
+    bio: 'A pioneer in India\'s recruitment industry. Co-founded and built 3 of India\'s largest HR firms with 25+ years of executive search experience.',
     img: 'https://images.pexels.com/photos/29995739/pexels-photo-29995739.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
   },
   {
     name: 'Rajesh Kumar',
     role: 'Chief Operating Officer',
-    bio: 'With 20+ years in HR services and operations, Rajesh drives execution excellence across all service verticals and global delivery centres.',
+    bio: '20+ years driving execution excellence across all service verticals and global delivery centres.',
     img: 'https://images.unsplash.com/photo-1769636929261-e913ed023c83?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDN8MHwxfHNlYXJjaHwyfHxleGVjdXRpdmUlMjBidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMGhlYWRzaG90fGVufDB8fHx8MTc3MTU4NjE4Mnww&ixlib=rb-4.1.0&q=85',
   },
   {
     name: 'Meera Shankar',
     role: 'Head of Global Strategy',
-    bio: 'Meera leads international expansion and client partnerships across 30+ markets, bringing deep expertise in cross-border talent acquisition.',
+    bio: 'Leads international expansion and client partnerships across 30+ markets with deep cross-border acquisition expertise.',
     img: 'https://images.unsplash.com/photo-1758599543154-76ec1c4257df?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDN8MHwxfHNlYXJjaHwxfHxleGVjdXRpdmUlMjBidXNpbmVzcyUyMHByb2Zlc3Npb25hbCUyMGhlYWRzaG90fGVufDB8fHx8MTc3MTU4NjE4Mnww&ixlib=rb-4.1.0&q=85',
   },
   {
     name: 'Vikram Desai',
     role: 'Chief Technology Officer',
-    bio: 'Vikram architects the proprietary A Cube platform powered by AI & ML, enabling data-driven recruitment and configurable workforce dashboards.',
+    bio: 'Architects the proprietary A Cube platform powered by AI & ML, enabling data-driven recruitment dashboards.',
     img: 'https://images.pexels.com/photos/31880922/pexels-photo-31880922.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
   },
 ];
 
-const footprintStats = [
+const stats = [
   { value: 30, suffix: '+', label: 'Countries Served' },
   { value: 250, suffix: '+', label: 'Hiring Specialists' },
   { value: 10000, suffix: '+', label: 'Placements Delivered' },
+  { value: 95, suffix: '%', label: 'Client Retention' },
 ];
 
 const whyCards = [
-  {
-    icon: Brain,
-    title: 'Strategic Advisory Mindset',
-    desc: 'Beyond hiring \u2014 we architect workforce strategies that align with long-term organisational goals.',
-  },
-  {
-    icon: Layers,
-    title: 'Integrated Service Model',
-    desc: 'Executive search, RPO, contingency, temp staffing under one unified framework.',
-  },
-  {
-    icon: Globe,
-    title: 'Data-Driven Delivery',
-    desc: 'Market intelligence and performance metrics guide every engagement.',
-  },
+  { title: 'Strategic Advisory Mindset', desc: 'Beyond hiring — we architect workforce strategies aligned with long-term organisational goals.' },
+  { title: 'Integrated Service Model', desc: 'Executive search, RPO, contingency, temp staffing under one unified framework.' },
+  { title: 'Data-Driven Delivery', desc: 'Market intelligence and performance metrics guide every engagement we undertake.' },
 ];
 
-const mediaLogos = ['Forbes', 'Silicon India', 'Oxford Economics', 'Cummins'];
-
-/* ─────────── REUSABLE PIECES ─────────── */
-const SectionTag = ({ children }) => (
-  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FFF1E8] mb-5">
-    <div className="w-1.5 h-1.5 rounded-full bg-[#F26522]" />
-    <span className="text-[11px] font-semibold tracking-widest uppercase text-[#F26522]" style={{ fontFamily: 'Inter, sans-serif' }}>
-      {children}
-    </span>
-  </div>
-);
-
+/* ─── HELPERS ─── */
 const FadeSection = ({ children, className = '', delay = 0 }) => {
-  const [ref, isVisible] = useScrollAnimation({ threshold: 0.1 });
+  const [ref, vis] = useScrollAnimation({ threshold: 0.1 });
   return (
     <div
       ref={ref}
-      className={`transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} ${className}`}
+      className={`transition-all duration-800 ${vis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
@@ -97,49 +71,44 @@ const FadeSection = ({ children, className = '', delay = 0 }) => {
   );
 };
 
-const StatNumber = ({ stat, isVisible }) => {
-  const count = useCountUp(stat.value, 2200, isVisible);
+const StatNum = ({ stat, isVisible }) => {
+  const count = useCountUp(stat.value, 2500, isVisible);
   const fmt = (n) => (n >= 1000 ? n.toLocaleString() : n);
   return (
-    <div className="text-center" data-testid={`stat-${stat.label.toLowerCase().replace(/\s+/g, '-')}`}>
-      <div className="stat-shimmer text-[48px] lg:text-[56px] font-bold tracking-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
-        {fmt(count)}{stat.suffix}
-      </div>
-      <p className="text-[14px] text-[#888] mt-2 font-medium" style={{ fontFamily: 'Inter, sans-serif' }}>{stat.label}</p>
+    <div className="text-center">
+      <div className="stat-number text-[3rem] lg:text-[3.5rem] font-700 leading-none">{fmt(count)}{stat.suffix}</div>
+      <p className="font-mono text-[0.75rem] mt-3" style={{ color: 'var(--text-on-dark-muted)' }}>{stat.label}</p>
     </div>
   );
 };
 
-/* ─────────── SECTIONS ─────────── */
+/* ─── SECTIONS ─── */
 
 const AboutHero = () => {
   const [ref, vis] = useScrollAnimation({ threshold: 0.1 });
   return (
-    <section ref={ref} className="relative min-h-[70vh] flex items-center overflow-hidden" data-testid="about-hero">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f0f23]" />
-      {/* Geometric SVG pattern */}
-      <div className="absolute inset-0 opacity-[0.04]">
-        <svg width="100%" height="100%"><defs><pattern id="about-grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0L0 60M45 0L0 45M60 15L15 60M30 0L0 30M60 30L30 60" stroke="#F26522" strokeWidth="0.5" fill="none" /></pattern></defs><rect width="100%" height="100%" fill="url(#about-grid)" /></svg>
-      </div>
-      {/* Ambient glow */}
-      <div className="absolute top-[-80px] right-[10%] w-[500px] h-[500px] bg-[#F26522]/[0.05] rounded-full blur-[140px]" />
-      <div className="absolute bottom-[-60px] left-[5%] w-[350px] h-[350px] bg-[#F26522]/[0.03] rounded-full blur-[100px]" />
-      {/* Orange accent top */}
-      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#F26522]/50 to-transparent" />
+    <section ref={ref} className="relative min-h-[75vh] flex items-center overflow-hidden noise-overlay" style={{ backgroundColor: 'var(--black-rich)' }} data-testid="about-hero">
+      <div className="absolute inset-0 gradient-mesh" />
+      <svg className="absolute bottom-[10%] right-[5%] w-[300px] h-[300px] opacity-[0.05] hidden lg:block" viewBox="0 0 300 300" fill="none">
+        <circle cx="150" cy="150" r="140" stroke="var(--orange-core)" strokeWidth="0.5" strokeDasharray="6 10" />
+      </svg>
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--orange-core)] to-transparent opacity-30" />
 
-      <div className="relative max-w-[1000px] mx-auto px-6 lg:px-8 text-center pt-32 pb-20" style={{ zIndex: 1 }}>
-        <div className={`transition-all duration-1000 ${vis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-[-0.02em] text-white" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            Building Organisations.{' '}
-            <span className="text-[#F26522]">Transforming Careers.</span>
-          </h1>
-          <p className="mt-6 text-base lg:text-lg text-gray-300 leading-[1.7] max-w-[640px] mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
-            Ad Astra Consultants is a strategic talent solutions partner helping organisations scale intelligently and professionals grow purposefully.
-          </p>
-          {/* Animated accent line */}
-          <div className="mt-8 flex justify-center">
-            <div className="w-20 h-[3px] rounded-full bg-gradient-to-r from-[#F26522] to-[#ff8a50] about-line-pulse" />
+      <div className="relative max-w-[1280px] mx-auto px-6 lg:px-12 w-full pt-32 pb-20">
+        <div className="max-w-[800px]">
+          <div className={`transition-all duration-700 ${vis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <span className="section-label">About Ad Astra</span>
           </div>
+          <h1 className={`font-display text-[2.75rem] sm:text-[3.5rem] lg:text-[4.5rem] font-700 leading-[1.08] mt-6 transition-all duration-1000 delay-200 ${vis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`} style={{ color: 'var(--white-pure)' }}>
+            Building Organisations.{' '}
+            <span style={{ color: 'var(--orange-core)' }}>Transforming Careers.</span>
+          </h1>
+          <p className={`font-body text-[1.125rem] lg:text-[1.25rem] mt-7 max-w-[520px] leading-[1.7] transition-all duration-700 delay-500 ${vis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ color: 'var(--text-on-dark-muted)' }}>
+            A strategic talent solutions partner helping organisations scale intelligently and professionals grow purposefully.
+          </p>
+        </div>
+        <div className={`absolute bottom-10 left-6 lg:left-12 transition-all duration-700 delay-1000 ${vis ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="scroll-indicator w-[1px] h-[40px] bg-gradient-to-b from-[var(--orange-core)] to-transparent" />
         </div>
       </div>
     </section>
@@ -147,33 +116,31 @@ const AboutHero = () => {
 };
 
 const WhoWeAre = () => (
-  <section className="py-24 lg:py-32 bg-white" data-testid="about-who-we-are">
-    <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
-      <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+  <section className="py-32 lg:py-40" style={{ backgroundColor: 'var(--white-warm)' }} data-testid="about-who-we-are">
+    <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
+      <div className="grid lg:grid-cols-[2fr_1fr] gap-16 lg:gap-24">
         <FadeSection>
-          <SectionTag>About</SectionTag>
-          <h2 className="text-3xl lg:text-4xl font-bold text-[#111] leading-[1.15] tracking-[-0.01em]" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            Who We Are
+          <div className="accent-line mb-6" />
+          <span className="section-label">01 — Who We Are</span>
+          <h2 className="font-display text-[2.5rem] lg:text-[3rem] font-700 mt-4 leading-[1.12]" style={{ color: 'var(--text-on-light)' }}>
+            A Global Talent Advisory Firm
           </h2>
-          <div className="mt-6 space-y-5">
-            <p className="text-base text-[#555] leading-[1.8]" style={{ fontFamily: 'Inter, sans-serif' }}>
+          <div className="mt-8 space-y-5 max-w-[60ch]">
+            <p className="font-body text-[1.0625rem] leading-[1.75]" style={{ color: 'var(--text-on-light-muted)' }}>
               Ad Astra Consultants is a global talent advisory and recruitment solutions firm with deep expertise across executive search, contingency hiring, recruitment process outsourcing, and flexible workforce deployment.
             </p>
-            <p className="text-base text-[#555] leading-[1.8]" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <p className="font-body text-[1.0625rem] leading-[1.75]" style={{ color: 'var(--text-on-light-muted)' }}>
               We operate at the intersection of insight, strategy, and execution — enabling businesses to secure the right talent at the right time.
             </p>
           </div>
-          {/* Accent line */}
-          <div className="mt-8 w-16 h-[3px] rounded-full bg-[#F26522]" />
         </FadeSection>
-
-        <FadeSection delay={200}>
-          <div className="relative group">
-            <div className="absolute -inset-3 rounded-2xl bg-gradient-to-br from-[#F26522]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <FadeSection delay={200} className="flex items-end">
+          <div className="img-container w-full">
             <img
               src="https://images.unsplash.com/photo-1762433813475-e6b761cc23d0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzR8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGdlb21ldHJpYyUyMG1pbmltYWwlMjBidXNpbmVzcyUyMGNvbnN1bHRpbmd8ZW58MHx8fHwxNzcxNTg2MTg0fDA&ixlib=rb-4.1.0&q=85"
-              alt="Abstract geometric shapes representing strategic thinking"
-              className="w-full h-[400px] object-cover rounded-2xl shadow-xl transition-transform duration-500 group-hover:scale-[1.02]"
+              alt="Abstract geometric"
+              className="img-treated w-full h-[360px]"
+              loading="lazy"
             />
           </div>
         </FadeSection>
@@ -183,28 +150,21 @@ const WhoWeAre = () => (
 );
 
 const MissionVision = () => (
-  <section className="py-24 lg:py-32 bg-[#FAFAFA]" data-testid="about-mission-vision">
-    <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
-      <FadeSection className="text-center mb-16">
-        <SectionTag>Purpose</SectionTag>
-        <h2 className="text-3xl lg:text-4xl font-bold text-[#111] tracking-[-0.01em]" style={{ fontFamily: 'Poppins, sans-serif' }}>
-          Our Mission & Vision
-        </h2>
+  <section className="py-24 lg:py-28 noise-overlay relative" style={{ backgroundColor: 'var(--black-rich)' }} data-testid="about-mission-vision">
+    <div className="relative max-w-[1280px] mx-auto px-6 lg:px-12">
+      <FadeSection className="mb-16">
+        <div className="accent-line mb-6" style={{ background: 'var(--orange-core)' }} />
+        <span className="section-label">02 — Purpose</span>
       </FadeSection>
-
       <div className="grid md:grid-cols-2 gap-8">
         {[
           { label: 'Our Mission', text: 'To build meaningful talent partnerships that create measurable organisational impact.' },
           { label: 'Our Vision', text: 'To redefine recruitment as a strategic growth enabler rather than a transactional function.' },
         ].map((item, i) => (
           <FadeSection key={item.label} delay={i * 150}>
-            <div className="group relative p-10 lg:p-12 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 overflow-hidden" data-testid={`about-${item.label.toLowerCase().replace(/\s+/g, '-')}`}>
-              {/* Hover glow line at bottom */}
-              <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#F26522] to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
-              <span className="text-[12px] font-bold uppercase tracking-[0.15em] text-[#F26522]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                {item.label}
-              </span>
-              <p className="mt-5 text-xl lg:text-2xl font-semibold text-[#222] leading-[1.4]" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <div className="glass-card-dark" data-testid={`about-${item.label.toLowerCase().replace(/\s+/g, '-')}`}>
+              <span className="font-mono text-[0.6875rem]" style={{ color: 'var(--orange-core)' }}>{item.label}</span>
+              <p className="font-display text-[1.5rem] lg:text-[1.75rem] font-600 mt-4 leading-[1.35]" style={{ color: 'var(--text-on-dark)' }}>
                 {item.text}
               </p>
             </div>
@@ -216,24 +176,24 @@ const MissionVision = () => (
 );
 
 const ValuesSection = () => (
-  <section className="py-24 lg:py-32 bg-[#F4F4F4]" data-testid="about-values">
-    <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
-      <FadeSection className="text-center mb-16">
-        <SectionTag>What Drives Us</SectionTag>
-        <h2 className="text-3xl lg:text-4xl font-bold text-[#111] tracking-[-0.01em]" style={{ fontFamily: 'Poppins, sans-serif' }}>
-          Our Values
+  <section className="py-32 lg:py-40" style={{ backgroundColor: 'var(--white-warm)' }} data-testid="about-values">
+    <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
+      <FadeSection className="mb-20">
+        <div className="accent-line mb-6" />
+        <span className="section-label">03 — Values</span>
+        <h2 className="font-display text-[2.5rem] lg:text-[3rem] font-700 mt-4 leading-[1.12]" style={{ color: 'var(--text-on-light)' }}>
+          What Drives Us
         </h2>
       </FadeSection>
-
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {values.map((v, i) => (
           <FadeSection key={v.title} delay={i * 100}>
-            <div className="group p-8 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-500 hover:-translate-y-2 text-center" data-testid={`value-${v.title.toLowerCase().replace(/\s+/g, '-')}`}>
-              <div className="w-14 h-14 mx-auto rounded-xl bg-[#FFF1E8] flex items-center justify-center mb-5 group-hover:bg-[#F26522] transition-colors duration-400">
-                <v.icon size={24} className="text-[#F26522] group-hover:text-white transition-colors duration-400" />
-              </div>
-              <h3 className="text-[16px] font-bold text-[#111]" style={{ fontFamily: 'Poppins, sans-serif' }}>{v.title}</h3>
-              <p className="mt-3 text-[14px] text-[#666] leading-[1.7]" style={{ fontFamily: 'Inter, sans-serif' }}>{v.desc}</p>
+            <div className="glass-card-light" data-testid={`value-${v.title.toLowerCase().replace(/\s+/g, '-')}`}>
+              <span className="font-mono text-[0.6875rem]" style={{ color: 'var(--text-on-light-muted)' }}>
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 className="font-display text-[1.25rem] font-600 mt-3" style={{ color: 'var(--text-on-light)' }}>{v.title}</h3>
+              <p className="font-body text-[0.9375rem] mt-3 leading-[1.7]" style={{ color: 'var(--text-on-light-muted)' }}>{v.desc}</p>
             </div>
           </FadeSection>
         ))}
@@ -243,34 +203,27 @@ const ValuesSection = () => (
 );
 
 const Leadership = () => (
-  <section className="py-24 lg:py-32 bg-white" data-testid="about-leadership">
-    <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
-      <FadeSection className="text-center mb-16">
-        <SectionTag>Team</SectionTag>
-        <h2 className="text-3xl lg:text-4xl font-bold text-[#111] tracking-[-0.01em]" style={{ fontFamily: 'Poppins, sans-serif' }}>
+  <section className="py-32 lg:py-40" style={{ backgroundColor: 'var(--white-cream)' }} data-testid="about-leadership">
+    <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
+      <FadeSection className="mb-20">
+        <div className="accent-line mb-6" />
+        <span className="section-label">04 — Team</span>
+        <h2 className="font-display text-[2.5rem] lg:text-[3rem] font-700 mt-4 leading-[1.12]" style={{ color: 'var(--text-on-light)' }}>
           Leadership That Drives Impact
         </h2>
       </FadeSection>
-
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {leaders.map((l, i) => (
           <FadeSection key={l.name} delay={i * 120}>
-            <div className="group text-center" data-testid={`leader-${l.name.toLowerCase().replace(/\s+/g, '-')}`}>
-              <div className="relative w-40 h-40 mx-auto mb-5 rounded-2xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow duration-500">
-                <img
-                  src={l.img}
-                  alt={l.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  loading="lazy"
-                />
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+            <div className="group" data-testid={`leader-${l.name.toLowerCase().replace(/\s+/g, '-')}`}>
+              <div className="img-container w-full aspect-[3/4] mb-5">
+                <img src={l.img} alt={l.name} className="img-treated w-full h-full" loading="lazy" />
               </div>
-              <h3 className="text-[16px] font-bold text-[#111]" style={{ fontFamily: 'Poppins, sans-serif' }}>{l.name}</h3>
-              <p className="text-[13px] font-semibold text-[#F26522] mt-1" style={{ fontFamily: 'Inter, sans-serif' }}>{l.role}</p>
-              <p className="mt-3 text-[13px] text-[#666] leading-[1.7] max-w-[240px] mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>{l.bio}</p>
-              <a href="#" className="inline-flex items-center justify-center w-8 h-8 mt-4 rounded-full bg-[#F4F4F4] text-[#888] hover:bg-[#0A66C2] hover:text-white transition-all duration-300">
-                <Linkedin size={14} />
+              <h3 className="font-display text-[1.125rem] font-600" style={{ color: 'var(--text-on-light)' }}>{l.name}</h3>
+              <p className="font-mono text-[0.625rem] mt-1" style={{ color: 'var(--orange-core)' }}>{l.role}</p>
+              <p className="font-body text-[0.875rem] mt-3 leading-[1.7]" style={{ color: 'var(--text-on-light-muted)' }}>{l.bio}</p>
+              <a href="#" className="inline-block mt-3 text-[var(--text-on-light-muted)] hover:text-[var(--orange-core)] opacity-50 hover:opacity-100 transition-all duration-300">
+                <Linkedin size={15} />
               </a>
             </div>
           </FadeSection>
@@ -283,50 +236,14 @@ const Leadership = () => (
 const GlobalFootprint = () => {
   const [ref, vis] = useScrollAnimation({ threshold: 0.15 });
   return (
-    <section ref={ref} className="py-24 lg:py-32 bg-[#111]" data-testid="about-global-footprint">
-      <div className="max-w-[1200px] mx-auto px-6 lg:px-8 text-center">
-        <FadeSection className="mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F26522]/10 border border-[#F26522]/20 mb-5">
-            <div className="w-1.5 h-1.5 rounded-full bg-[#F26522]" />
-            <span className="text-[11px] font-semibold tracking-widest uppercase text-[#F26522]" style={{ fontFamily: 'Inter, sans-serif' }}>
-              Reach
-            </span>
-          </div>
-          <h2 className="text-3xl lg:text-4xl font-bold text-white tracking-[-0.01em]" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            Global Reach. <span className="text-[#F26522]">Local Insight.</span>
-          </h2>
-        </FadeSection>
-
-        {/* Animated world map dots */}
-        <div className="relative mb-16">
-          <svg viewBox="0 0 800 300" className="w-full max-w-[700px] mx-auto" fill="none">
-            {/* Horizontal line */}
-            <line x1="100" y1="150" x2="700" y2="150" stroke="rgba(242,101,34,0.12)" strokeWidth="1" strokeDasharray="4 6" />
-            {/* Dots for key locations */}
-            {[
-              { cx: 350, cy: 100, label: 'Europe' },
-              { cx: 480, cy: 120, label: 'India' },
-              { cx: 560, cy: 130, label: 'Singapore' },
-              { cx: 200, cy: 140, label: 'Americas' },
-              { cx: 620, cy: 160, label: 'APAC' },
-              { cx: 300, cy: 180, label: 'Africa' },
-            ].map((dot, i) => (
-              <g key={i}>
-                <circle cx={dot.cx} cy={dot.cy} r="4" fill="#F26522" opacity="0.8" className="about-dot-pulse" style={{ animationDelay: `${i * 0.4}s` }} />
-                <circle cx={dot.cx} cy={dot.cy} r="10" fill="none" stroke="#F26522" strokeWidth="0.5" opacity="0.3" className="about-dot-ring" style={{ animationDelay: `${i * 0.4}s` }} />
-                <text x={dot.cx} y={dot.cy - 16} textAnchor="middle" fill="#888" fontSize="10" fontFamily="Inter, sans-serif">{dot.label}</text>
-              </g>
-            ))}
-            {/* Connecting arcs */}
-            <path d="M480 120 Q430 60 350 100" stroke="rgba(242,101,34,0.15)" strokeWidth="0.8" strokeDasharray="3 4" fill="none" />
-            <path d="M480 120 Q520 90 560 130" stroke="rgba(242,101,34,0.15)" strokeWidth="0.8" strokeDasharray="3 4" fill="none" />
-            <path d="M350 100 Q275 80 200 140" stroke="rgba(242,101,34,0.12)" strokeWidth="0.8" strokeDasharray="3 4" fill="none" />
-          </svg>
-        </div>
-
-        <div className="grid grid-cols-3 gap-8 max-w-[700px] mx-auto">
-          {footprintStats.map((s) => (
-            <StatNumber key={s.label} stat={s} isVisible={vis} />
+    <section ref={ref} className="py-24 lg:py-28 noise-overlay relative" style={{ backgroundColor: 'var(--black-rich)' }} data-testid="about-global-footprint">
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-[var(--border-dark)]" />
+      <div className="relative max-w-[1280px] mx-auto px-6 lg:px-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          {stats.map((s, i) => (
+            <div key={s.label} className={`transition-all duration-700 ${vis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: `${i * 150}ms` }}>
+              <StatNum stat={s} isVisible={vis} />
+            </div>
           ))}
         </div>
       </div>
@@ -335,27 +252,24 @@ const GlobalFootprint = () => {
 };
 
 const WhyAdAstra = () => (
-  <section className="py-24 lg:py-32 bg-white" data-testid="about-why-ad-astra">
-    <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
-      <FadeSection className="text-center mb-16">
-        <SectionTag>Differentiators</SectionTag>
-        <h2 className="text-3xl lg:text-4xl font-bold text-[#111] tracking-[-0.01em]" style={{ fontFamily: 'Poppins, sans-serif' }}>
+  <section className="py-32 lg:py-40" style={{ backgroundColor: 'var(--white-warm)' }} data-testid="about-why-ad-astra">
+    <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
+      <FadeSection className="mb-20">
+        <div className="accent-line mb-6" />
+        <span className="section-label">05 — Differentiators</span>
+        <h2 className="font-display text-[2.5rem] lg:text-[3rem] font-700 mt-4 leading-[1.12]" style={{ color: 'var(--text-on-light)' }}>
           Why Ad Astra
         </h2>
       </FadeSection>
-
-      <div className="grid lg:grid-cols-3 gap-8 relative">
-        {/* Connecting line */}
-        <div className="absolute top-1/2 left-[16.67%] right-[16.67%] h-[1px] bg-gradient-to-r from-transparent via-[#F26522]/15 to-transparent hidden lg:block about-line-grow" />
-
+      <div className="grid lg:grid-cols-3 gap-6">
         {whyCards.map((c, i) => (
           <FadeSection key={c.title} delay={i * 150}>
-            <div className="group relative p-8 rounded-2xl bg-[#FAFAFA] border border-gray-100 hover:border-[#F26522]/20 hover:shadow-lg transition-all duration-500 hover:-translate-y-1 text-center" data-testid={`why-${c.title.toLowerCase().replace(/\s+/g, '-')}`}>
-              <div className="w-14 h-14 mx-auto rounded-xl bg-white border border-gray-100 flex items-center justify-center mb-5 shadow-sm group-hover:border-[#F26522]/20 transition-all duration-400">
-                <c.icon size={24} className="text-[#F26522]" />
-              </div>
-              <h3 className="text-[17px] font-bold text-[#111]" style={{ fontFamily: 'Poppins, sans-serif' }}>{c.title}</h3>
-              <p className="mt-3 text-[14px] text-[#666] leading-[1.7]" style={{ fontFamily: 'Inter, sans-serif' }}>{c.desc}</p>
+            <div className="glass-card-light" data-testid={`why-${c.title.toLowerCase().replace(/\s+/g, '-')}`}>
+              <span className="font-mono text-[0.6875rem]" style={{ color: 'var(--text-on-light-muted)' }}>
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 className="font-display text-[1.25rem] font-600 mt-3" style={{ color: 'var(--text-on-light)' }}>{c.title}</h3>
+              <p className="font-body text-[0.9375rem] mt-3 leading-[1.7]" style={{ color: 'var(--text-on-light-muted)' }}>{c.desc}</p>
             </div>
           </FadeSection>
         ))}
@@ -365,36 +279,13 @@ const WhyAdAstra = () => (
 );
 
 const AuthoritySection = () => (
-  <section className="py-24 lg:py-28 bg-[#FAFAFA]" data-testid="about-authority">
-    <div className="max-w-[1000px] mx-auto px-6 lg:px-8 text-center">
+  <section className="py-24 lg:py-28 noise-overlay relative" style={{ backgroundColor: 'var(--black-soft)' }} data-testid="about-authority">
+    <div className="relative max-w-[1000px] mx-auto px-6 lg:px-12">
       <FadeSection>
-        <SectionTag>Recognition</SectionTag>
-        <h2 className="text-3xl lg:text-4xl font-bold text-[#111] tracking-[-0.01em]" style={{ fontFamily: 'Poppins, sans-serif' }}>
-          Recognised Voice in Talent & Workforce Strategy
-        </h2>
-      </FadeSection>
-
-      <FadeSection delay={200} className="mt-12">
-        <div className="flex flex-wrap items-center justify-center gap-10 lg:gap-16">
-          {mediaLogos.map((logo) => (
-            <div key={logo} className="group cursor-default" data-testid={`media-${logo.toLowerCase().replace(/\s+/g, '-')}`}>
-              <span
-                className="text-[18px] font-bold tracking-wide text-[#CCC] group-hover:text-[#F26522] transition-colors duration-500"
-                style={{ fontFamily: 'Poppins, sans-serif' }}
-              >
-                {logo}
-              </span>
-            </div>
-          ))}
-        </div>
-      </FadeSection>
-
-      <FadeSection delay={350} className="mt-14">
-        <blockquote className="max-w-[600px] mx-auto">
-          <p className="text-lg lg:text-xl text-[#444] leading-[1.7] italic" style={{ fontFamily: 'Inter, sans-serif' }}>
+        <blockquote className="pull-quote" style={{ borderColor: 'var(--orange-core)' }}>
+          <p className="font-display text-[1.5rem] lg:text-[2rem] font-500 italic leading-[1.5]" style={{ color: 'var(--text-on-dark)' }}>
             "Our insights continue to shape conversations on leadership and workforce transformation."
           </p>
-          <div className="mt-4 w-12 h-[2px] mx-auto bg-[#F26522] rounded-full" />
         </blockquote>
       </FadeSection>
     </div>
@@ -402,34 +293,19 @@ const AuthoritySection = () => (
 );
 
 const FinalCTA = ({ onTalent, onConnect }) => (
-  <section className="relative py-24 lg:py-28 overflow-hidden" style={{ backgroundColor: '#F26522' }} data-testid="about-cta">
-    {/* Pattern circles */}
-    <div className="absolute top-[-40px] right-[-40px] w-[250px] h-[250px] rounded-full border border-white/10 cta-pattern-circle" />
-    <div className="absolute bottom-[-60px] left-[-20px] w-[180px] h-[180px] rounded-full border border-white/10 cta-pattern-circle" style={{ animationDelay: '1.5s' }} />
-
-    <div className="relative max-w-[800px] mx-auto px-6 lg:px-8 text-center" style={{ zIndex: 1 }}>
+  <section className="py-28 lg:py-36 noise-overlay relative" style={{ backgroundColor: 'var(--black-rich)' }} data-testid="about-cta">
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[var(--orange-core)] opacity-[0.04] rounded-full blur-[150px]" />
+    <div className="relative max-w-[800px] mx-auto px-6 lg:px-12 text-center">
       <FadeSection>
-        <h2 className="text-3xl lg:text-4xl font-bold text-white leading-[1.15]" style={{ fontFamily: 'Poppins, sans-serif' }}>
+        <h2 className="font-display text-[2.5rem] lg:text-[3.5rem] font-700 leading-[1.12]" style={{ color: 'var(--white-pure)' }}>
           Let's Build the Future of Talent Together.
         </h2>
         <div className="mt-10 flex flex-wrap gap-4 justify-center">
-          <button
-            onClick={onTalent}
-            data-testid="about-cta-talent-btn"
-            className="group inline-flex items-center gap-2 px-8 py-3.5 text-[14px] font-semibold bg-white text-[#F26522] rounded-md transition-all duration-300 hover:-translate-y-[2px] hover:shadow-xl"
-            style={{ fontFamily: 'Inter, sans-serif' }}
-          >
-            Explore Talent Solutions
-            <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+          <button onClick={onTalent} data-testid="about-cta-talent-btn" className="btn-primary">
+            Explore Talent Solutions <ArrowRight size={16} />
           </button>
-          <button
-            onClick={onConnect}
-            data-testid="about-cta-connect-btn"
-            className="group inline-flex items-center gap-2 px-8 py-3.5 text-[14px] font-semibold border-2 border-white text-white rounded-md transition-all duration-300 hover:bg-white hover:text-[#F26522] hover:-translate-y-[2px]"
-            style={{ fontFamily: 'Inter, sans-serif' }}
-          >
-            Connect With Us
-            <ChevronRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+          <button onClick={onConnect} data-testid="about-cta-connect-btn" className="btn-secondary btn-secondary-dark">
+            Connect With Us <ChevronRight size={16} />
           </button>
         </div>
       </FadeSection>
@@ -437,15 +313,14 @@ const FinalCTA = ({ onTalent, onConnect }) => (
   </section>
 );
 
-/* ─────────── PAGE ─────────── */
+/* ─── PAGE ─── */
 export default function AboutPage() {
   const [contactOpen, setContactOpen] = useState(false);
   const [cvOpen, setCvOpen] = useState(false);
   const [consultationOpen, setConsultationOpen] = useState(false);
-  const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-white" data-testid="about-page">
+    <div className="min-h-screen" style={{ backgroundColor: 'var(--black-rich)' }} data-testid="about-page">
       <Navbar onContactClick={() => setContactOpen(true)} />
       <AboutHero />
       <WhoWeAre />
@@ -455,12 +330,8 @@ export default function AboutPage() {
       <GlobalFootprint />
       <WhyAdAstra />
       <AuthoritySection />
-      <FinalCTA
-        onTalent={() => setContactOpen(true)}
-        onConnect={() => setContactOpen(true)}
-      />
+      <FinalCTA onTalent={() => setContactOpen(true)} onConnect={() => setContactOpen(true)} />
       <Footer />
-
       <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
       <CVModal isOpen={cvOpen} onClose={() => setCvOpen(false)} />
       <ConsultationModal isOpen={consultationOpen} onClose={() => setConsultationOpen(false)} />
