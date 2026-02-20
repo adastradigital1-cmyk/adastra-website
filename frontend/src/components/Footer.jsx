@@ -59,7 +59,7 @@ export const Footer = () => {
             <div className="flex items-center gap-2.5 mb-6">
               <Globe size={14} className="text-[#666] flex-shrink-0" />
               <span className="text-[12px] text-[#999]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                8 offices across India, Europe & Asia
+                9 offices across India, Europe & Asia
               </span>
             </div>
 
