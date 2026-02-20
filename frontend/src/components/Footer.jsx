@@ -26,7 +26,7 @@ export const Footer = () => {
     }
   };
 
-  const indiaOffices = offices.filter(o => ['Bangalore', 'Hyderabad', 'Kolkata', 'Mumbai', 'New Delhi'].includes(o.city));
+  const indiaOffices = offices.filter(o => ['Bangalore', 'Hyderabad', 'Kolkata', 'Mumbai', 'New Delhi', 'Coimbatore'].includes(o.city));
   const globalOffices = offices.filter(o => ['Singapore', 'London', 'Amsterdam'].includes(o.city));
 
   return (
