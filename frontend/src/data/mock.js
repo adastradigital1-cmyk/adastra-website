@@ -93,6 +93,58 @@ export const footerLinks = {
   Insights: ["Blog", "Reports", "Case Studies", "Webinars"],
 };
 
+export const offices = [
+  {
+    city: "Bangalore",
+    tag: "Headquarters",
+    company: "Ad Astra Consultants (P) Limited",
+    address: "1st Floor, CRN Square, No 15, Kasturba Road, Bangalore \u2013 560 001",
+    phone: "+91-80-40700 602\u2013635",
+    fax: "+91-80-40700 629",
+  },
+  {
+    city: "Hyderabad",
+    company: "Ad Astra Consultants (P) Limited",
+    address: "3rd Floor, SBR Surya Pearl Building, Phase 2, Hi-tech City, Madhapur, Hyderabad 500081",
+    phone: "8008544010",
+  },
+  {
+    city: "Kolkata",
+    company: "Ad Astra Consultants (P) Limited",
+    address: "DBS Corporate House, DBS House, 10-2, Hungerford Street, Kolkata \u2013 700 017",
+    phone: "+91-33-4050 9200",
+    fax: "+91-33-4050 9300",
+  },
+  {
+    city: "Mumbai",
+    company: "Ad Astra Consultants (P) Limited",
+    address: "501, 5th Floor, Meadows, Sahar Plaza, Chakala Metro Station, Andheri (East), Mumbai \u2013 400 059",
+    phone: "+91-22-4012 0290",
+  },
+  {
+    city: "New Delhi",
+    company: "Ad Astra Consultants (P) Limited",
+    address: "1301, 13th Floor, Surya Kiran Building, #19, Kasturba Gandhi Marg, New Delhi \u2013 110 001",
+    phone: "+91-11-4763 4800 / 4763 4900",
+    fax: "+91-11-4763 4837",
+  },
+  {
+    city: "Singapore",
+    company: "Ad Astra Consultants Pte. Ltd.",
+    address: "105 Cecil Street, The Octagon, #13-01, Singapore \u2013 069534",
+  },
+  {
+    city: "London",
+    company: "Ad Astra Consultants Pvt. Ltd.",
+    address: "Ground Floor, Suite B, 4 Lytton Road, New Barnet, Hertfordshire EN55BY",
+  },
+  {
+    city: "Amsterdam",
+    company: "Ad Astra Consultants B.V.",
+    address: "Herengracht 449 A, 1017BR Amsterdam",
+  },
+];
+
 export const contactInfo = {
   email: "info@adastraconsultants.com",
   phone: "+1 (800) 555-0100",
