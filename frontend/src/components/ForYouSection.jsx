@@ -79,14 +79,14 @@ export const ForYouSection = ({ onContactClick, onCVClick }) => {
                   {card.copy}
                 </p>
 
-                <a
-                  href="#"
-                  className="mt-7 inline-flex items-center gap-2 text-[13px] font-semibold transition-all duration-300 group-hover:gap-3 no-underline"
+                <button
+                  onClick={card.id === 2 ? onCVClick : onContactClick}
+                  className="mt-7 inline-flex items-center gap-2 text-[13px] font-semibold transition-all duration-300 group-hover:gap-3 bg-transparent border-none cursor-pointer p-0"
                   style={{ color: '#F26522', fontFamily: 'Inter, sans-serif' }}
                 >
                   {card.cta}
                   <ArrowRight size={14} />
-                </a>
+                </button>
               </div>
             );
           })}
