@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar } from '../components/Navbar';
 import { HeroSection } from '../components/HeroSection';
 import { ForYouSection } from '../components/ForYouSection';
@@ -8,19 +8,40 @@ import { DifferentiationSection } from '../components/DifferentiationSection';
 import { TrustSection } from '../components/TrustSection';
 import { CTASection } from '../components/CTASection';
 import { Footer } from '../components/Footer';
+import { ContactModal } from '../components/ContactModal';
+import { CVModal } from '../components/CVModal';
+import { ConsultationModal } from '../components/ConsultationModal';
 
 export default function HomePage() {
+  const [contactOpen, setContactOpen] = useState(false);
+  const [cvOpen, setCvOpen] = useState(false);
+  const [consultationOpen, setConsultationOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
-      <HeroSection />
-      <ForYouSection />
+      <Navbar onContactClick={() => setContactOpen(true)} />
+      <HeroSection
+        onFindTalent={() => setContactOpen(true)}
+        onExploreCareers={() => setCvOpen(true)}
+      />
+      <ForYouSection
+        onContactClick={() => setContactOpen(true)}
+        onCVClick={() => setCvOpen(true)}
+      />
       <ServicesSection />
       <IndustriesSection />
       <DifferentiationSection />
       <TrustSection />
-      <CTASection />
+      <CTASection
+        onConsultation={() => setConsultationOpen(true)}
+        onSubmitCV={() => setCvOpen(true)}
+      />
       <Footer />
+
+      {/* Modals */}
+      <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
+      <CVModal isOpen={cvOpen} onClose={() => setCvOpen(false)} />
+      <ConsultationModal isOpen={consultationOpen} onClose={() => setConsultationOpen(false)} />
     </div>
   );
 }
