@@ -147,6 +147,5 @@ export const offices = [
 
 export const contactInfo = {
   email: "info@adastraconsultants.com",
-  phone: "+1 (800) 555-0100",
-  location: "New York, NY",
+  headquarters: "Bangalore, India",
 };
