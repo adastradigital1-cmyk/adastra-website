@@ -8,10 +8,10 @@ export const navItems = [
 ];
 
 export const heroStats = [
-  { value: 18, suffix: "+", label: "Years Experience" },
-  { value: 250, suffix: "+", label: "Hiring Specialists" },
-  { value: 30, suffix: "+", label: "Countries Served" },
-  { value: 10000, suffix: "+", label: "Successful Placements" },
+  { value: 18, suffix: "+", label: "Years of Excellence" },
+  { value: 300, suffix: "+", label: "Team Members" },
+  { value: 50, suffix: "+", label: "Countries Served" },
+  { value: 150, suffix: "+", label: "Man-Years Leadership Exp." },
 ];
 
 export const audienceCards = [
@@ -19,32 +19,62 @@ export const audienceCards = [
     id: 1,
     audience: "For Employers",
     headline: "Hire With Precision",
-    copy: "Executive search, RPO, and flexible staffing solutions aligned to your growth strategy.",
+    copy: "Executive search, RPO, and flexible staffing solutions aligned to your growth strategy. Our management team brings 150+ man-years of HR services experience.",
     cta: "Explore Talent Solutions",
   },
   {
     id: 2,
     audience: "For Candidates",
     headline: "Build a Future, Not Just a Job",
-    copy: "We connect professionals with roles that match ambition, capability, and culture.",
+    copy: "We connect professionals with roles that match ambition, capability, and culture. We've placed candidates across 50+ countries worldwide.",
     cta: "Find Opportunities",
   },
   {
     id: 3,
     audience: "For Enterprises Scaling Fast",
     headline: "Workforce Strategy Simplified",
-    copy: "Scalable hiring models, analytics-driven sourcing, and compliant workforce deployment.",
+    copy: "Scalable hiring models, analytics-driven sourcing powered by AI & ML, and compliant workforce deployment through our proprietary A Cube platform.",
     cta: "Talk to Experts",
   },
 ];
 
 export const services = [
-  { title: "Executive Search", icon: "Search" },
-  { title: "Contingency Hiring", icon: "Users" },
-  { title: "Recruitment Process Outsourcing", icon: "Settings" },
-  { title: "Temporary Staffing", icon: "Clock" },
-  { title: "Workforce Advisory", icon: "BarChart3" },
-  { title: "Market Intelligence", icon: "TrendingUp" },
+  {
+    title: "Executive Search",
+    subtitle: "Astral Honchos",
+    icon: "Search",
+    description: "Committed to strategically place top-tier senior-level executives in pivotal roles. From global enterprises to early-stage startups, we find leaders who make an impact on your business.",
+  },
+  {
+    title: "Contingent Search",
+    subtitle: "Astral Melance",
+    icon: "Users",
+    description: "Our selection service is devoted to strategically position high-caliber executives at various levels, leveraging our exclusive proprietary database and research team.",
+  },
+  {
+    title: "Recruitment Process Outsourcing",
+    subtitle: "Astral Bespoke",
+    icon: "Settings",
+    description: "Dedicated to streamline recruitment processes through outsourcing. Ad Astra assumes full ownership of our client's recruitment process with our AI-powered A Cube platform.",
+  },
+  {
+    title: "Temporary Staffing",
+    subtitle: "Astral Temp",
+    icon: "Clock",
+    description: "We tailor our temporary staffing services using a hybrid methodology crafted to precisely match the client's requirement, enabling workforce flexibility.",
+  },
+  {
+    title: "Payroll Management",
+    subtitle: "Astral Payroll",
+    icon: "BarChart3",
+    description: "We ensure accuracy, timeliness, and compliance with all local and international regulations, freeing your team to focus on core business activities.",
+  },
+  {
+    title: "HR Consulting",
+    subtitle: "Astral Consult",
+    icon: "TrendingUp",
+    description: "As a comprehensive HR solutions provider, we specialize in Systems, Training, Compensation, and Diagnostics, serving as the sole point of contact for our clients.",
+  },
 ];
 
 export const industries = [
@@ -59,36 +89,93 @@ export const industries = [
 
 export const differentiators = [
   {
-    title: "Research-Backed Hiring",
+    title: "Global Reach",
     description:
-      "We combine market intelligence and talent analytics to identify high-impact professionals.",
-    icon: "FlaskConical",
-  },
-  {
-    title: "Global Talent Reach",
-    description:
-      "Access to leadership and specialist talent across multiple geographies.",
+      "Placements in 50+ countries across the globe. Recruitment capabilities spanning metro and rural areas pan-India with 9 offices worldwide.",
     icon: "Globe",
   },
   {
-    title: "Integrated Hiring Models",
+    title: "People & Expertise",
     description:
-      "Executive search, RPO, contract staffing \u2013 aligned under one strategic framework.",
+      "A 300+ member team with a leadership team bringing 150+ years of combined industry experience. Co-founded and built 3 of India's largest HR firms.",
+    icon: "Users",
+  },
+  {
+    title: "Technology Powered",
+    description:
+      "Proprietary cloud-based A Cube platform powered by AI & ML, with configurable dashboards for bespoke hiring solutions and trend-based searches.",
     icon: "Layers",
+  },
+];
+
+export const awards = [
+  {
+    highlight: "Cummins",
+    text: "Proud recipients of Cummins' prestigious Diversity Supplier of the Year Award.",
+  },
+  {
+    highlight: "Silicon India",
+    text: "Ranked first amongst the top 5 fastest growing HR firms by Silicon India.",
+  },
+  {
+    highlight: "Oxford Economics",
+    text: "Sole Indian company featured as a \"Case Study\" by Oxford Economics in an Amex study on SME Pulse.",
+  },
+  {
+    highlight: "Forbes",
+    text: "Global outreach spotlighted by Forbes Magazine.",
   },
 ];
 
 export const mediaLogos = [
   "Forbes",
-  "Bloomberg",
-  "Financial Times",
-  "Harvard Business Review",
-  "The Economist",
+  "Silicon India",
+  "Oxford Economics",
+  "Cummins",
+];
+
+export const testimonials = [
+  {
+    name: "Kishore Jayaraman",
+    title: "President",
+    company: "Rolls Royce - APAC",
+    quote: "It was a pleasure working with Ad Astra. You all understood our requirements and not just met them but also coached us about current market trends. The work was done within all aggressive timelines and the right candidate slate was put in front of us to reach a conclusion very quickly.",
+  },
+  {
+    name: "Sandeep Bhatia",
+    title: "Deputy Managing Director",
+    company: "Capgemini",
+    quote: "Working with Ad Astra was a fantastic experience. The team's ability to understand business needs and fill each position with tight deadlines, while not compromising on the quality of candidates was amazing. They also delivered market research, diversity hiring and recruitment outsourcing at very high standards.",
+  },
+  {
+    name: "Raja Kumar",
+    title: "Founder & Managing Partner",
+    company: "Ascent Capital",
+    quote: "Ad Astra's team has the great ability to rise to a situation and give it their best. From conceptualizing to candidate joining, they were there with us at every step. Their expertise led us to use their services for CFO requirements of our portfolio companies.",
+  },
+  {
+    name: "Ben Richardson",
+    title: "VP Global Marketing",
+    company: "Stanley Black & Decker",
+    quote: "Ad Astra thoroughly understood our business challenges and requirements, providing well-matched profiles. We recruited 10 roles in just 2 months, without compromising candidate quality \u2014 a remarkably fast turnaround for marketing positions.",
+  },
+  {
+    name: "Kyle Kumasaka",
+    title: "Senior Director",
+    company: "LiquidHub",
+    quote: "I do not think that LiquidHub could have completed this endeavor with any other partner. Ad Astra's team was professional, diligent, intelligent and highly competent. I would be more than happy to provide a 5-star review!",
+  },
+  {
+    name: "Raghavan G",
+    title: "Managing Director",
+    company: "KAER Air",
+    quote: "My interactions with Ad Astra have been impressive \u2014 from a thorough understanding of needs, expansive research, and insightful commentary of options. A highly reliable partner.",
+  },
 ];
 
 export const footerLinks = {
   Company: ["About Us", "Leadership", "Careers", "Press"],
-  Services: ["Executive Search", "Contingency Hiring", "RPO", "Temporary Staffing"],
+  Services: ["Executive Search", "Contingent Search", "RPO", "Temporary Staffing", "Payroll Management", "HR Consulting"],
   Industries: ["Technology", "Manufacturing", "Banking", "Healthcare"],
   Insights: ["Blog", "Reports", "Case Studies", "Webinars"],
 };
@@ -127,6 +214,11 @@ export const offices = [
     address: "1301, 13th Floor, Surya Kiran Building, #19, Kasturba Gandhi Marg, New Delhi \u2013 110 001",
     phone: "+91-11-4763 4800 / 4763 4900",
     fax: "+91-11-4763 4837",
+  },
+  {
+    city: "Coimbatore",
+    company: "Ad Astra Consultants (P) Limited",
+    address: "Mobax Networks, 2nd Floor, Vivekananda Rd, Ram Nagar, Coimbatore, Tamil Nadu 641009",
   },
   {
     city: "Singapore",
