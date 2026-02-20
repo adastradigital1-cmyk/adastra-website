@@ -67,7 +67,7 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
             </div>
 
             <p
-              className="text-[17px] text-gray-300 leading-[1.7] max-w-[560px] mx-auto"
+              className="text-[16px] text-gray-300 leading-[1.65] max-w-[560px] mx-auto"
               style={{ fontFamily: 'Inter, sans-serif' }}
             >
               India's largest women-owned full-suite recruitment solutions firm.
@@ -75,7 +75,7 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
               HR Consulting and RPO — across 50+ countries.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-4 justify-center">
+            <div className="mt-6 flex flex-wrap gap-4 justify-center">
               <button
                 onClick={onFindTalent}
                 data-testid="hero-find-talent-btn"
