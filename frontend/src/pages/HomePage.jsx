@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Navbar } from '../components/Navbar';
+import { VideoSection } from '../components/VideoSection';
 import { HeroSection } from '../components/HeroSection';
 import { ForYouSection } from '../components/ForYouSection';
 import { ServicesSection } from '../components/ServicesSection';
@@ -20,6 +21,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--black-rich)' }}>
       <Navbar onContactClick={() => setContactOpen(true)} />
+      <VideoSection />
       <HeroSection
         onFindTalent={() => setContactOpen(true)}
         onExploreCareers={() => setCvOpen(true)}
