@@ -53,7 +53,7 @@ export const ServicesSection = () => (
               key={service.title}
               variants={fadeUp}
               transition={{ duration: 0.7, ease }}
-              className="glass-card-light group cursor-pointer"
+              className="glass-card-light group cursor-pointer p-6"
               data-testid={`service-card-${i}`}
             >
               <span className="font-mono text-[0.6875rem]" style={{ color: 'var(--text-on-light-muted)' }}>
