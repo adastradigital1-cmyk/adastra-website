@@ -113,19 +113,19 @@ export const differentiators = [
 export const awards = [
   {
     highlight: "Cummins",
-    text: "Proud recipients of Cummins' prestigious Diversity Supplier of the Year Award.",
+    text: "Recipient of the prestigious \"Diversity Supplier of the Year Award\" from Cummins.",
   },
   {
     highlight: "Silicon India",
-    text: "Ranked first amongst the top 5 fastest growing HR firms by Silicon India.",
+    text: "Ranked as the \"Top 5 Most Promising HR Recruitment Companies in India\" by Silicon India.",
   },
   {
     highlight: "Oxford Economics",
-    text: "Sole Indian company featured as a \"Case Study\" by Oxford Economics in an Amex study on SME Pulse.",
+    text: "Featured as a \"Case Study\" in an Amex study on SME Pulse, showcasing how global SMEs are driving growth.",
   },
   {
     highlight: "Forbes",
-    text: "Global outreach spotlighted by Forbes Magazine.",
+    text: "Global outreach spotlighted by Forbes Magazine. Founders featured for their achievement in creating a global recruitment firm.",
   },
 ];
 
