@@ -8,7 +8,7 @@ export const CVModal = ({ isOpen, onClose }) => {
     email: '',
     phone: '',
     linkedin_url: '',
-    current_role: '',
+    job_role: '',
     experience_years: '',
     preferred_industry: '',
     message: '',
