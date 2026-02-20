@@ -1,9 +1,9 @@
 import React from 'react';
 import { differentiators } from '../data/mock';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { FlaskConical, Globe, Layers } from 'lucide-react';
+import { Globe, Users, Layers } from 'lucide-react';
 
-const icons = { FlaskConical, Globe, Layers };
+const icons = { Globe, Users, Layers };
 
 export const DifferentiationSection = () => {
   const [ref, isVisible] = useScrollAnimation();
