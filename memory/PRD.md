@@ -20,6 +20,11 @@ Build a world-class premium website for "Ad Astra Consultants" — a global tale
 ## Routes
 - `/` — Homepage
 - `/about` — About Us
+- `/contact` — Contact Us
+- `/solutions` — Solutions/Services
+- `/careers` — Careers at Ad Astra
+- `/blog` — Blog/Insights
+- `/impact` — Our Impact
 
 ## What's Been Implemented
 ### Phase 0: Design System (Feb 2026)
