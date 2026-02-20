@@ -173,6 +173,18 @@ export const testimonials = [
     company: "KAER Air",
     quote: "My interactions with Ad Astra have been impressive \u2014 from a thorough understanding of needs, expansive research, and insightful commentary of options. A highly reliable partner.",
   },
+  {
+    name: "Orinola Gbadebo Smith",
+    title: "Co-Founder & CEO",
+    company: "Hugo",
+    quote: "A truly exceptional experience! The breadth of their search; the speed and precision with which they delivered on a global executive that was both a competence- and culture-fit...remarkable. Five stars.",
+  },
+  {
+    name: "D N Prasad",
+    title: "President",
+    company: "SHRI",
+    quote: "Ad Astra is a firm that I have known for more than a decade now. They understand our Domain well since they have a professional from the Banking Finance Industry as a Co-Founder. Responsive and Committed.",
+  },
 ];
 
 export const footerLinks = {
