@@ -30,6 +30,7 @@ export const CTASection = ({ onConsultation, onSubmitCV }) => {
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <button
+              onClick={onConsultation}
               className="group inline-flex items-center gap-2.5 px-8 py-3.5 text-[14px] font-semibold rounded-md bg-white text-[#111] transition-all duration-300 hover:shadow-xl hover:-translate-y-[2px] active:translate-y-0"
               style={{ fontFamily: 'Inter, sans-serif' }}
             >
