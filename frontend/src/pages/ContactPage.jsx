@@ -244,17 +244,27 @@ export default function ContactPage() {
                 key={office.city}
                 variants={fadeUp}
                 transition={{ duration: 0.7, ease }}
-                className="glass-card-dark"
+                className="glass-card-dark p-6"
                 data-testid={`office-${office.city.toLowerCase().replace(/\s+/g, '-')}`}
               >
                 <div className="flex items-center gap-2 mb-4">
                   <MapPin size={16} style={{ color: 'var(--orange-core)' }} />
-                  <h3 className="font-display text-[1.25rem] font-600" style={{ color: 'var(--text-on-dark)' }}>{office.city}</h3>
+                  <h3 className="font-display text-[1.25rem] font-600" style={{ color: 'var(--text-on-dark)' }}>
+                    {office.city}
+                    {office.tag && <span className="ml-2 font-mono text-[0.625rem] px-2 py-0.5 rounded-full" style={{ backgroundColor: 'var(--orange-ghost)', color: 'var(--orange-core)' }}>{office.tag}</span>}
+                  </h3>
                 </div>
                 <p className="font-body text-[0.8125rem] leading-[1.7] mb-3" style={{ color: 'var(--text-on-dark-muted)' }}>{office.address}</p>
-                <a href={`tel:${office.phone.replace(/\s/g, '')}`} className="font-mono text-[0.6875rem] no-underline hover:text-[var(--orange-core)] transition-colors duration-300" style={{ color: 'var(--text-on-dark-muted)' }}>
-                  {office.phone}
-                </a>
+                {office.phone && (
+                  <a href={`tel:${office.phone.replace(/\s/g, '')}`} className="block font-mono text-[0.6875rem] no-underline hover:text-[var(--orange-core)] transition-colors duration-300 mb-1" style={{ color: 'var(--text-on-dark-muted)' }}>
+                    Ph: {office.phone}
+                  </a>
+                )}
+                {office.fax && (
+                  <span className="block font-mono text-[0.6875rem]" style={{ color: 'var(--text-on-dark-muted)' }}>
+                    Fax: {office.fax}
+                  </span>
+                )}
               </motion.div>
             ))}
           </motion.div>
