@@ -69,8 +69,8 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
 
       {/* Foreground content with parallax */}
       <motion.div
-        className="relative max-w-[1280px] mx-auto px-6 lg:px-12 w-full pt-32 pb-20 z-10"
-        style={{ y: fgY, opacity }}
+        className="relative max-w-[1280px] mx-auto px-6 lg:px-12 w-full pt-32 pb-20"
+        style={{ y: fgY, opacity, zIndex: 10 }}
       >
         <div className="max-w-[900px] mx-auto text-center">
           {/* Section label */}
