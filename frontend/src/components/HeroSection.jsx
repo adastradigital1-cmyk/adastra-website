@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { ParticleField } from './ParticleField';
@@ -26,18 +26,10 @@ const WordReveal = ({ text, className, style, startDelay = 0 }) => {
 
 export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
   const { scrollY } = useScroll();
-  const videoRef = useRef(null);
   const bgY = useTransform(scrollY, [0, 600], [0, 150]);
   const midY = useTransform(scrollY, [0, 600], [0, 80]);
   const fgY = useTransform(scrollY, [0, 600], [0, 30]);
   const opacity = useTransform(scrollY, [0, 500], [1, 0.3]);
-
-  // Ensure video plays on mount
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
-    }
-  }, []);
 
   return (
     <section
@@ -46,42 +38,19 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ backgroundColor: 'var(--black-rich)' }}
     >
-      {/* Video Background Layer */}
-      <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ opacity: 0.6 }}
-          data-testid="hero-video"
-        >
-          <source src="https://customer-assets.emergentagent.com/job_0b42685e-05d6-4cc8-96a2-cc86172006b2/artifacts/pnnglkcr_Adastra%20Ad.mp4" type="video/mp4" />
-        </video>
-        {/* Dark overlay for readability */}
-        <div 
-          className="absolute inset-0" 
-          style={{ 
-            background: 'linear-gradient(to bottom, rgba(12, 12, 12, 0.7) 0%, rgba(12, 12, 12, 0.5) 50%, rgba(12, 12, 12, 0.85) 100%)' 
-          }} 
-        />
-      </motion.div>
-
-      {/* Gradient mesh overlay */}
-      <motion.div className="absolute inset-0 z-[1]" style={{ y: bgY }}>
-        <div className="absolute inset-0 gradient-mesh opacity-50" />
+      {/* Background parallax layer */}
+      <motion.div className="absolute inset-0" style={{ y: bgY }}>
+        <div className="absolute inset-0 gradient-mesh" />
         <div className="noise-overlay absolute inset-0" />
       </motion.div>
 
       {/* Particle layer */}
-      <motion.div className="absolute inset-0 z-[2]" style={{ y: midY }}>
+      <motion.div className="absolute inset-0" style={{ y: midY }}>
         <ParticleField id="hero-particles" density="normal" />
       </motion.div>
 
       {/* Geometric accent — parallax mid layer */}
-      <motion.div className="absolute inset-0 z-[3]" style={{ y: midY }}>
+      <motion.div className="absolute inset-0" style={{ y: midY }}>
         <svg className="absolute top-[10%] right-[6%] w-[500px] h-[500px] opacity-[0.05] hidden lg:block" viewBox="0 0 500 500" fill="none">
           <circle cx="250" cy="250" r="220" stroke="var(--orange-core)" strokeWidth="0.5" strokeDasharray="8 12" />
           <circle cx="250" cy="250" r="150" stroke="var(--orange-core)" strokeWidth="0.3" />
@@ -90,11 +59,11 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
       </motion.div>
 
       {/* Orange accent top */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--orange-core)] to-transparent opacity-30 z-[15]" />
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--orange-core)] to-transparent opacity-30 z-10" />
 
       {/* Foreground content with parallax */}
       <motion.div
-        className="relative max-w-[1280px] mx-auto px-6 lg:px-12 w-full pt-32 pb-20 z-[10]"
+        className="relative max-w-[1280px] mx-auto px-6 lg:px-12 w-full pt-32 pb-20 z-10"
         style={{ y: fgY, opacity }}
       >
         <div className="max-w-[800px]">
