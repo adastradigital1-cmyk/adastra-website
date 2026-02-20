@@ -81,7 +81,7 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
       </motion.div>
 
       {/* Geometric accent — parallax mid layer */}
-      <motion.div className="absolute inset-0" style={{ y: midY }}>
+      <motion.div className="absolute inset-0 z-[3]" style={{ y: midY }}>
         <svg className="absolute top-[10%] right-[6%] w-[500px] h-[500px] opacity-[0.05] hidden lg:block" viewBox="0 0 500 500" fill="none">
           <circle cx="250" cy="250" r="220" stroke="var(--orange-core)" strokeWidth="0.5" strokeDasharray="8 12" />
           <circle cx="250" cy="250" r="150" stroke="var(--orange-core)" strokeWidth="0.3" />
@@ -90,11 +90,11 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
       </motion.div>
 
       {/* Orange accent top */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--orange-core)] to-transparent opacity-30 z-10" />
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--orange-core)] to-transparent opacity-30 z-[15]" />
 
       {/* Foreground content with parallax */}
       <motion.div
-        className="relative max-w-[1280px] mx-auto px-6 lg:px-12 w-full pt-32 pb-20 z-10"
+        className="relative max-w-[1280px] mx-auto px-6 lg:px-12 w-full pt-32 pb-20 z-[10]"
         style={{ y: fgY, opacity }}
       >
         <div className="max-w-[800px]">
