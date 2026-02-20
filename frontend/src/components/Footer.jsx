@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { footerLinks, contactInfo } from '../data/mock';
-import { Linkedin, Twitter, Facebook, Instagram, Send, MapPin, Phone, Mail, Loader2 } from 'lucide-react';
+import { footerLinks, contactInfo, offices } from '../data/mock';
+import { Linkedin, Twitter, Facebook, Instagram, Send, MapPin, Phone, Mail, Loader2, Globe } from 'lucide-react';
 import { submitNewsletter } from '../services/supabaseService';
 
 export const Footer = () => {
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState('idle'); // idle | loading | success | error
+  const [status, setStatus] = useState('idle');
   const [message, setMessage] = useState('');
 
   const handleSubscribe = async (e) => {
@@ -26,10 +26,14 @@ export const Footer = () => {
     }
   };
 
+  const indiaOffices = offices.filter(o => ['Bangalore', 'Hyderabad', 'Kolkata', 'Mumbai', 'New Delhi'].includes(o.city));
+  const globalOffices = offices.filter(o => ['Singapore', 'London', 'Amsterdam'].includes(o.city));
+
   return (
     <footer style={{ backgroundColor: '#2B2B2B' }} className="pt-20 pb-8">
       <div className="max-w-[1300px] mx-auto px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-12 pb-16 border-b border-white/10">
+        {/* Top Row: Brand + Links */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-12 pb-14 border-b border-white/10">
           {/* Brand */}
           <div className="lg:col-span-2">
             <img
@@ -46,26 +50,17 @@ export const Footer = () => {
               organisations worldwide.
             </p>
 
-            {/* Contact info */}
-            <div className="space-y-2.5 mb-6">
-              <div className="flex items-center gap-2.5">
-                <Mail size={14} className="text-[#666]" />
-                <span className="text-[12px] text-[#999]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  {contactInfo.email}
-                </span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Phone size={14} className="text-[#666]" />
-                <span className="text-[12px] text-[#999]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  {contactInfo.phone}
-                </span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <MapPin size={14} className="text-[#666]" />
-                <span className="text-[12px] text-[#999]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  {contactInfo.location}
-                </span>
-              </div>
+            <div className="flex items-center gap-2.5 mb-3">
+              <Mail size={14} className="text-[#666] flex-shrink-0" />
+              <span className="text-[12px] text-[#999]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                {contactInfo.email}
+              </span>
+            </div>
+            <div className="flex items-center gap-2.5 mb-6">
+              <Globe size={14} className="text-[#666] flex-shrink-0" />
+              <span className="text-[12px] text-[#999]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                8 offices across India, Europe & Asia
+              </span>
             </div>
 
             {/* Social Icons */}
@@ -106,6 +101,86 @@ export const Footer = () => {
               </ul>
             </div>
           ))}
+        </div>
+
+        {/* Office Locations */}
+        <div className="py-14 border-b border-white/10">
+          <h4
+            className="text-white font-semibold text-[12px] uppercase tracking-[0.15em] mb-8"
+            style={{ fontFamily: 'Inter, sans-serif' }}
+          >
+            Our Offices
+          </h4>
+
+          {/* India Offices */}
+          <div className="mb-8">
+            <p className="text-[11px] text-[#F26522] font-semibold uppercase tracking-[0.15em] mb-4"
+              style={{ fontFamily: 'Inter, sans-serif' }}>
+              India
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+              {indiaOffices.map((office) => (
+                <div key={office.city} className="group">
+                  <div className="flex items-start gap-2">
+                    <MapPin size={12} className="text-[#555] mt-0.5 flex-shrink-0 group-hover:text-[#F26522] transition-colors duration-300" />
+                    <div>
+                      <h5
+                        className="text-white text-[13px] font-semibold leading-tight group-hover:text-[#F26522] transition-colors duration-300"
+                        style={{ fontFamily: 'Inter, sans-serif' }}
+                      >
+                        {office.city}
+                        {office.tag && (
+                          <span className="ml-1.5 text-[9px] font-semibold px-1.5 py-0.5 rounded bg-[#F26522]/15 text-[#F26522] uppercase tracking-wider">
+                            HQ
+                          </span>
+                        )}
+                      </h5>
+                      <p className="text-[11px] text-[#777] mt-1 leading-[1.5]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        {office.address}
+                      </p>
+                      {office.phone && (
+                        <p className="text-[10px] text-[#666] mt-1 flex items-center gap-1" style={{ fontFamily: 'Inter, sans-serif' }}>
+                          <Phone size={9} className="flex-shrink-0" />
+                          {office.phone}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Global Offices */}
+          <div>
+            <p className="text-[11px] text-[#F26522] font-semibold uppercase tracking-[0.15em] mb-4"
+              style={{ fontFamily: 'Inter, sans-serif' }}>
+              International
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+              {globalOffices.map((office) => (
+                <div key={office.city} className="group">
+                  <div className="flex items-start gap-2">
+                    <MapPin size={12} className="text-[#555] mt-0.5 flex-shrink-0 group-hover:text-[#F26522] transition-colors duration-300" />
+                    <div>
+                      <h5
+                        className="text-white text-[13px] font-semibold leading-tight group-hover:text-[#F26522] transition-colors duration-300"
+                        style={{ fontFamily: 'Inter, sans-serif' }}
+                      >
+                        {office.city}
+                      </h5>
+                      <p className="text-[11px] text-[#666] mt-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        {office.company}
+                      </p>
+                      <p className="text-[11px] text-[#777] mt-1 leading-[1.5]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        {office.address}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Newsletter + Copyright */}
