@@ -27,8 +27,8 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
       {/* Orange accent line at top */}
       <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#F26522]/50 to-transparent" />
 
-      <div className="relative max-w-[1300px] mx-auto px-6 lg:px-8 w-full pt-28 pb-16 lg:pt-28 lg:pb-16" style={{ zIndex: 1 }}>
-        <div className="flex flex-col items-center gap-10">
+      <div className="relative max-w-[1300px] mx-auto px-6 lg:px-8 w-full pt-24 pb-12 lg:pt-24 lg:pb-12" style={{ zIndex: 1 }}>
+        <div className="flex flex-col items-center gap-7">
 
           {/* Hero Infographic Image */}
           <div
