@@ -2,7 +2,7 @@ import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { ArrowRight, Upload } from 'lucide-react';
 
-export const CTASection = () => {
+export const CTASection = ({ onConsultation, onSubmitCV }) => {
   const [ref, isVisible] = useScrollAnimation();
 
   return (
