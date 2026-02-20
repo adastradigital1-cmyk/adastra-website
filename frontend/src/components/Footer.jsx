@@ -126,26 +126,39 @@ export const Footer = () => {
           </p>
 
           {/* Newsletter */}
-          <form onSubmit={handleSubscribe} className="flex items-center gap-2">
-            <div className="relative">
-              <input
-                type="email"
-                placeholder={subscribed ? 'Subscribed!' : 'Subscribe to insights'}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-60 px-4 py-2.5 rounded-md bg-white/[0.06] border border-white/10 text-[13px] text-white placeholder-[#666] focus:outline-none focus:border-[#F26522]/50 transition-colors duration-300"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-                disabled={subscribed}
-              />
-            </div>
-            <button
-              type="submit"
-              className="p-2.5 rounded-md transition-all duration-300 hover:opacity-90 hover:-translate-y-[1px] active:translate-y-0"
-              style={{ backgroundColor: '#F26522' }}
-            >
-              <Send size={15} className="text-white" />
-            </button>
-          </form>
+          <div className="flex flex-col items-end gap-1.5">
+            <form onSubmit={handleSubscribe} className="flex items-center gap-2">
+              <div className="relative">
+                <input
+                  type="email"
+                  placeholder={status === 'success' ? 'Subscribed!' : 'Subscribe to insights'}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-60 px-4 py-2.5 rounded-md bg-white/[0.06] border border-white/10 text-[13px] text-white placeholder-[#666] focus:outline-none focus:border-[#F26522]/50 transition-colors duration-300"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  disabled={status === 'loading' || status === 'success'}
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={status === 'loading'}
+                className="p-2.5 rounded-md transition-all duration-300 hover:opacity-90 hover:-translate-y-[1px] active:translate-y-0 disabled:opacity-60"
+                style={{ backgroundColor: '#F26522' }}
+              >
+                {status === 'loading' ? (
+                  <Loader2 size={15} className="text-white animate-spin" />
+                ) : (
+                  <Send size={15} className="text-white" />
+                )}
+              </button>
+            </form>
+            {message && (
+              <p className={`text-[11px] ${status === 'error' ? 'text-red-400' : 'text-green-400'}`}
+                style={{ fontFamily: 'Inter, sans-serif' }}>
+                {message}
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </footer>
