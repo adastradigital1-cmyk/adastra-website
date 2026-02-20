@@ -72,6 +72,99 @@ async def get_status_checks():
     
     return status_checks
 
+
+# ========= Supabase Form Submission Models =========
+
+class NewsletterSubmit(BaseModel):
+    email: str
+
+class ContactSubmit(BaseModel):
+    full_name: str
+    email: str
+    company: Optional[str] = None
+    phone: Optional[str] = None
+    inquiry_type: Optional[str] = "general"
+    message: Optional[str] = None
+
+class CVSubmit(BaseModel):
+    full_name: str
+    email: str
+    phone: Optional[str] = None
+    linkedin_url: Optional[str] = None
+    job_role: Optional[str] = None
+    experience_years: Optional[str] = None
+    preferred_industry: Optional[str] = None
+    message: Optional[str] = None
+
+class ConsultationSubmit(BaseModel):
+    full_name: str
+    email: str
+    company: Optional[str] = None
+    phone: Optional[str] = None
+    service_interest: Optional[str] = None
+    preferred_date: Optional[str] = None
+    message: Optional[str] = None
+
+
+# ========= Supabase Form Endpoints =========
+
+@api_router.post("/newsletter")
+async def submit_newsletter(data: NewsletterSubmit):
+    if not supabase:
+        raise HTTPException(status_code=500, detail="Supabase not configured")
+    try:
+        result = supabase.table("newsletter_subscriptions").insert({
+            "email": data.email,
+            "source": "website_footer"
+        }).execute()
+        return {"success": True, "message": "Subscribed successfully"}
+    except Exception as e:
+        error_msg = str(e)
+        if "23505" in error_msg or "duplicate" in error_msg.lower():
+            raise HTTPException(status_code=409, detail="This email is already subscribed.")
+        logger.error(f"Newsletter error: {error_msg}")
+        raise HTTPException(status_code=500, detail="Failed to subscribe. Please try again.")
+
+@api_router.post("/contact")
+async def submit_contact(data: ContactSubmit):
+    if not supabase:
+        raise HTTPException(status_code=500, detail="Supabase not configured")
+    try:
+        result = supabase.table("contact_submissions").insert(
+            data.model_dump(exclude_none=True)
+        ).execute()
+        return {"success": True, "message": "Contact form submitted successfully"}
+    except Exception as e:
+        logger.error(f"Contact error: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to submit. Please try again.")
+
+@api_router.post("/cv")
+async def submit_cv(data: CVSubmit):
+    if not supabase:
+        raise HTTPException(status_code=500, detail="Supabase not configured")
+    try:
+        result = supabase.table("cv_submissions").insert(
+            data.model_dump(exclude_none=True)
+        ).execute()
+        return {"success": True, "message": "CV submitted successfully"}
+    except Exception as e:
+        logger.error(f"CV error: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to submit. Please try again.")
+
+@api_router.post("/consultation")
+async def submit_consultation(data: ConsultationSubmit):
+    if not supabase:
+        raise HTTPException(status_code=500, detail="Supabase not configured")
+    try:
+        result = supabase.table("consultation_requests").insert(
+            data.model_dump(exclude_none=True)
+        ).execute()
+        return {"success": True, "message": "Consultation request submitted successfully"}
+    except Exception as e:
+        logger.error(f"Consultation error: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to submit. Please try again.")
+
+
 # Include the router in the main app
 app.include_router(api_router)
 
