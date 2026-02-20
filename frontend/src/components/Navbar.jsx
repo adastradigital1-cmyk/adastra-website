@@ -60,6 +60,7 @@ export const Navbar = ({ onContactClick }) => {
             <button
               className="px-7 py-2.5 text-[13px] font-semibold text-white rounded-md transition-all duration-300 hover:shadow-lg hover:-translate-y-[1px] active:translate-y-0"
               style={{ backgroundColor: '#F26522', fontFamily: 'Inter, sans-serif' }}
+              onClick={onContactClick}
             >
               Contact Us
             </button>
