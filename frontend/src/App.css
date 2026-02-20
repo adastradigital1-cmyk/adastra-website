@@ -4,6 +4,112 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ===== Hide external badges ===== */
+#emergent-badge {
+  display: none !important;
+}
+
+/* ===== Floating shape animations ===== */
+@keyframes float-1 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(3deg); }
+}
+@keyframes float-2 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(-5deg); }
+}
+@keyframes float-3 {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.05); }
+}
+
+.floating-shape-1 { animation: float-1 8s ease-in-out infinite; }
+.floating-shape-2 { animation: float-2 10s ease-in-out infinite; }
+.floating-shape-3 { animation: float-3 6s ease-in-out infinite; }
+
+/* ===== Ping slow (for pulsing rings) ===== */
+@keyframes ping-slow {
+  0% { transform: scale(1); opacity: 0.4; }
+  75%, 100% { transform: scale(1.8); opacity: 0; }
+}
+.animate-ping-slow {
+  animation: ping-slow 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* ===== Data flow line animation ===== */
+@keyframes dash-flow {
+  to { stroke-dashoffset: -40; }
+}
+.data-flow-line {
+  stroke-dasharray: 8 12;
+  animation: dash-flow 2s linear infinite;
+}
+
+/* ===== Stat card glow on hover ===== */
+.stat-card-glow {
+  position: relative;
+  overflow: hidden;
+}
+.stat-card-glow::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(242,101,34,0.04) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+.stat-card-glow:hover::before {
+  opacity: 1;
+}
+
+/* ===== Animated border gradient ===== */
+@keyframes border-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animated-border {
+  position: relative;
+  overflow: hidden;
+}
+.animated-border::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  background: conic-gradient(from 0deg, transparent, rgba(242,101,34,0.15), transparent, transparent);
+  border-radius: inherit;
+  z-index: -1;
+  animation: border-spin 6s linear infinite;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.animated-border:hover::after {
+  opacity: 1;
+}
+
+/* ===== Service card icon spin ===== */
+.service-icon-hover {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.group:hover .service-icon-hover {
+  transform: rotateY(180deg);
+}
+
+/* ===== Magnetic button effect ===== */
+.magnetic-btn {
+  transition: transform 0.2s ease-out, box-shadow 0.3s ease;
+}
+.magnetic-btn:hover {
+  box-shadow: 0 8px 30px rgba(242, 101, 34, 0.25);
+}
+
 /* ===== Industries Horizontal Scroll ===== */
 .industries-scroll-container {
   width: 100%;
@@ -17,7 +123,7 @@ html {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 80px;
+  width: 100px;
   z-index: 2;
   pointer-events: none;
 }
@@ -43,21 +149,90 @@ html {
 }
 
 @keyframes scroll-industries {
-  0% {
-    transform: translateX(0);
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+/* ===== CTA background pattern ===== */
+@keyframes cta-pulse {
+  0%, 100% { opacity: 0.04; transform: scale(1); }
+  50% { opacity: 0.08; transform: scale(1.1); }
+}
+
+.cta-pattern-circle {
+  animation: cta-pulse 4s ease-in-out infinite;
+}
+
+/* ===== Testimonial transition ===== */
+@keyframes fade-slide-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.testimonial-animate {
+  animation: fade-slide-in 0.5s ease-out;
+}
+
+/* ===== Modal animation ===== */
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
   }
-  100% {
-    transform: translateX(-33.333%);
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
-/* ===== Transition duration utilities ===== */
-.duration-400 {
-  transition-duration: 400ms;
+.animate-modal-in {
+  animation: modal-in 0.3s ease-out;
 }
 
-.duration-1500 {
-  transition-duration: 1500ms;
+/* ===== Counter shimmer ===== */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.stat-shimmer {
+  background: linear-gradient(90deg, #F26522 0%, #ff8a50 40%, #F26522 60%, #F26522 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* ===== Hover lift with perspective ===== */
+.card-3d {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+.card-3d:hover {
+  transform: translateY(-8px) rotateX(2deg);
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Animated underline for nav ===== */
+.nav-link-enhanced {
+  position: relative;
+}
+.nav-link-enhanced::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #F26522;
+  border-radius: 1px;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+.nav-link-enhanced:hover::after {
+  width: 100%;
+  left: 0;
 }
 
 /* ===== Selection color ===== */
@@ -84,37 +259,16 @@ html {
   background: #bbb;
 }
 
-/* ===== Hide external badges ===== */
-#emergent-badge {
-  display: none !important;
-}
+/* ===== Transition utilities ===== */
+.duration-400 { transition-duration: 400ms; }
+.duration-1500 { transition-duration: 1500ms; }
 
-/* ===== Modal animation ===== */
-@keyframes modal-in {
-  from {
-    opacity: 0;
-    transform: translateY(16px) scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.animate-modal-in {
-  animation: modal-in 0.3s ease-out;
-}
-
-/* ===== Subtle grain texture overlay ===== */
-.grain-overlay::after {
-  content: '';
-  position: fixed;
-  top: 0;
+/* ===== Section divider wave ===== */
+.section-wave {
+  position: absolute;
+  bottom: -1px;
   left: 0;
   width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0.015;
-  z-index: 1000;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  overflow: hidden;
+  line-height: 0;
 }
