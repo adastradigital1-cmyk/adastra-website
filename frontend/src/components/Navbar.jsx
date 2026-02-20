@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { navItems } from '../data/mock';
 import { Menu, X } from 'lucide-react';
 
-export const Navbar = () => {
+export const Navbar = ({ onContactClick }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
