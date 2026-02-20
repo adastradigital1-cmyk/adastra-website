@@ -25,19 +25,13 @@ export const Navbar = ({ onContactClick }) => {
       <div className="max-w-[1300px] mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-1.5 no-underline">
-            <span
-              className="text-[22px] font-bold tracking-tight"
-              style={{ color: '#F26522', fontFamily: 'Poppins, sans-serif' }}
-            >
-              Ad Astra
-            </span>
-            <span
-              className="text-[22px] font-light text-[#2B2B2B]"
-              style={{ fontFamily: 'Poppins, sans-serif' }}
-            >
-              Consultants
-            </span>
+          <a href="#home" className="flex items-center no-underline">
+            <img
+              src="/logo-color.png"
+              alt="Ad Astra Consultants"
+              className="h-12 w-auto"
+              style={{ mixBlendMode: 'multiply' }}
+            />
           </a>
 
           {/* Desktop Nav */}
