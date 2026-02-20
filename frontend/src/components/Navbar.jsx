@@ -1,10 +1,28 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { navItems } from '../data/mock';
 import { Menu, X } from 'lucide-react';
+
+const NavLink = ({ item, className, onClick, style }) => {
+  const isRoute = item.href.startsWith('/');
+  if (isRoute) {
+    return (
+      <Link to={item.href} className={className} style={style} onClick={onClick}>
+        {item.label}
+      </Link>
+    );
+  }
+  return (
+    <a href={item.href} className={className} style={style} onClick={onClick}>
+      {item.label}
+    </a>
+  );
+};
 
 export const Navbar = ({ onContactClick }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
