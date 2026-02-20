@@ -1,68 +1,64 @@
-# Ad Astra Consultants — Premium Homepage & About Page
+# Ad Astra Consultants — Premium Global Brand Website
 
 ## Original Problem Statement
-Build a world-class premium website homepage for "Ad Astra Consultants", a global talent solutions firm. Then build a comprehensive About Us page with 9 sections.
+Build a world-class premium website for "Ad Astra Consultants" — a global talent solutions firm. The design should match top-tier consulting firms (McKinsey, Bain, Stripe, Linear.app) with bold visual confidence.
 
-## Design System
-- **Primary:** #F26522 (Orange), **White:** #FFFFFF, **Dark Grey:** #2B2B2B, **Light Grey:** #F4F4F4, **Black:** #111111
-- **Typography:** Poppins (headings), Inter (body)
-- **Style:** Executive, refined, modern consulting aesthetic. High whitespace. Grid-based layout.
-- **Animations:** Fade-in on scroll, hover effects, stat counters, animated accents
+## Design System (Applied Feb 2026)
+- **Fonts:** Fraunces (serif headlines), Outfit (body), IBM Plex Mono (labels/tags)
+- **Colors:** CSS variables — `--orange-core: #E8601C`, `--black-rich: #0C0C0C`, `--white-warm: #FAF8F5`, `--white-cream: #F2EDE8`
+- **Cards:** Glass-morphism (`.glass-card-dark`, `.glass-card-light`) with backdrop blur
+- **Buttons:** Pill-shaped (border-radius: 100px), `.btn-primary`, `.btn-secondary`
+- **Layout:** Asymmetric, left-aligned headlines, dark/light alternating sections
+- **Motion:** Scroll reveals, staggered cards, stat counters, gradient mesh
+- **Extras:** Noise texture overlay, numbered sections (01, 02, 03...), accent lines, pull quotes
 
 ## Architecture
-- **Frontend:** React + TailwindCSS + Shadcn UI + react-router-dom, served on port 3000
-- **Backend:** FastAPI on port 8001, proxies form submissions to Supabase
+- **Frontend:** React + TailwindCSS + react-router-dom, port 3000
+- **Backend:** FastAPI, port 8001, proxies to Supabase
 - **Database:** User-managed Supabase (PostgreSQL)
 
-## Pages & Routes
-- `/` — HomePage (hero with infographic image, ForYou, Services, Industries, Differentiation, Trust, CTA, Footer)
-- `/about` — AboutPage (Hero, Who We Are, Mission & Vision, Values, Leadership, Global Footprint, Why Ad Astra, Authority, CTA, Footer)
+## Routes
+- `/` — Homepage
+- `/about` — About Us
 
 ## What's Been Implemented
-### Homepage
-- Full multi-section homepage with infographic hero image on dark background
-- Adaptive navbar (white text on dark, dark text on scroll)
-- Supabase integration for Contact, CV, Newsletter, Consultation forms via backend proxy
-- Advanced animations: particle background, floating shapes, animated grid, hover effects
-- "Made with Emergent" badge removed
+### Phase 0: Design System (Feb 2026)
+- New fonts (Fraunces, Outfit, IBM Plex Mono) via Google Fonts
+- Complete CSS variable system for colors, borders, glass effects
+- Glass-morphism card classes, pill buttons, noise textures
+- Premium navbar (dark glass blur on scroll, pill CTA)
+- Premium footer (newsletter band, 5-column grid, darkest bg)
 
-### About Page (NEW - Feb 2026)
-- Section 1: Dark hero — "Building Organisations. Transforming Careers." with geometric SVG pattern
-- Section 2: Who We Are — two-column layout with text + abstract image
-- Section 3: Mission & Vision — elegant side-by-side cards with hover glow
-- Section 4: Our Values — 4 icon-based cards (Integrity, Strategic Thinking, Execution Excellence, People-Centric)
-- Section 5: Leadership — 4 profiles with photos, bios, LinkedIn links
-- Section 6: Global Footprint — dark section with animated map, stat counters (30+, 250+, 10,000+)
-- Section 7: Why Ad Astra — 3 differentiator cards with connecting line animation
-- Section 8: Authority & Recognition — media logos + blockquote
-- Section 9: Final CTA — full-width orange section with two action buttons
-- Shared Navbar and Footer
+### Phase 1: Homepage Rebuild (Feb 2026)
+- Dark hero with animated gradient mesh, left-aligned headline, geometric accent
+- ForYou section (warm white, glass cards, asymmetric header)
+- Stats ribbon (dark, animated counters: 18+, 250+, 50+, 10,000+)
+- Services section (numbered glass cards with icons)
+- Industries (dark, infinite scroll strip)
+- Trust/Recognition (cream bg, media logos, awards, pull quote testimonial)
+- CTA band (dark, centered headline + two pill buttons)
 
-### Navigation
-- Navbar updated with react-router Link support for route-based pages (/about, /)
-- Hash links retained for homepage sections (#talent, #jobs, etc.)
+### Phase 2: About Page Redesign (Feb 2026)
+- Dark hero, Who We Are (asymmetric), Mission/Vision (glass-card-dark)
+- Values (numbered cards), Leadership (image treatment with grayscale)
+- Global Footprint (stat counters), Why Ad Astra, Authority quote, CTA
 
-## Key Files
-- `/app/frontend/src/pages/AboutPage.jsx` — Full About page with all 9 sections
-- `/app/frontend/src/pages/HomePage.jsx` — Homepage composition
-- `/app/frontend/src/components/HeroSection.jsx` — Homepage hero with infographic
-- `/app/frontend/src/components/Navbar.jsx` — Adaptive navbar with route + hash link support
-- `/app/frontend/src/App.js` — Route definitions
-- `/app/frontend/src/App.css` — All animations
-- `/app/frontend/src/data/mock.js` — Content data
-- `/app/backend/server.py` — FastAPI with Supabase endpoints
+### Previous Work (Retained)
+- Supabase integration for all forms (Contact, CV, Newsletter, Consultation)
+- "Made with Emergent" badge hidden
+
+## Testing
+- iteration_1.json: About page tests (17/17 PASS) — old design
+- iteration_2.json: Full redesign tests (14/14 frontend, 13/13 backend PASS)
 
 ## API Endpoints
 - `POST /api/newsletter`, `POST /api/contact`, `POST /api/cv`, `POST /api/consultation`
 
-## DB Schema (Supabase)
-- `newsletter_subscriptions`, `contact_submissions`, `cv_submissions`, `consultations`
-
-## Testing
-- About page: 17/17 tests PASSED (iteration_1.json)
-
-## Backlog
-- **P1:** Build additional pages (Find Talent, Find Jobs, Industries, Insights)
-- **P2:** SEO optimization, mobile fine-tuning, performance optimization
-- **P3:** Remove unused `/app/frontend/src/lib/supabase.js`
-- **P3:** Leadership photos — replace stock images with actual team photos
+## Backlog (Sequential)
+- **P0: Contact Page** — Segmented inquiry form, office details, response commitment
+- **P1: Find Talent** — Landing + 5 subpages (Executive Search, Contingency, RPO, Temp Staffing, Workforce Advisory)
+- **P1: Find Jobs** — Landing + 4 subpages (Process, CV Tips, Interview Prep, Submit CV)
+- **P2: Industries** — Landing + 8 subpages
+- **P2: Insights** — Landing + 3 subpages (Research, Blog, Media)
+- **P3:** Leadership photos — replace stock with real team photos
+- **P3:** SEO optimization, performance tuning
