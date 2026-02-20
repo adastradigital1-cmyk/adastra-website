@@ -40,11 +40,10 @@ export const Navbar = ({ onContactClick }) => {
               <a
                 key={item.label}
                 href={item.href}
-                className="relative text-[13px] font-medium text-[#2B2B2B] hover:text-[#111] no-underline group py-1 tracking-wide"
+                className="nav-link-enhanced text-[13px] font-medium text-[#2B2B2B] hover:text-[#F26522] no-underline py-1 tracking-wide transition-colors duration-300"
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
                 {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-[2px] rounded-full bg-[#F26522] transition-all duration-300 ease-out group-hover:w-full" />
               </a>
             ))}
           </div>
