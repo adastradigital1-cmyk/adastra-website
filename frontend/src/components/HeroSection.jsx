@@ -56,7 +56,7 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
                 : 'opacity-0 translate-y-10'
             }`}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F26522]/10 border border-[#F26522]/20 mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F26522]/10 border border-[#F26522]/20 mb-4">
               <div className="w-1.5 h-1.5 rounded-full bg-[#F26522] animate-pulse" />
               <span
                 className="text-[11px] font-semibold tracking-widest uppercase text-[#F26522]"
