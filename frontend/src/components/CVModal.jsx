@@ -31,7 +31,7 @@ export const CVModal = ({ isOpen, onClose }) => {
       setTimeout(() => {
         onClose();
         setStatus('idle');
-        setForm({ full_name: '', email: '', phone: '', linkedin_url: '', current_role: '', experience_years: '', preferred_industry: '', message: '' });
+        setForm({ full_name: '', email: '', phone: '', linkedin_url: '', job_role: '', experience_years: '', preferred_industry: '', message: '' });
       }, 2000);
     } catch (err) {
       setStatus('error');
