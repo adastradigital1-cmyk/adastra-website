@@ -89,9 +89,9 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
               className="mt-7 text-[17px] text-[#666] leading-[1.7] max-w-[480px]"
               style={{ fontFamily: 'Inter, sans-serif' }}
             >
-              We build leadership pipelines, scalable workforce models, and
-              high-performance hiring systems for organisations across
-              industries.
+              India's largest women-owned full-suite recruitment solutions firm.
+              We provide bespoke HR solutions — Executive Search, Recruitment, Staffing,
+              HR Consulting and RPO — across 50+ countries.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
