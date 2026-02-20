@@ -1,9 +1,9 @@
 export const navItems = [
   { label: "Home", href: "/" },
-  { label: "Find Talent", href: "#talent" },
-  { label: "Find Jobs", href: "#jobs" },
-  { label: "Industries", href: "#industries" },
-  { label: "Insights", href: "#insights" },
+  { label: "Solutions", href: "/solutions" },
+  { label: "Impact", href: "/impact" },
+  { label: "Careers", href: "/careers" },
+  { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
