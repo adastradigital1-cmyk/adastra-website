@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import { ParticleField } from './ParticleField';
 
 export const VideoSection = () => {
   const videoRef = useRef(null);
@@ -34,8 +35,8 @@ export const VideoSection = () => {
   return (
     <section
       data-testid="video-section"
-      className="relative w-full overflow-hidden"
-      style={{ backgroundColor: 'var(--black-rich)' }}
+      className="relative w-full overflow-hidden pt-20"
+      style={{ backgroundColor: 'var(--black-rich)', zIndex: 1 }}
     >
       {/* Video Container */}
       <div className="relative w-full" style={{ aspectRatio: '16/9', maxHeight: '80vh' }}>
@@ -54,17 +55,24 @@ export const VideoSection = () => {
           />
         </video>
 
+        {/* Particle overlay on video */}
+        <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 2 }}>
+          <ParticleField id="video-particles" density="light" />
+        </div>
+
         {/* Gradient overlay at bottom for smooth transition */}
         <div 
           className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"
           style={{
-            background: 'linear-gradient(to bottom, transparent 0%, var(--black-rich) 100%)'
+            background: 'linear-gradient(to bottom, transparent 0%, var(--black-rich) 100%)',
+            zIndex: 3
           }}
         />
 
         {/* Video Controls */}
         <motion.div 
-          className="absolute bottom-6 right-6 flex gap-3 z-10"
+          className="absolute bottom-6 right-6 flex gap-3"
+          style={{ zIndex: 10 }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.5 }}

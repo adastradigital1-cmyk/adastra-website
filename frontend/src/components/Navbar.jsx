@@ -25,7 +25,7 @@ export const Navbar = ({ onContactClick }) => {
   return (
     <nav
       data-testid="navbar"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 transition-all duration-500 ${
         scrolled
           ? 'backdrop-blur-[24px] shadow-[0_1px_0_rgba(255,255,255,0.06)]'
           : ''
@@ -33,6 +33,7 @@ export const Navbar = ({ onContactClick }) => {
       style={{
         backgroundColor: scrolled ? 'rgba(12,12,12,0.85)' : 'transparent',
         borderBottom: scrolled ? '1px solid var(--border-dark)' : 'none',
+        zIndex: 9999,
       }}
     >
       <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
