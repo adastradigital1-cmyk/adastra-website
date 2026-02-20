@@ -118,7 +118,7 @@ export const Footer = () => {
               style={{ fontFamily: 'Inter, sans-serif' }}>
               India
             </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
               {indiaOffices.map((office) => (
                 <div key={office.city} className="group">
                   <div className="flex items-start gap-2">
