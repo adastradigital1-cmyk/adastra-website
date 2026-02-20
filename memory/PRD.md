@@ -30,7 +30,8 @@ Build a world-class premium website for "Ad Astra Consultants" — a global tale
 - Premium footer (newsletter band, 5-column grid, darkest bg)
 
 ### Phase 1: Homepage Rebuild (Feb 2026)
-- Dark hero with **video background** (Adastra Ad.mp4), animated gradient mesh overlay, left-aligned headline, geometric accent
+- **Video Section** above hero (Adastra Ad.mp4) with play/pause/mute controls
+- Dark hero with animated gradient mesh, left-aligned headline, geometric accent
 - ForYou section (warm white, glass cards, asymmetric header)
 - Stats ribbon (dark, animated counters: 18+, 250+, 50+, 10,000+)
 - Services section (numbered glass cards with icons)
