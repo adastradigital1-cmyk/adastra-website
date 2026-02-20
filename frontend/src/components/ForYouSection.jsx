@@ -13,8 +13,12 @@ export const ForYouSection = ({ onContactClick, onCVClick }) => {
   const [ref, isVisible] = useScrollAnimation();
 
   return (
-    <section className="py-28 bg-white" ref={ref}>
-      <div className="max-w-[1300px] mx-auto px-6 lg:px-8">
+    <section className="relative py-28 bg-white overflow-hidden" ref={ref}>
+      {/* Subtle background accents */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#F26522]/[0.02] rounded-full blur-[100px]" />
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#F4F4F4] rounded-full blur-[80px]" />
+
+      <div className="relative max-w-[1300px] mx-auto px-6 lg:px-8">
         <div
           className={`text-center mb-16 transition-all duration-700 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
@@ -41,18 +45,24 @@ export const ForYouSection = ({ onContactClick, onCVClick }) => {
             return (
               <div
                 key={card.id}
-                className={`group relative p-9 rounded-lg border border-gray-100 bg-white transition-all duration-500 ease-out hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] hover:-translate-y-2 cursor-pointer overflow-hidden ${
+                className={`group relative p-9 rounded-lg border border-gray-100 bg-white cursor-pointer overflow-hidden card-3d animated-border ${
                   isVisible
                     ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-8'
                 }`}
-                style={{ transitionDelay: `${index * 150}ms` }}
+                style={{ transitionDelay: `${index * 150}ms`, transition: 'opacity 0.5s ease-out, transform 0.5s ease-out' }}
               >
                 {/* Top accent line */}
-                <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#F26522] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#F26522] to-[#ff8a50] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+
+                {/* Background number */}
+                <div className="absolute top-4 right-4 text-[80px] font-bold text-gray-50 leading-none select-none group-hover:text-[#F26522]/[0.04] transition-colors duration-700"
+                  style={{ fontFamily: 'Poppins, sans-serif' }}>
+                  {String(card.id).padStart(2, '0')}
+                </div>
 
                 <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-7 transition-all duration-300 group-hover:scale-110"
+                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-7 transition-all duration-400 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(242,101,34,0.15)]"
                   style={{ backgroundColor: '#FFF1E8' }}
                 >
                   <Icon size={22} style={{ color: '#F26522' }} />
@@ -73,7 +83,7 @@ export const ForYouSection = ({ onContactClick, onCVClick }) => {
                 </h3>
 
                 <p
-                  className="mt-3 text-[14px] text-[#777] leading-[1.7]"
+                  className="mt-3 text-[14px] text-[#777] leading-[1.7] relative z-[1]"
                   style={{ fontFamily: 'Inter, sans-serif' }}
                 >
                   {card.copy}
@@ -81,11 +91,11 @@ export const ForYouSection = ({ onContactClick, onCVClick }) => {
 
                 <button
                   onClick={card.id === 2 ? onCVClick : onContactClick}
-                  className="mt-7 inline-flex items-center gap-2 text-[13px] font-semibold transition-all duration-300 group-hover:gap-3 bg-transparent border-none cursor-pointer p-0"
+                  className="mt-7 inline-flex items-center gap-2 text-[13px] font-semibold bg-transparent border-none cursor-pointer p-0 transition-all duration-300 group-hover:gap-3"
                   style={{ color: '#F26522', fontFamily: 'Inter, sans-serif' }}
                 >
                   {card.cta}
-                  <ArrowRight size={14} />
+                  <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
               </div>
             );
