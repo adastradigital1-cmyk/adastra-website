@@ -11,11 +11,23 @@ export const ForYouSection = ({ onContactClick, onCVClick }) => {
 
   return (
     <section
-      className="relative py-32 lg:py-40"
+      className="relative py-32 lg:py-40 overflow-hidden"
       style={{ backgroundColor: 'var(--white-warm)' }}
       data-testid="foryou-section"
     >
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-12">
+      {/* Gradient background for glassmorphism effect */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div 
+          className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full blur-[120px] opacity-40"
+          style={{ background: 'linear-gradient(135deg, #E8601C 0%, #F07A3A 50%, #D4993D 100%)' }}
+        />
+        <div 
+          className="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] rounded-full blur-[100px] opacity-30"
+          style={{ background: 'linear-gradient(135deg, #D4993D 0%, #E8601C 100%)' }}
+        />
+      </div>
+
+      <div className="relative max-w-[1280px] mx-auto px-6 lg:px-12">
         {/* Header — asymmetric */}
         <div className="grid lg:grid-cols-[2fr_1fr] gap-12 mb-20">
           <motion.div
