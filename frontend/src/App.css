@@ -84,6 +84,11 @@ html {
   background: #bbb;
 }
 
+/* ===== Hide external badges ===== */
+#emergent-badge {
+  display: none !important;
+}
+
 /* ===== Modal animation ===== */
 @keyframes modal-in {
   from {
