@@ -5,6 +5,7 @@ export const navItems = [
   { label: "Industries", href: "#industries" },
   { label: "Insights", href: "#insights" },
   { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const heroStats = [
