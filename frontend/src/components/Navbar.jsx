@@ -31,7 +31,9 @@ export const Navbar = ({ onContactClick }) => {
           : ''
       }`}
       style={{
-        backgroundColor: scrolled ? 'rgba(12,12,12,0.85)' : 'transparent',
+        background: scrolled 
+          ? 'rgba(12,12,12,0.85)' 
+          : 'linear-gradient(to bottom, rgba(12,12,12,0.8) 0%, rgba(12,12,12,0.4) 50%, transparent 100%)',
         borderBottom: scrolled ? '1px solid var(--border-dark)' : 'none',
         zIndex: 9999,
       }}
