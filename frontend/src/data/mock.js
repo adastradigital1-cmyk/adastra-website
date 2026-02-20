@@ -9,9 +9,9 @@ export const navItems = [
 
 export const heroStats = [
   { value: 18, suffix: "+", label: "Years of Excellence" },
-  { value: 300, suffix: "+", label: "Team Members" },
+  { value: 250, suffix: "+", label: "Talent Specialists" },
   { value: 50, suffix: "+", label: "Countries Served" },
-  { value: 150, suffix: "+", label: "Man-Years Leadership Exp." },
+  { value: 10000, suffix: "+", label: "Successful Placements" },
 ];
 
 export const audienceCards = [
