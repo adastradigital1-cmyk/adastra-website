@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { ParticleField } from './ParticleField';
@@ -26,10 +26,18 @@ const WordReveal = ({ text, className, style, startDelay = 0 }) => {
 
 export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
   const { scrollY } = useScroll();
+  const videoRef = useRef(null);
   const bgY = useTransform(scrollY, [0, 600], [0, 150]);
   const midY = useTransform(scrollY, [0, 600], [0, 80]);
   const fgY = useTransform(scrollY, [0, 600], [0, 30]);
   const opacity = useTransform(scrollY, [0, 500], [1, 0.3]);
+
+  // Ensure video plays on mount
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  }, []);
 
   return (
     <section
@@ -38,14 +46,37 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ backgroundColor: 'var(--black-rich)' }}
     >
-      {/* Background parallax layer */}
-      <motion.div className="absolute inset-0" style={{ y: bgY }}>
-        <div className="absolute inset-0 gradient-mesh" />
+      {/* Video Background Layer */}
+      <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ opacity: 0.6 }}
+          data-testid="hero-video"
+        >
+          <source src="https://customer-assets.emergentagent.com/job_0b42685e-05d6-4cc8-96a2-cc86172006b2/artifacts/pnnglkcr_Adastra%20Ad.mp4" type="video/mp4" />
+        </video>
+        {/* Dark overlay for readability */}
+        <div 
+          className="absolute inset-0" 
+          style={{ 
+            background: 'linear-gradient(to bottom, rgba(12, 12, 12, 0.7) 0%, rgba(12, 12, 12, 0.5) 50%, rgba(12, 12, 12, 0.85) 100%)' 
+          }} 
+        />
+      </motion.div>
+
+      {/* Gradient mesh overlay */}
+      <motion.div className="absolute inset-0 z-[1]" style={{ y: bgY }}>
+        <div className="absolute inset-0 gradient-mesh opacity-50" />
         <div className="noise-overlay absolute inset-0" />
       </motion.div>
 
       {/* Particle layer */}
-      <motion.div className="absolute inset-0" style={{ y: midY }}>
+      <motion.div className="absolute inset-0 z-[2]" style={{ y: midY }}>
         <ParticleField id="hero-particles" density="normal" />
       </motion.div>
 
