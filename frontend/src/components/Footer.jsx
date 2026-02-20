@@ -32,20 +32,12 @@ export const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-12 pb-16 border-b border-white/10">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-1.5 mb-5">
-              <span
-                className="text-[22px] font-bold"
-                style={{ color: '#F26522', fontFamily: 'Poppins, sans-serif' }}
-              >
-                Ad Astra
-              </span>
-              <span
-                className="text-[22px] font-light text-white"
-                style={{ fontFamily: 'Poppins, sans-serif' }}
-              >
-                Consultants
-              </span>
-            </div>
+            <img
+              src="/logo-white.png"
+              alt="Ad Astra Consultants"
+              className="h-12 w-auto mb-5"
+              style={{ mixBlendMode: 'screen' }}
+            />
             <p
               className="text-[13px] text-[#999] leading-[1.8] mb-6 max-w-[280px]"
               style={{ fontFamily: 'Inter, sans-serif' }}
