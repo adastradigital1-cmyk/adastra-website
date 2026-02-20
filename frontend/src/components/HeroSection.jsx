@@ -1,9 +1,6 @@
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { ArrowRight, Briefcase } from 'lucide-react';
-import { AnimatedGrid, FloatingShapes } from './AnimatedElements';
-
-const HERO_IMAGE_URL = 'https://customer-assets.emergentagent.com/job_aba56b22-9f01-4c5f-a61f-3d17233d7cdb/artifacts/1iq5jq57_adastra-hero-home.png';
+import { ArrowRight } from 'lucide-react';
 
 export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
   const [ref, isVisible] = useScrollAnimation({ threshold: 0.1 });
@@ -11,97 +8,75 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center overflow-hidden"
       ref={ref}
       data-testid="hero-section"
+      className="relative min-h-screen flex items-center overflow-hidden noise-overlay"
+      style={{ backgroundColor: 'var(--black-rich)' }}
     >
-      {/* Animated background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f0f23]" />
-      <AnimatedGrid />
-      <FloatingShapes />
+      {/* Animated gradient mesh */}
+      <div className="absolute inset-0 gradient-mesh" />
 
-      {/* Warm ambient glow */}
-      <div className="absolute top-[-100px] right-[-50px] w-[600px] h-[600px] bg-[#F26522]/[0.06] rounded-full blur-[150px]" />
-      <div className="absolute bottom-[-80px] left-[-30px] w-[400px] h-[400px] bg-[#F26522]/[0.03] rounded-full blur-[100px]" />
+      {/* Geometric accent — thin arc */}
+      <svg className="absolute top-[15%] right-[8%] w-[400px] h-[400px] opacity-[0.07] hidden lg:block" viewBox="0 0 400 400" fill="none">
+        <circle cx="200" cy="200" r="180" stroke="var(--orange-core)" strokeWidth="0.5" strokeDasharray="8 12" />
+        <circle cx="200" cy="200" r="120" stroke="var(--orange-core)" strokeWidth="0.3" />
+      </svg>
 
-      {/* Orange accent line at top */}
-      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#F26522]/50 to-transparent" />
+      {/* Orange accent top */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--orange-core)] to-transparent opacity-30" />
 
-      <div className="relative max-w-[1300px] mx-auto px-6 lg:px-8 w-full pt-24 pb-12 lg:pt-24 lg:pb-12" style={{ zIndex: 1 }}>
-        <div className="flex flex-col items-center gap-7">
-
-          {/* Hero Infographic Image */}
+      <div className="relative max-w-[1280px] mx-auto px-6 lg:px-12 w-full pt-32 pb-20">
+        <div className="max-w-[800px]">
+          {/* Section label */}
           <div
-            className={`w-full max-w-[840px] transition-all duration-1000 ease-out ${
-              isVisible
-                ? 'opacity-100 scale-100'
-                : 'opacity-0 scale-95'
-            }`}
-            data-testid="hero-infographic"
+            className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
           >
-            <img
-              src={HERO_IMAGE_URL}
-              alt="Ad Astra in Numbers — 18+ Years, 250+ Specialists, 30+ Markets, 10,000+ Placements, 95% Retention, 3X Faster Closures, 72% On-Time Delivery"
-              className="w-full h-auto rounded-2xl shadow-2xl hero-image-glow"
-              loading="eager"
-              fetchpriority="high"
-            />
+            <span className="section-label text-[0.75rem]">
+              Global Recruitment
+            </span>
           </div>
 
-          {/* Text + CTA below the image */}
-          <div
-            className={`text-center max-w-[680px] transition-all duration-1000 delay-300 ease-out ${
-              isVisible
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-10'
-            }`}
+          {/* Headline */}
+          <h1
+            className={`font-display text-[2.75rem] sm:text-[3.5rem] lg:text-[4.5rem] font-700 leading-[1.08] mt-6 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+            style={{ color: 'var(--white-pure)' }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F26522]/10 border border-[#F26522]/20 mb-4">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#F26522] animate-pulse" />
-              <span
-                className="text-[11px] font-semibold tracking-widest uppercase text-[#F26522]"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                Global Talent Solutions
-              </span>
-            </div>
+            Connecting Exceptional Talent With Global Opportunity
+          </h1>
 
-            <p
-              className="text-[16px] text-gray-300 leading-[1.65] max-w-[560px] mx-auto"
-              style={{ fontFamily: 'Inter, sans-serif' }}
+          {/* Subtitle */}
+          <p
+            className={`font-body text-[1.125rem] lg:text-[1.25rem] mt-7 max-w-[500px] leading-[1.7] transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            style={{ color: 'var(--text-on-dark-muted)' }}
+          >
+            India's largest women-owned recruitment solutions firm. Executive Search, RPO, and bespoke workforce strategies across 50+ countries.
+          </p>
+
+          {/* CTAs */}
+          <div
+            className={`mt-10 flex flex-wrap gap-4 transition-all duration-700 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
+            <button
+              onClick={onFindTalent}
+              data-testid="hero-find-talent-btn"
+              className="btn-primary"
             >
-              India's largest women-owned full-suite recruitment solutions firm.
-              We provide bespoke HR solutions — Executive Search, Recruitment, Staffing,
-              HR Consulting and RPO — across 50+ countries.
-            </p>
-
-            <div className="mt-6 flex flex-wrap gap-4 justify-center">
-              <button
-                onClick={onFindTalent}
-                data-testid="hero-find-talent-btn"
-                className="magnetic-btn group inline-flex items-center gap-2.5 px-8 py-3.5 text-[14px] font-semibold text-white rounded-md transition-all duration-300 hover:-translate-y-[2px] hover:shadow-lg hover:shadow-[#F26522]/30 active:translate-y-0"
-                style={{
-                  backgroundColor: '#F26522',
-                  fontFamily: 'Inter, sans-serif',
-                }}
-              >
-                Find Talent
-                <ArrowRight
-                  size={16}
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
-              </button>
-              <button
-                onClick={onExploreCareers}
-                data-testid="hero-explore-careers-btn"
-                className="group inline-flex items-center gap-2.5 px-8 py-3.5 text-[14px] font-semibold rounded-md border-2 border-white/30 text-white transition-all duration-300 hover:bg-white hover:text-[#111] hover:-translate-y-[2px] active:translate-y-0"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                <Briefcase size={16} />
-                Explore Careers
-              </button>
-            </div>
+              Find Talent
+              <ArrowRight size={16} />
+            </button>
+            <button
+              onClick={onExploreCareers}
+              data-testid="hero-explore-careers-btn"
+              className="btn-secondary btn-secondary-dark"
+            >
+              Explore Careers
+            </button>
           </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className={`absolute bottom-10 left-6 lg:left-12 transition-all duration-700 delay-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="scroll-indicator w-[1px] h-[40px] bg-gradient-to-b from-[var(--orange-core)] to-transparent" />
         </div>
       </div>
     </section>
