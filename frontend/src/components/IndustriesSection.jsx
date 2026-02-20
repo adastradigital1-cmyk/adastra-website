@@ -1,32 +1,53 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { industries } from '../data/mock';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { Monitor, Factory, Landmark, HeartPulse, Truck, Zap, ShoppingBag } from 'lucide-react';
+import { ParticleField } from './ParticleField';
 
 const iconMap = { Monitor, Factory, Landmark, HeartPulse, Truck, Zap, ShoppingBag };
+const ease = [0.25, 0.46, 0.45, 0.94];
 
 export const IndustriesSection = () => {
-  const [ref, isVisible] = useScrollAnimation();
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] });
+  const bgY = useTransform(scrollYProgress, [0, 1], [-20, 20]);
 
   return (
     <section
-      ref={ref}
-      className="relative py-32 lg:py-40 overflow-hidden noise-overlay"
+      ref={sectionRef}
+      className="relative py-32 lg:py-40 overflow-hidden"
       style={{ backgroundColor: 'var(--black-rich)' }}
       data-testid="industries-section"
     >
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-12 mb-16">
-        <div className={`transition-all duration-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+      {/* Background particles */}
+      <motion.div className="absolute inset-0" style={{ y: bgY }}>
+        <ParticleField id="industries-particles" density="light" />
+        <div className="noise-overlay absolute inset-0" />
+      </motion.div>
+
+      <div className="relative max-w-[1280px] mx-auto px-6 lg:px-12 mb-16 z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.8, ease }}
+        >
           <div className="accent-line mb-6" />
           <span className="section-label">03 — Industries</span>
-          <h2 className="font-display text-[2.5rem] lg:text-[3rem] font-700 mt-4 leading-[1.12]" style={{ color: 'var(--white-pure)' }}>
+          <h2 className="font-display text-[2.5rem] lg:text-[3.5rem] font-700 mt-4 leading-[1.08]" style={{ color: 'var(--white-pure)' }}>
             Sectors We Serve
           </h2>
-        </div>
+        </motion.div>
       </div>
 
       {/* Scrolling strip */}
-      <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <motion.div
+        className="relative z-10"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, delay: 0.3, ease }}
+      >
         <div className="industries-scroll-container">
           <div className="industries-scroll-track">
             {[...industries, ...industries, ...industries].map((ind, i) => {
@@ -43,7 +64,7 @@ export const IndustriesSection = () => {
             })}
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
