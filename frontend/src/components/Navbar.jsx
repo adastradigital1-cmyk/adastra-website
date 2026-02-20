@@ -93,7 +93,7 @@ export const Navbar = ({ onContactClick }) => {
         style={{ backgroundColor: 'var(--black-rich)' }}
       >
         <div className="flex flex-col items-center justify-center h-full gap-8 pb-20">
-          {navItems.map((item, i) => (
+          {navItems.filter(i => i.label !== 'Contact').map((item, i) => (
             <NavLink
               key={item.label}
               item={item}
@@ -102,12 +102,13 @@ export const Navbar = ({ onContactClick }) => {
               style={{ animationDelay: `${i * 0.08}s` }}
             />
           ))}
-          <button
-            onClick={() => { onContactClick(); setMobileOpen(false); }}
-            className="btn-primary mt-4"
+          <Link
+            to="/contact"
+            onClick={() => setMobileOpen(false)}
+            className="btn-primary mt-4 no-underline"
           >
             Get in Touch
-          </button>
+          </Link>
         </div>
       </div>
     </nav>
