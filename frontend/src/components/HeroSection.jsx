@@ -96,6 +96,7 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
 
             <div className="mt-10 flex flex-wrap gap-4">
               <button
+                onClick={onFindTalent}
                 className="group inline-flex items-center gap-2.5 px-8 py-3.5 text-[14px] font-semibold text-white rounded-md transition-all duration-300 hover:shadow-lg hover:-translate-y-[2px] active:translate-y-0"
                 style={{
                   backgroundColor: '#F26522',
@@ -109,6 +110,7 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
                 />
               </button>
               <button
+                onClick={onExploreCareers}
                 className="group inline-flex items-center gap-2.5 px-8 py-3.5 text-[14px] font-semibold rounded-md border-2 border-[#111] text-[#111] transition-all duration-300 hover:bg-[#111] hover:text-white hover:-translate-y-[2px] active:translate-y-0"
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
