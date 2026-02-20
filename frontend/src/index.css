@@ -89,6 +89,12 @@ body {
   }
 }
 
+/* ===== TEXT BALANCE - Prevents orphan words ===== */
+h1, h2, h3, h4, h5, h6,
+p, .text-balance {
+  text-wrap: balance;
+}
+
 /* ===== TYPOGRAPHY UTILITIES ===== */
 .font-display {
   font-family: 'Fraunces', serif;
