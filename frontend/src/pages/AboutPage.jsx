@@ -15,30 +15,30 @@ const fadeUp = { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } };
 
 /* ─── DATA ─── */
 const values = [
-  { title: 'Integrity', desc: 'We operate with transparency and accountability at every level.' },
-  { title: 'Strategic Thinking', desc: 'Every hiring decision aligns with long-term organisational goals.' },
-  { title: 'Execution Excellence', desc: 'Speed, precision, and measurable results — without compromise.' },
-  { title: 'People-Centric', desc: 'We value both client ambition and candidate potential equally.' },
+  { title: 'Client Success', desc: 'Dedication to every client\'s success achieved through innovation and excellence in quality.' },
+  { title: 'Integrity & Trust', desc: 'Building trust through honest work ethics and fair policies for clients and employees alike.' },
+  { title: 'Leading with Sensitivity', desc: 'Characterized by thoughtfulness and responsibility in every interaction.' },
+  { title: 'Diversity & Inclusion', desc: '80% women workforce including those with visual impairments. Champions of workplace diversity.' },
 ];
 
 const leaders = [
-  { name: 'Anuradha Das Mathur', role: 'Founder & Managing Director', bio: 'A pioneer in India\'s recruitment industry. Co-founded and built 3 of India\'s largest HR firms with 25+ years of executive search experience.', img: 'https://images.pexels.com/photos/29995739/pexels-photo-29995739.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' },
-  { name: 'Rajesh Kumar', role: 'Chief Operating Officer', bio: '20+ years driving execution excellence across all service verticals and global delivery centres.', img: 'https://images.unsplash.com/photo-1769636929261-e913ed023c83?w=600' },
-  { name: 'Meera Shankar', role: 'Head of Global Strategy', bio: 'Leads international expansion and client partnerships across 30+ markets with deep cross-border acquisition expertise.', img: 'https://images.unsplash.com/photo-1758599543154-76ec1c4257df?w=600' },
-  { name: 'Vikram Desai', role: 'Chief Technology Officer', bio: 'Architects the proprietary A Cube platform powered by AI & ML, enabling data-driven recruitment dashboards.', img: 'https://images.pexels.com/photos/31880922/pexels-photo-31880922.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' },
+  { name: 'Jayanthi Yeshwant Kumar', role: 'Chairperson & Founder', bio: 'Visionary founder with 27+ years in banking, financial services, and recruitment consulting. Former Senior Director at Societe Generale. Independent Director at Greaves Electric Mobility. Strong advocate for diversity and inclusion.', img: 'https://images.pexels.com/photos/29995739/pexels-photo-29995739.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' },
+  { name: 'Nirupama VG', role: 'Managing Director & Co-Founder', bio: 'Serial entrepreneur with 25+ years experience. Built three HR firms acquired by Randstad, Aon Hewitt, and ADP. Recognized among top 25 women entrepreneurs by Silicon India. Featured by Oxford Economics and Forbes.', img: 'https://images.unsplash.com/photo-1758599543154-76ec1c4257df?w=600' },
+  { name: 'Sourav Bose', role: 'Co-Founder & Vice President', bio: '27 years of executive search experience. Oversees East operations and manages key projects. Previously with First Flight Couriers, Genius Consultants, and Team Lease Services.', img: 'https://images.pexels.com/photos/31880922/pexels-photo-31880922.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' },
+  { name: 'Manuj Bij', role: 'Vice President', bio: '17 years in executive search and talent acquisition. Delivered multiple CXO and senior-level searches. Expert in deep customer engagement and leadership of diverse teams.', img: 'https://images.unsplash.com/photo-1769636929261-e913ed023c83?w=600' },
 ];
 
 const stats = [
-  { value: 30, suffix: '+', label: 'Countries Served' },
-  { value: 250, suffix: '+', label: 'Hiring Specialists' },
+  { value: 50, suffix: '+', label: 'Countries Served' },
+  { value: 300, suffix: '+', label: 'Team Members' },
   { value: 10000, suffix: '+', label: 'Placements Delivered' },
-  { value: 95, suffix: '%', label: 'Client Retention' },
+  { value: 150, suffix: '+', label: 'Years Combined Experience' },
 ];
 
 const whyCards = [
-  { title: 'Strategic Advisory Mindset', desc: 'Beyond hiring — we architect workforce strategies aligned with long-term organisational goals.' },
-  { title: 'Integrated Service Model', desc: 'Executive search, RPO, contingency, temp staffing under one unified framework.' },
-  { title: 'Data-Driven Delivery', desc: 'Market intelligence and performance metrics guide every engagement.' },
+  { title: 'Proprietary Technology', desc: 'Our AI-powered A Cube platform offers cloud-based automation, configurable dashboards, and trend-based searches.' },
+  { title: 'Global Reach', desc: '9 worldwide locations — Bangalore, Mumbai, Delhi, Kolkata, Coimbatore, Singapore, London, and Amsterdam.' },
+  { title: 'Women-Owned Leadership', desc: 'India\'s largest women-owned recruitment firm with 80% women workforce, championing diversity.' },
 ];
 
 /* ─── HELPERS ─── */
