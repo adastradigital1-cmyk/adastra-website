@@ -169,7 +169,7 @@ const ValuesSection = () => (
       </motion.div>
       <motion.div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} transition={{ staggerChildren: 0.1 }}>
         {values.map((v, i) => (
-          <motion.div key={v.title} variants={fadeUp} transition={{ duration: 0.7, ease }} className="glass-card-light" data-testid={`value-${v.title.toLowerCase().replace(/\s+/g, '-')}`}>
+          <motion.div key={v.title} variants={fadeUp} transition={{ duration: 0.7, ease }} className="glass-card-light p-6" data-testid={`value-${v.title.toLowerCase().replace(/\s+/g, '-')}`}>
             <span className="font-mono text-[0.6875rem]" style={{ color: 'var(--text-on-light-muted)' }}>{String(i + 1).padStart(2, '0')}</span>
             <h3 className="font-display text-[1.25rem] font-600 mt-3" style={{ color: 'var(--text-on-light)' }}>{v.title}</h3>
             <p className="font-body text-[0.9375rem] mt-3 leading-[1.7]" style={{ color: 'var(--text-on-light-muted)' }}>{v.desc}</p>
