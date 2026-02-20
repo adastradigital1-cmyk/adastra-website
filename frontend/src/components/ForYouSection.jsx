@@ -58,7 +58,7 @@ export const ForYouSection = ({ onContactClick, onCVClick }) => {
               key={card.id}
               variants={fadeUp}
               transition={{ duration: 0.7, ease }}
-              className="glass-card-light group cursor-pointer"
+              className="glass-card-light group cursor-pointer p-8"
               data-testid={`foryou-card-${i}`}
             >
               <span className="section-label text-[0.6875rem]" style={{ color: 'var(--text-on-light-muted)', letterSpacing: '0.12em' }}>
