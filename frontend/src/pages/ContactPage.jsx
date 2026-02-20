@@ -4,19 +4,12 @@ import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { ParticleField } from '../components/ParticleField';
 import { submitContactForm, submitConsultation } from '../services/supabaseService';
+import { offices } from '../data/mock';
 import { toast } from 'sonner';
 import { MapPin, Phone, Mail, Clock, ArrowRight, Building2, User, Briefcase } from 'lucide-react';
 
 const ease = [0.25, 0.46, 0.45, 0.94];
 const fadeUp = { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } };
-
-const offices = [
-  { city: 'Bengaluru', address: 'No. 68, 3rd Floor, Intermediate Ring Road, Koramangala, Bengaluru 560034', phone: '+91 80 4092 8888' },
-  { city: 'Mumbai', address: 'Level 5, Bandra Kurla Complex, Mumbai 400051', phone: '+91 22 4092 8888' },
-  { city: 'Delhi NCR', address: 'DLF Cyber City, Phase III, Gurugram 122002', phone: '+91 124 4092 888' },
-  { city: 'Singapore', address: '6 Raffles Quay, #11-07, Singapore 048580', phone: '+65 6808 8888' },
-  { city: 'Dubai', address: 'DIFC Gate Village, Building 4, Dubai, UAE', phone: '+971 4 888 8888' },
-];
 
 const inquiryTypes = [
   { id: 'employer', label: 'I\'m Hiring', icon: Building2, desc: 'Find exceptional talent for your organisation' },
