@@ -66,7 +66,7 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
         className="relative max-w-[1280px] mx-auto px-6 lg:px-12 w-full pt-32 pb-20 z-10"
         style={{ y: fgY, opacity }}
       >
-        <div className="max-w-[800px]">
+        <div className="max-w-[900px] mx-auto text-center">
           {/* Section label */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -83,7 +83,7 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
 
           {/* Subtitle */}
           <motion.p
-            className="font-body text-[1.125rem] lg:text-[1.25rem] mt-7 max-w-[500px] leading-[1.7]"
+            className="font-body text-[1.125rem] lg:text-[1.25rem] mt-7 max-w-[600px] mx-auto leading-[1.7]"
             style={{ color: 'var(--text-on-dark-muted)' }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -94,7 +94,7 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
 
           {/* CTAs */}
           <motion.div
-            className="mt-10 flex flex-wrap gap-4"
+            className="mt-10 flex flex-wrap gap-4 justify-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.3, ease }}
@@ -110,7 +110,7 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
 
         {/* Scroll indicator */}
         <motion.div
-          className="absolute bottom-10 left-6 lg:left-12"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.8, duration: 0.5 }}
