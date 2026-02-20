@@ -55,16 +55,14 @@ export const Navbar = ({ onContactClick }) => {
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-9">
             {navItems.map((item) => (
-              <a
+              <NavLink
                 key={item.label}
-                href={item.href}
+                item={item}
                 className={`nav-link-enhanced text-[13px] font-medium no-underline py-1 tracking-wide transition-colors duration-300 hover:text-[#F26522] ${
                   scrolled ? 'text-[#2B2B2B]' : 'text-white/90'
                 }`}
                 style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                {item.label}
-              </a>
+              />
             ))}
           </div>
 
