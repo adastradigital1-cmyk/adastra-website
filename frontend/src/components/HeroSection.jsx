@@ -32,7 +32,7 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
 
           {/* Hero Infographic Image */}
           <div
-            className={`w-full max-w-[900px] transition-all duration-1000 ease-out ${
+            className={`w-full max-w-[840px] transition-all duration-1000 ease-out ${
               isVisible
                 ? 'opacity-100 scale-100'
                 : 'opacity-0 scale-95'
