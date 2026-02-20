@@ -36,30 +36,36 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
       id="home"
       data-testid="hero-section"
       className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ backgroundColor: 'var(--black-rich)' }}
+      style={{ backgroundColor: 'transparent' }}
     >
+      {/* Background gradient that blends from transparent to dark */}
+      <div 
+        className="absolute inset-0"
+        style={{ 
+          background: 'linear-gradient(to bottom, transparent 0%, rgba(12,12,12,0.5) 15%, var(--black-rich) 35%)',
+          zIndex: 0
+        }}
+      />
+
       {/* Background parallax layer */}
-      <motion.div className="absolute inset-0" style={{ y: bgY }}>
-        <div className="absolute inset-0 gradient-mesh" />
+      <motion.div className="absolute inset-0" style={{ y: bgY, zIndex: 1 }}>
+        <div className="absolute inset-0 gradient-mesh opacity-50" />
         <div className="noise-overlay absolute inset-0" />
       </motion.div>
 
       {/* Particle layer */}
-      <motion.div className="absolute inset-0" style={{ y: midY }}>
+      <motion.div className="absolute inset-0" style={{ y: midY, zIndex: 2 }}>
         <ParticleField id="hero-particles" density="normal" />
       </motion.div>
 
       {/* Geometric accent — parallax mid layer */}
-      <motion.div className="absolute inset-0" style={{ y: midY }}>
+      <motion.div className="absolute inset-0" style={{ y: midY, zIndex: 3 }}>
         <svg className="absolute top-[10%] right-[6%] w-[500px] h-[500px] opacity-[0.05] hidden lg:block" viewBox="0 0 500 500" fill="none">
           <circle cx="250" cy="250" r="220" stroke="var(--orange-core)" strokeWidth="0.5" strokeDasharray="8 12" />
           <circle cx="250" cy="250" r="150" stroke="var(--orange-core)" strokeWidth="0.3" />
           <circle cx="250" cy="250" r="80" stroke="var(--orange-core)" strokeWidth="0.2" strokeDasharray="4 8" />
         </svg>
       </motion.div>
-
-      {/* Orange accent top */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--orange-core)] to-transparent opacity-30 z-10" />
 
       {/* Foreground content with parallax */}
       <motion.div
