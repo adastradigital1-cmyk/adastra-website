@@ -9,7 +9,7 @@ const iconMap = {
   3: Building2,
 };
 
-export const ForYouSection = () => {
+export const ForYouSection = ({ onContactClick, onCVClick }) => {
   const [ref, isVisible] = useScrollAnimation();
 
   return (
