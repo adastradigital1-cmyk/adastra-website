@@ -78,6 +78,19 @@ export const ParticleWoman = () => {
   }, []);
 
   useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setInView(true); },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!inView || hasInitRef.current) return;
+    hasInitRef.current = true;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -204,10 +217,10 @@ export const ParticleWoman = () => {
       canvas.removeEventListener('mousemove', onMove);
       canvas.removeEventListener('mouseleave', onLeave);
     };
-  }, [sampleImage]);
+  }, [inView, sampleImage]);
 
   return (
-    <div className="relative w-full h-full" data-testid="particle-woman">
+    <div ref={containerRef} className="relative w-full h-full" data-testid="particle-woman">
       <canvas
         ref={canvasRef}
         className="w-full h-full"
