@@ -8,6 +8,7 @@ import { ConsultationModal } from '../components/ConsultationModal';
 import { ParticleField } from '../components/ParticleField';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { useCountUp } from '../hooks/useCountUp';
+import { AwardsSection } from '../components/AwardsSection';
 import {
   ArrowRight, ChevronRight, CheckCircle, Quote,
   Cpu, Factory, Landmark, Heart, Truck, Zap, ShoppingBag, Rocket,
@@ -619,6 +620,7 @@ export default function ImpactPage() {
       <ThoughtLeadershipSection />
       <PartnershipSection />
       <VisualSummarySection />
+      <AwardsSection />
       <FinalCTASection onConsultation={() => setConsultationOpen(true)} />
       <Footer />
       <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
