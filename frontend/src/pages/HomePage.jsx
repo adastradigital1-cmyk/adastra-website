@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { Navbar } from '../components/Navbar';
 import { VideoSection } from '../components/VideoSection';
 import { HeroSection } from '../components/HeroSection';
+import { ParticleWomanSection } from '../components/ParticleWomanSection';
 import { ForYouSection } from '../components/ForYouSection';
 import { ServicesSection } from '../components/ServicesSection';
 import { IndustriesSection } from '../components/IndustriesSection';
 import { DifferentiationSection } from '../components/DifferentiationSection';
 import { TrustSection } from '../components/TrustSection';
+import { LeadersMessageSection } from '../components/LeadersMessageSection';
 import { CTASection } from '../components/CTASection';
 import { Footer } from '../components/Footer';
 import { ContactModal } from '../components/ContactModal';
@@ -26,6 +28,7 @@ export default function HomePage() {
         onFindTalent={() => setContactOpen(true)}
         onExploreCareers={() => setCvOpen(true)}
       />
+      <ParticleWomanSection />
       <ForYouSection
         onContactClick={() => setContactOpen(true)}
         onCVClick={() => setCvOpen(true)}
@@ -34,6 +37,7 @@ export default function HomePage() {
       <ServicesSection />
       <IndustriesSection />
       <TrustSection />
+      <LeadersMessageSection />
       <CTASection
         onConsultation={() => setConsultationOpen(true)}
         onSubmitCV={() => setCvOpen(true)}
