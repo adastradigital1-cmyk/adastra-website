@@ -1,13 +1,13 @@
 export const navItems = [
   { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
   { label: "Find Talent", href: "/find-talent" },
   { label: "Find Jobs", href: "/find-jobs" },
   { label: "Solutions", href: "/solutions" },
-  { label: "Industries", href: "#industries" },
+  { label: "Industries", href: "/industries" },
   { label: "Impact", href: "/impact" },
   { label: "Careers", href: "/careers" },
   { label: "Blog", href: "/blog" },
-  { label: "About", href: "/about" },
 ];
 
 export const heroStats = [
