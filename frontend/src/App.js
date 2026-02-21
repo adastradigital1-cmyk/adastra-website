@@ -17,21 +17,27 @@ import { ChatWidget } from "./components/ChatWidget";
 function ScrollToTop() {
   const { pathname } = useLocation();
   
-  // Disable browser's scroll restoration
   useEffect(() => {
+    // Disable browser's scroll restoration
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
     }
-  }, []);
-  
-  // Use layoutEffect for synchronous scroll before paint
-  useLayoutEffect(() => {
-    // Immediate scroll
+    
+    // Multiple attempts to scroll to top to handle async rendering
     window.scrollTo(0, 0);
-    // Also schedule after a microtask in case of async rendering
-    requestAnimationFrame(() => {
+    
+    const timeoutId = setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 0);
+    
+    const rafId = requestAnimationFrame(() => {
       window.scrollTo(0, 0);
     });
+    
+    return () => {
+      clearTimeout(timeoutId);
+      cancelAnimationFrame(rafId);
+    };
   }, [pathname]);
   
   return null;
