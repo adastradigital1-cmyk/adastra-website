@@ -24,6 +24,7 @@ export const audienceCards = [
     headline: "Hire With Precision",
     copy: "Executive search, RPO, and flexible staffing solutions aligned to your growth strategy. Our management team brings 150+ man-years of HR services experience.",
     cta: "Explore Talent Solutions",
+    link: "/find-talent",
   },
   {
     id: 2,
@@ -31,6 +32,7 @@ export const audienceCards = [
     headline: "Build a Future, Not Just a Job",
     copy: "We connect professionals with roles that match ambition, capability, and culture. We've placed candidates across 50+ countries worldwide.",
     cta: "Find Opportunities",
+    link: "/find-jobs",
   },
   {
     id: 3,
@@ -38,6 +40,7 @@ export const audienceCards = [
     headline: "Workforce Strategy Simplified",
     copy: "Scalable hiring models, analytics-driven sourcing powered by AI & ML, and compliant workforce deployment through our proprietary A Cube platform.",
     cta: "Talk to Experts",
+    link: "/solutions",
   },
 ];
 
