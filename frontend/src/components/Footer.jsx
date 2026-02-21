@@ -17,7 +17,7 @@ const footerLinks = {
     { label: 'RPO', href: '#' },
     { label: 'Temporary Staffing', href: '#' },
   ],
-  offices: ['Bengaluru', 'Mumbai', 'Delhi NCR', 'Singapore', 'Dubai'],
+  offices: ['Bangalore', 'Hyderabad', 'Kolkata', 'Mumbai', 'New Delhi', 'Coimbatore', 'Singapore', 'London', 'Amsterdam'],
 };
 
 export const Footer = () => {
