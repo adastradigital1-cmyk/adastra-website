@@ -23,21 +23,19 @@ function ScrollToTop() {
       window.history.scrollRestoration = 'manual';
     }
     
-    // Multiple attempts to scroll to top to handle async rendering
+    // Temporarily disable smooth scrolling for immediate scroll
+    const html = document.documentElement;
+    const originalBehavior = html.style.scrollBehavior;
+    html.style.scrollBehavior = 'auto';
+    
+    // Scroll to top
     window.scrollTo(0, 0);
     
-    const timeoutId = setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 0);
-    
-    const rafId = requestAnimationFrame(() => {
-      window.scrollTo(0, 0);
+    // Re-enable smooth scrolling after a tick
+    requestAnimationFrame(() => {
+      html.style.scrollBehavior = originalBehavior;
     });
     
-    return () => {
-      clearTimeout(timeoutId);
-      cancelAnimationFrame(rafId);
-    };
   }, [pathname]);
   
   return null;
