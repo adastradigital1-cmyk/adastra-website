@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Linkedin, Twitter, Instagram, ArrowRight } from 'lucide-react';
 import { submitNewsletter } from '../services/supabaseService';
 import { toast } from 'sonner';
+import { WorldMap } from './WorldMap';
 
 const footerLinks = {
   company: [
