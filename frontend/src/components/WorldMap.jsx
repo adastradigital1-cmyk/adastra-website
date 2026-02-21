@@ -56,7 +56,7 @@ const COLS = 72;
 const ROWS = 36;
 
 export const WorldMap = () => {
-  const dotSize = 0.35;
+  const dotSize = 0.5;
   const gap = 1.4;
 
   return (
