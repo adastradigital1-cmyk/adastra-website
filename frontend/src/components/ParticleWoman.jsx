@@ -26,6 +26,7 @@ export const ParticleWoman = () => {
         const h = offscreen.height;
 
         const gap = 3;
+        const fadeZone = 0.15;
         const points = [];
         for (let y = 0; y < h; y += gap) {
           for (let x = 0; x < w; x += gap) {
@@ -35,7 +36,15 @@ export const ParticleWoman = () => {
             const b = data[idx + 2];
             const brightness = (r * 0.299 + g * 0.587 + b * 0.114) / 255;
             if (brightness > 0.15) {
-              points.push({ nx: x / w, ny: y / h, lum: brightness });
+              const nx = x / w;
+              const ny = y / h;
+              let edgeFade = 1;
+              if (nx > 1 - fadeZone) edgeFade *= 1 - (nx - (1 - fadeZone)) / fadeZone;
+              if (nx < fadeZone * 0.5) edgeFade *= nx / (fadeZone * 0.5);
+              if (ny < fadeZone * 0.4) edgeFade *= ny / (fadeZone * 0.4);
+              if (ny > 1 - fadeZone * 0.6) edgeFade *= 1 - (ny - (1 - fadeZone * 0.6)) / (fadeZone * 0.6);
+              if (Math.random() > edgeFade) continue;
+              points.push({ nx, ny, lum: brightness, edgeFade });
             }
           }
         }
@@ -46,13 +55,15 @@ export const ParticleWoman = () => {
         const particles = points.map((p) => {
           const tx = offsetX + p.nx * drawW;
           const ty = offsetY + p.ny * drawH;
+          const scatter = 1 + (1 - p.edgeFade) * 2;
           return {
             x: tx + (Math.random() - 0.5) * 600,
             y: ty + (Math.random() - 0.5) * 600,
-            tx, ty,
-            size: 0.5 + p.lum * 1.6,
+            tx: tx + (Math.random() - 0.5) * 8 * scatter,
+            ty: ty + (Math.random() - 0.5) * 8 * scatter,
+            size: (0.5 + p.lum * 1.6) * (0.6 + p.edgeFade * 0.4),
             lum: p.lum,
-            alpha: 0.25 + p.lum * 0.75,
+            alpha: (0.25 + p.lum * 0.75) * (0.3 + p.edgeFade * 0.7),
             pulse: Math.random() * Math.PI * 2,
           };
         });
