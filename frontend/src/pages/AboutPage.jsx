@@ -428,14 +428,21 @@ const ValuesSection = () => {
 };
 
 /* ─── SECTION 7: GLOBAL FOOTPRINT ─── */
+const GlobalStatCard = ({ stat, isVisible }) => {
+  const count = useCountUp(stat.value, 2500, isVisible);
+  const fmt = (n) => (n >= 1000 ? n.toLocaleString() : n);
+  return (
+    <div className="font-display text-[2.5rem] lg:text-[3rem] font-800 leading-none" style={{ color: 'var(--orange-core)' }}>
+      {fmt(count)}{stat.suffix}
+    </div>
+  );
+};
+
 const GlobalSection = () => {
   const [ref, vis] = useScrollAnimation({ threshold: 0.15 });
-  const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] });
-  const bgY = useTransform(scrollYProgress, [0, 1], [-25, 25]);
 
   return (
-    <section className="py-28 lg:py-36 relative overflow-hidden" style={{ backgroundColor: 'var(--white-warm)' }} data-testid="about-global">
+    <section ref={ref} className="py-28 lg:py-36 relative overflow-hidden" style={{ backgroundColor: 'var(--white-warm)' }} data-testid="about-global">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full blur-[150px] opacity-15" style={{ background: 'var(--orange-core)' }} />
       </div>
@@ -461,12 +468,10 @@ const GlobalSection = () => {
             </ul>
           </motion.div>
 
-          <motion.div ref={(el) => { if (sectionRef.current === null) sectionRef.current = el; ref.current = el; }} variants={fadeUp} transition={{ duration: 0.8, ease }} className="flex flex-wrap justify-center gap-8">
+          <motion.div variants={fadeUp} transition={{ duration: 0.8, ease }} className="flex flex-wrap justify-center gap-8">
             {globalStats.map((s, i) => (
               <div key={s.label} className="glass-card-light p-8 text-center flex-1 min-w-[160px]" data-testid={`global-stat-${i}`}>
-                <div className="font-display text-[2.5rem] lg:text-[3rem] font-800 leading-none" style={{ color: 'var(--orange-core)' }}>
-                  {vis ? <>{new Intl.NumberFormat().format(useCountUp(s.value, 2500, true))}{s.suffix}</> : <>0{s.suffix}</>}
-                </div>
+                <GlobalStatCard stat={s} isVisible={vis} />
                 <p className="font-body text-[0.8125rem] mt-2" style={{ color: 'var(--text-on-light-muted)' }}>{s.label}</p>
               </div>
             ))}
