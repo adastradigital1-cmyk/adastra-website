@@ -1,11 +1,14 @@
 import React, { useRef, useEffect, useCallback, useState } from 'react';
 
 export const ParticleHandshake = () => {
+  const containerRef = useRef(null);
   const canvasRef = useRef(null);
   const mouseRef = useRef({ x: -1000, y: -1000 });
   const particlesRef = useRef([]);
   const animRef = useRef(null);
   const [loaded, setLoaded] = useState(false);
+  const [inView, setInView] = useState(false);
+  const hasInitRef = useRef(false);
 
   const sampleImage = useCallback((canvasW, canvasH) => {
     return new Promise((resolve) => {
