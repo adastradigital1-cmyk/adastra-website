@@ -8,6 +8,7 @@ import { ServicesSection } from '../components/ServicesSection';
 import { IndustriesSection } from '../components/IndustriesSection';
 import { DifferentiationSection } from '../components/DifferentiationSection';
 import { TrustSection } from '../components/TrustSection';
+import { AwardsSection } from '../components/AwardsSection';
 import { LeadersMessageSection } from '../components/LeadersMessageSection';
 import { CTASection } from '../components/CTASection';
 import { Footer } from '../components/Footer';
@@ -37,6 +38,7 @@ export default function HomePage() {
       <ServicesSection />
       <IndustriesSection />
       <TrustSection />
+      <AwardsSection />
       <LeadersMessageSection />
       <CTASection
         onConsultation={() => setConsultationOpen(true)}
