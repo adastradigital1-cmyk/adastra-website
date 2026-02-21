@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { industries } from '../data/mock';
 import { Monitor, Factory, Landmark, HeartPulse, Truck, Zap, ShoppingBag } from 'lucide-react';
 import { ParticleField } from './ParticleField';
@@ -54,11 +55,13 @@ export const IndustriesSection = () => {
               const Icon = iconMap[ind.icon];
               return (
                 <div key={`${ind.name}-${i}`} className="group flex-shrink-0 flex items-center gap-3 px-10 py-6 cursor-pointer">
-                  <Icon size={18} className="text-[var(--text-on-dark-muted)] group-hover:text-[var(--orange-core)] transition-colors duration-300 flex-shrink-0" />
-                  <span className="relative font-body text-[0.9375rem] font-500 whitespace-nowrap transition-colors duration-300 text-[var(--text-on-dark-muted)] group-hover:text-[var(--text-on-dark)]">
-                    {ind.name}
-                    <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[var(--orange-core)] rounded-full transition-all duration-300 group-hover:w-full" />
-                  </span>
+                  <Link to="/industries" className="flex items-center gap-3 no-underline">
+                    <Icon size={18} className="text-[var(--text-on-dark-muted)] group-hover:text-[var(--orange-core)] transition-colors duration-300 flex-shrink-0" />
+                    <span className="relative font-body text-[0.9375rem] font-500 whitespace-nowrap transition-colors duration-300 text-[var(--text-on-dark-muted)] group-hover:text-[var(--text-on-dark)]">
+                      {ind.name}
+                      <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[var(--orange-core)] rounded-full transition-all duration-300 group-hover:w-full" />
+                    </span>
+                  </Link>
                 </div>
               );
             })}
