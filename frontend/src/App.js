@@ -8,6 +8,7 @@ import CareersPage from "./pages/CareersPage";
 import BlogPage from "./pages/BlogPage";
 import ImpactPage from "./pages/ImpactPage";
 import FindTalentPage from "./pages/FindTalentPage";
+import FindJobsPage from "./pages/FindJobsPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/impact" element={<ImpactPage />} />
           <Route path="/find-talent" element={<FindTalentPage />} />
+          <Route path="/find-jobs" element={<FindJobsPage />} />
         </Routes>
       </BrowserRouter>
     </div>
