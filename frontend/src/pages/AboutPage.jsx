@@ -47,6 +47,33 @@ const philosophyPrinciples = [
   'Ethical engagement defines client and candidate experience.',
 ];
 
+const founders = [
+  {
+    name: 'Jayanthi Yeshwant Kumar',
+    role: 'Chairperson & Founder',
+    bio: 'Visionary founder with 27+ years in banking, financial services, and recruitment consulting. Former Senior Director at Societe Generale. Independent Director at Greaves Electric Mobility. Strong advocate for diversity and inclusion.',
+    img: 'https://customer-assets.emergentagent.com/job_b9092369-b34a-41d6-a266-b0660555d408/artifacts/wqjgwqs0_Jayanti.png',
+  },
+  {
+    name: 'Nirupama VG',
+    role: 'Managing Director & Co-Founder',
+    bio: 'Serial entrepreneur with 25+ years experience. Built three HR firms acquired by Randstad, Aon Hewitt, and ADP. Recognized among top 25 women entrepreneurs by Silicon India. Featured by Oxford Economics and Forbes.',
+    img: 'https://customer-assets.emergentagent.com/job_b9092369-b34a-41d6-a266-b0660555d408/artifacts/c1zt23l3_nirupama.png',
+  },
+  {
+    name: 'Sourav Bose',
+    role: 'Co-Founder & Vice President',
+    bio: '27 years of executive search experience. Oversees East operations and manages key projects. Previously with First Flight Couriers, Genius Consultants, and Team Lease Services.',
+    img: 'https://customer-assets.emergentagent.com/job_b9092369-b34a-41d6-a266-b0660555d408/artifacts/x875sf4f_saurav.png',
+  },
+  {
+    name: 'Bikram',
+    role: 'Vice President',
+    bio: '17 years in executive search and talent acquisition. Delivered multiple CXO and senior-level searches. Expert in deep customer engagement and leadership of diverse teams.',
+    img: 'https://customer-assets.emergentagent.com/job_b9092369-b34a-41d6-a266-b0660555d408/artifacts/q3iqd0dk_bikram.png',
+  },
+];
+
 const founderStrengths = [
   'Extensive cross-industry hiring expertise',
   'Experience across multiple geographies',
@@ -306,41 +333,58 @@ const FoundersSection = () => {
       </motion.div>
 
       <div className="relative max-w-[1280px] mx-auto px-6 lg:px-12 z-10">
-        <motion.div className="grid lg:grid-cols-2 gap-16 items-center" initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} transition={{ staggerChildren: 0.15 }}>
-          <motion.div variants={fadeUp} transition={{ duration: 0.8, ease }}>
-            <span className="section-label">04 — About the Founders</span>
-            <h2 className="font-display text-[2.25rem] lg:text-[3rem] font-700 mt-4 leading-[1.12]" style={{ color: 'var(--white-pure)' }}>
-              Leadership That Defines Direction.
-            </h2>
-            <p className="font-body text-[1rem] mt-6 leading-[1.8]" style={{ color: 'var(--text-on-dark-muted)' }}>
-              Ad Astra Consultants was established by industry leaders with deep experience in recruitment strategy, leadership hiring, and organisational advisory.
-            </p>
+        <motion.div className="mb-16" initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={fadeUp} transition={{ duration: 0.8, ease }}>
+          <span className="section-label">04 — About the Founders</span>
+          <h2 className="font-display text-[2.25rem] lg:text-[3rem] font-700 mt-4 leading-[1.12]" style={{ color: 'var(--white-pure)' }}>
+            Leadership That Defines Direction.
+          </h2>
+          <p className="font-body text-[1rem] mt-4 max-w-[700px]" style={{ color: 'var(--text-on-dark-muted)' }}>
+            Ad Astra Consultants was established by industry leaders with deep experience in recruitment strategy, leadership hiring, and organisational advisory.
+          </p>
+        </motion.div>
 
-            <div className="mt-6">
-              <p className="font-mono text-[0.625rem] mb-3" style={{ color: 'var(--orange-core)' }}>The Founding Team Brings</p>
-              <ul className="space-y-2">
-                {founderStrengths.map((s, i) => (
-                  <li key={i} className="flex items-start gap-2 font-body text-[0.875rem]" style={{ color: 'var(--text-on-dark-muted)' }}>
-                    <CheckCircle size={14} className="mt-0.5 flex-shrink-0" style={{ color: 'var(--orange-core)' }} />
-                    {s}
-                  </li>
-                ))}
-              </ul>
-            </div>
+        <motion.div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16" initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} transition={{ staggerChildren: 0.1 }}>
+          {founders.map((f, i) => (
+            <motion.div key={f.name} variants={fadeUp} transition={{ duration: 0.7, ease }} className="group" data-testid={`founder-${i}`}>
+              <div className="relative w-full aspect-[3/4] mb-5 rounded-2xl overflow-hidden">
+                <img
+                  src={f.img}
+                  alt={f.name}
+                  className="w-full h-full object-cover object-top filter grayscale-[30%] group-hover:grayscale-0 transition-all duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              </div>
+              <h3 className="font-display text-[1.125rem] font-600" style={{ color: 'var(--text-on-dark)' }}>{f.name}</h3>
+              <p className="font-mono text-[0.625rem] mt-1" style={{ color: 'var(--orange-core)' }}>{f.role}</p>
+              <p className="font-body text-[0.8125rem] mt-3 leading-[1.7]" style={{ color: 'var(--text-on-dark-muted)' }}>{f.bio}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div className="grid lg:grid-cols-2 gap-8" initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }} transition={{ staggerChildren: 0.12 }}>
+          <motion.div variants={fadeUp} transition={{ duration: 0.7, ease }} className="glass-card-dark p-7" data-testid="founder-strengths-card">
+            <p className="font-mono text-[0.625rem] mb-4" style={{ color: 'var(--orange-core)' }}>The Founding Team Brings</p>
+            <ul className="space-y-3">
+              {founderStrengths.map((s, i) => (
+                <li key={i} className="flex items-start gap-2 font-body text-[0.875rem]" style={{ color: 'var(--text-on-dark-muted)' }}>
+                  <CheckCircle size={14} className="mt-0.5 flex-shrink-0" style={{ color: 'var(--orange-core)' }} />
+                  {s}
+                </li>
+              ))}
+            </ul>
           </motion.div>
 
-          <motion.div variants={fadeUp} transition={{ duration: 0.8, ease }}>
-            <div className="glass-card-dark p-8" data-testid="founder-vision-card">
-              <p className="font-mono text-[0.625rem] mb-4" style={{ color: 'var(--orange-core)' }}>Leadership Vision Centres On</p>
-              <ul className="space-y-4">
-                {founderVision.map((v, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="font-mono text-[1.5rem] font-700 leading-none flex-shrink-0" style={{ color: 'var(--orange-core)' }}>{String(i + 1).padStart(2, '0')}</span>
-                    <p className="font-display text-[1.125rem] font-600 leading-[1.4]" style={{ color: 'var(--text-on-dark)' }}>{v}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <motion.div variants={fadeUp} transition={{ duration: 0.7, ease }} className="glass-card-dark p-7" data-testid="founder-vision-card">
+            <p className="font-mono text-[0.625rem] mb-4" style={{ color: 'var(--orange-core)' }}>Leadership Vision Centres On</p>
+            <ul className="space-y-4">
+              {founderVision.map((v, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <span className="font-mono text-[1.5rem] font-700 leading-none flex-shrink-0" style={{ color: 'var(--orange-core)' }}>{String(i + 1).padStart(2, '0')}</span>
+                  <p className="font-display text-[1.125rem] font-600 leading-[1.4]" style={{ color: 'var(--text-on-dark)' }}>{v}</p>
+                </li>
+              ))}
+            </ul>
           </motion.div>
         </motion.div>
       </div>
