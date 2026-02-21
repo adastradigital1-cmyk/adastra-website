@@ -25,8 +25,8 @@ export const ParticleWoman = () => {
         const w = offscreen.width;
         const h = offscreen.height;
 
-        const gap = 3;
-        const fadeZone = 0.15;
+        const gap = 2;
+        const fadeZone = 0.2;
         const points = [];
         for (let y = 0; y < h; y += gap) {
           for (let x = 0; x < w; x += gap) {
