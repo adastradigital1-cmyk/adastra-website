@@ -19,12 +19,12 @@ Build a world-class premium website for "Ad Astra Consultants" — a global tale
 
 ## Routes
 - `/` — Homepage
-- `/about` — About Us
+- `/about` — About Us (full rewrite with 10 sections + real team photos)
 - `/contact` — Contact Us
 - `/solutions` — Solutions/Services
 - `/careers` — Careers at Ad Astra
 - `/blog` — Blog/Insights (placeholder)
-- `/impact` — Our Impact (placeholder)
+- `/impact` — Our Impact (full rewrite with 11 sections)
 - `/find-talent` — Find Talent
 - `/find-jobs` — Find Jobs
 - `/industries` — Industries We Serve
@@ -32,45 +32,44 @@ Build a world-class premium website for "Ad Astra Consultants" — a global tale
 ## What's Been Implemented
 
 ### Phase 0: Design System (Feb 2026)
-- New fonts (Fraunces, Outfit, IBM Plex Mono) via Google Fonts
-- Complete CSS variable system for colors, borders, glass effects
-- Glass-morphism card classes, pill buttons, noise textures
-- Premium navbar (dark glass blur on scroll, pill CTA)
-- Premium footer (newsletter band, 5-column grid, darkest bg)
+- Custom fonts, CSS variables, glass-morphism, pill buttons, noise textures
+- Premium navbar + footer
 
 ### Phase 1: Homepage Rebuild (Feb 2026)
-- Video Section above hero with play/pause/mute controls
-- Dark hero with animated gradient mesh, left-aligned headline, geometric accent
-- ForYou section, Stats ribbon, Services section, Industries strip
-- Trust/Recognition, CTA band
+- Video Section, hero, ForYou, Stats, Services, Industries strip, Trust, CTA
 
-### Phase 2: About Page Redesign (Feb 2026)
-- Dark hero, Who We Are, Mission/Vision, Values, Leadership, Global Footprint
+### Phase 2: Content Pages (Feb 2026)
+- **Find Talent Page** — 8 sections
+- **Find Jobs Page** — 8 sections
+- **Solutions Page** — 8 sections revamped
+- **Industries Page** — 7 sections: Hero, Specialisation, 8 expandable industry cards, Cross-Sector, Global Insight, Expertise, CTA
+- **Impact Page** — 11 sections: Hero, Scale (5 stats), Leadership, Enterprise Scaling, Workforce, Industry-Specific (8 cards), Candidate, Thought Leadership, Partnership + Data-Driven, Visual Summary, CTA
+- **About Page** — 11 sections: Hero, Who We Are, Journey, Philosophy, Founders (with real team photos), Team, Values, Global Footprint, Differentiation, Impact, CTA
 
-### Phase 3: Content Pages (Feb 2026)
-- **Find Talent Page** (`/find-talent`) — 8 sections with comprehensive content
-- **Find Jobs Page** (`/find-jobs`) — 8 sections with comprehensive content
-- **Solutions Page** (`/solutions`) — 8 sections revamped with new content
-- **Industries Page** (`/industries`) — 7 sections: Hero, Why Specialisation, Industries We Serve (8 expandable cards), Cross-Sector Capabilities, Global & Local Insight, Why Expertise Matters, Final CTA
+### Navbar Updates
+- About moved to 2nd position (beside Home)
+- Industries link fixed from #industries to /industries
 
-### Previous Work (Retained)
-- Supabase integration for forms (Contact, CV, Newsletter, Consultation)
-- Contact Page, Careers Page
+### Team Photos Added
+- Jayanthi Yeshwant Kumar (Chairperson & Founder)
+- Nirupama VG (Managing Director & Co-Founder)
+- Sourav Bose (Co-Founder & Vice President)
+- Bikram (Vice President)
 
 ## Testing
-- iteration_1.json: About page tests (17/17 PASS)
-- iteration_2.json: Full redesign tests (14/14 frontend, 13/13 backend PASS)
-- iteration_3.json: Glass-morphism UI tests (12/12 PASS)
-- iteration_4.json: Industries page tests (13/13 PASS)
+- iteration_1-3: Previous tests
+- iteration_4: Industries page (13/13 PASS)
+- iteration_5: Impact page (15/15 PASS)
+- iteration_6: About page + navbar (15/15 PASS)
 
 ## API Endpoints
 - `POST /api/newsletter`, `POST /api/contact`, `POST /api/cv`, `POST /api/consultation`
 
-## Backlog (Sequential)
-- **P1: Build Insight Detail Page** — Template for individual blog/insight articles
+## Backlog
+- **P1: Build Insight Detail Page** — Blog article template
 - **P1: Fix Vercel Deployment** — Build failing with module resolution errors
-- **P2: Individual service detail pages** (e.g., `/services/executive-search`)
+- **P2: Individual service detail pages**
 - **P2: Individual industry detail pages**
-- **P2: Connect forms end-to-end** — Test Contact, CV, Consultation submissions
-- **P3: Code Cleanup** — Remove obsolete modals, legacy supabase.js, consolidate deployment configs
+- **P2: Connect forms end-to-end**
+- **P3: Code cleanup** — Remove obsolete modals, legacy files
 - **P3: SEO optimization, performance tuning**
