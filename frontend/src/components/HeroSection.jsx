@@ -117,7 +117,7 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
         >
           <div className="scroll-indicator w-[1px] h-[40px] bg-gradient-to-b from-[var(--orange-core)] to-transparent" />
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 };
