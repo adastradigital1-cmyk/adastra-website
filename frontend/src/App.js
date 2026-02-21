@@ -7,6 +7,7 @@ import SolutionsPage from "./pages/SolutionsPage";
 import CareersPage from "./pages/CareersPage";
 import BlogPage from "./pages/BlogPage";
 import ImpactPage from "./pages/ImpactPage";
+import FindTalentPage from "./pages/FindTalentPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/careers" element={<CareersPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/impact" element={<ImpactPage />} />
+          <Route path="/find-talent" element={<FindTalentPage />} />
         </Routes>
       </BrowserRouter>
     </div>
