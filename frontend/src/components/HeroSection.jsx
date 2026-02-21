@@ -25,12 +25,6 @@ const WordReveal = ({ text, className, style, startDelay = 0 }) => {
 };
 
 export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
-  const { scrollY } = useScroll();
-  const bgY = useTransform(scrollY, [0, 600], [0, 150]);
-  const midY = useTransform(scrollY, [0, 600], [0, 80]);
-  const fgY = useTransform(scrollY, [0, 600], [0, 30]);
-  const opacity = useTransform(scrollY, [0, 500], [1, 0.3]);
-
   return (
     <section
       id="home"
