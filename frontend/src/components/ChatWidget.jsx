@@ -106,7 +106,7 @@ const quickActions = [
 export const ChatWidget = () => {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { role: 'bot', text: 'Hello! I\'m the Ad Astra assistant. How can I help you today?' }
+    { role: 'bot', text: 'Hello! I\'m the Ad Astra Smart AI Assistant. How can I help you today?' }
   ]);
   const [input, setInput] = useState('');
   const [typing, setTyping] = useState(false);
@@ -166,8 +166,7 @@ export const ChatWidget = () => {
           {/* Header */}
           <div className="px-5 py-4 flex items-center justify-between" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
             <div>
-              <p className="font-display text-[1rem] font-600" style={{ color: 'var(--white-pure)' }}>Ad Astra Assistant</p>
-              <p className="font-mono text-[0.5625rem] mt-0.5" style={{ color: 'var(--orange-core)' }}>POWERED BY AI</p>
+              <p className="font-display text-[1rem] font-600" style={{ color: 'var(--white-pure)' }}>Ad Astra Smart AI Assistant</p>
             </div>
             <button onClick={() => setOpen(false)} className="p-1 rounded-lg hover:bg-white/10 transition-colors" aria-label="Close">
               <ChevronDown size={18} style={{ color: 'var(--text-on-dark-muted)' }} />
