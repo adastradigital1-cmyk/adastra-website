@@ -23,7 +23,7 @@ export const ParticleWoman = () => {
         const imageData = octx.getImageData(0, 0, drawW, drawH);
         const data = imageData.data;
 
-        const gap = 3;
+        const gap = 4;
         const points = [];
         for (let y = 0; y < drawH; y += gap) {
           for (let x = 0; x < drawW; x += gap) {
@@ -33,9 +33,9 @@ export const ParticleWoman = () => {
               const r = data[i];
               const g = data[i + 1];
               const b = data[i + 2];
-              const brightness = (r + g + b) / 3;
-              if (brightness < 245) {
-                points.push({ nx: x / drawW, ny: y / drawH, r, g, b });
+              const brightness = (r * 0.299 + g * 0.587 + b * 0.114) / 255;
+              if (brightness < 0.96) {
+                points.push({ nx: x / drawW, ny: y / drawH, brightness });
               }
             }
           }
@@ -47,25 +47,25 @@ export const ParticleWoman = () => {
         const particles = points.map((p) => {
           const tx = offsetX + p.nx * drawW;
           const ty = offsetY + p.ny * drawH;
+          const b = p.brightness;
           return {
-            x: tx + (Math.random() - 0.5) * 300,
-            y: ty + (Math.random() - 0.5) * 300,
+            x: tx + (Math.random() - 0.5) * 400,
+            y: ty + (Math.random() - 0.5) * 400,
             tx,
             ty,
-            size: 1.0 + Math.random() * 1.5,
-            r: p.r,
-            g: p.g,
-            b: p.b,
-            alpha: 0.6 + Math.random() * 0.4,
+            size: 1.0 + b * 1.8,
+            brightness: b,
+            alpha: 0.4 + b * 0.6,
             pulse: Math.random() * Math.PI * 2,
             vx: 0,
             vy: 0,
+            arrived: false,
           };
         });
         resolve(particles);
       };
       img.onerror = () => resolve([]);
-      img.src = '/face.svg';
+      img.src = process.env.PUBLIC_URL + '/face.svg';
     });
   }, []);
 
@@ -74,6 +74,7 @@ export const ParticleWoman = () => {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     let active = true;
+    let startTime = 0;
 
     const init = async () => {
       const rect = canvas.parentElement.getBoundingClientRect();
@@ -82,6 +83,7 @@ export const ParticleWoman = () => {
       const pts = await sampleSVG(canvas.width, canvas.height);
       if (!active) return;
       particlesRef.current = pts;
+      startTime = performance.now();
       setLoaded(true);
     };
 
@@ -94,6 +96,7 @@ export const ParticleWoman = () => {
       const pts = await sampleSVG(canvas.width, canvas.height);
       if (!active) return;
       particlesRef.current = pts;
+      startTime = performance.now();
     };
 
     window.addEventListener('resize', handleResize);
@@ -112,40 +115,58 @@ export const ParticleWoman = () => {
       if (!active) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const { x: mx, y: my } = mouseRef.current;
-      const time = performance.now() * 0.001;
+      const now = performance.now();
+      const elapsed = (now - startTime) / 1000;
+      const time = now * 0.001;
       const particles = particlesRef.current;
       const len = particles.length;
 
+      const assembleSpeed = Math.min(elapsed / 2.0, 1);
+      const ease = assembleSpeed * assembleSpeed * (3 - 2 * assembleSpeed);
+
       for (let i = 0; i < len; i++) {
         const p = particles[i];
-        p.pulse += 0.015;
+        p.pulse += 0.012;
 
         const dx = p.x - mx;
         const dy = p.y - my;
         const distSq = dx * dx + dy * dy;
-        const radius = 80;
+        const radius = 85;
         const radiusSq = radius * radius;
 
-        let targetX = p.tx + Math.sin(time * 0.4 + p.pulse) * 0.8;
-        let targetY = p.ty + Math.cos(time * 0.3 + p.pulse) * 0.6;
+        let targetX = p.tx + Math.sin(time * 0.35 + p.pulse) * 0.6;
+        let targetY = p.ty + Math.cos(time * 0.25 + p.pulse) * 0.5;
 
         if (distSq < radiusSq) {
           const dist = Math.sqrt(distSq);
-          const force = (1 - dist / radius) * 35;
+          const force = (1 - dist / radius) * 30;
           targetX += (dx / dist) * force;
           targetY += (dy / dist) * force;
         }
 
-        p.vx = (targetX - p.x) * 0.08;
-        p.vy = (targetY - p.y) * 0.08;
-        p.x += p.vx;
-        p.y += p.vy;
+        const spd = 0.04 + ease * 0.06;
+        p.x += (targetX - p.x) * spd;
+        p.y += (targetY - p.y) * spd;
 
-        const glow = Math.sin(p.pulse) * 0.15 + 0.85;
+        const glow = Math.sin(p.pulse) * 0.12 + 0.88;
         const a = p.alpha * glow;
 
-        ctx.fillStyle = `rgba(${p.r},${p.g},${p.b},${a})`;
-        ctx.fillRect(p.x - p.size * 0.5, p.y - p.size * 0.5, p.size, p.size);
+        const b = p.brightness;
+        const pr = Math.round(232 * (0.3 + b * 0.7));
+        const pg = Math.round(96 * (0.2 + b * 0.8));
+        const pb = Math.round(28 + b * 50);
+
+        ctx.fillStyle = `rgba(${pr},${pg},${pb},${a})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        if (p.size > 2) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size * 2.5, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${pr},${pg},${pb},${a * 0.05})`;
+          ctx.fill();
+        }
       }
 
       animRef.current = requestAnimationFrame(animate);
@@ -166,7 +187,7 @@ export const ParticleWoman = () => {
       <canvas
         ref={canvasRef}
         className="w-full h-full"
-        style={{ display: 'block', opacity: loaded ? 1 : 0, transition: 'opacity 0.8s ease' }}
+        style={{ display: 'block', opacity: loaded ? 1 : 0, transition: 'opacity 1s ease' }}
       />
     </div>
   );
