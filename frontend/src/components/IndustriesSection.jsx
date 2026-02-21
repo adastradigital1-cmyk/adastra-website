@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { industries } from '../data/mock';
 import { Monitor, Factory, Landmark, HeartPulse, Truck, Zap, ShoppingBag } from 'lucide-react';
 import { ParticleField } from './ParticleField';
+import { ParticleHandshake } from './ParticleHandshake';
 
 const iconMap = { Monitor, Factory, Landmark, HeartPulse, Truck, Zap, ShoppingBag };
 const ease = [0.25, 0.46, 0.45, 0.94];
@@ -26,19 +27,36 @@ export const IndustriesSection = () => {
         <div className="noise-overlay absolute inset-0" />
       </motion.div>
 
-      <div className="relative max-w-[1280px] mx-auto px-6 lg:px-12 mb-16 z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8, ease }}
-        >
-          <div className="accent-line mb-6" />
-          <span className="section-label">03 — Industries</span>
-          <h2 className="font-display text-[2.5rem] lg:text-[3.5rem] font-700 mt-4 leading-[1.08]" style={{ color: 'var(--white-pure)' }}>
-            Sectors We Serve
-          </h2>
-        </motion.div>
+      <div className="relative max-w-[1280px] mx-auto px-6 lg:px-12 z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          {/* Text */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8, ease }}
+          >
+            <div className="accent-line mb-6" />
+            <span className="section-label">03 — Industries</span>
+            <h2 className="font-display text-[2.5rem] lg:text-[3.5rem] font-700 mt-4 leading-[1.08]" style={{ color: 'var(--white-pure)' }}>
+              Sectors We Serve
+            </h2>
+            <p className="font-body text-[1rem] mt-5 leading-[1.8] max-w-[500px]" style={{ color: 'var(--text-on-dark-muted)' }}>
+              Building trusted partnerships across industries — connecting exceptional talent with the organizations that need them most.
+            </p>
+          </motion.div>
+
+          {/* Particle Handshake */}
+          <motion.div
+            className="relative h-[350px] lg:h-[400px]"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 1.2, ease }}
+          >
+            <ParticleHandshake />
+          </motion.div>
+        </div>
       </div>
 
       {/* Scrolling strip */}
