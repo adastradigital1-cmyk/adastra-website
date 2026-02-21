@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { services } from '../data/mock';
 import { Search, Users, Settings, Clock, BarChart3, TrendingUp, ArrowRight } from 'lucide-react';
 
@@ -89,9 +90,9 @@ export const ServicesSection = () => (
               <p className="font-body text-[0.875rem] mt-4 leading-[1.7]" style={{ color: 'var(--text-on-light-muted)' }}>
                 {service.description}
               </p>
-              <div className="mt-5 inline-flex items-center gap-1.5 font-body font-600 text-[0.8125rem] opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-400" style={{ color: 'var(--orange-core)' }}>
+              <Link to="/solutions" className="mt-5 inline-flex items-center gap-1.5 font-body font-600 text-[0.8125rem] opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-400 no-underline" style={{ color: 'var(--orange-core)' }}>
                 Learn More <ArrowRight size={13} />
-              </div>
+              </Link>
             </motion.div>
           );
         })}
