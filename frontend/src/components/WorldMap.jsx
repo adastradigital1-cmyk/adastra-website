@@ -14,7 +14,7 @@ const locations = [
 
 export const WorldMap = () => (
   <div className="relative w-full" data-testid="world-map">
-    <svg viewBox="0 0 100 60" className="w-full h-auto opacity-[0.12]" preserveAspectRatio="xMidYMid meet">
+    <svg viewBox="0 0 100 60" className="w-full h-auto opacity-[0.2]" preserveAspectRatio="xMidYMid meet">
       {/* Simplified world map continents as paths */}
       {/* North America */}
       <path d="M5,15 Q8,12 12,14 L15,12 Q18,10 22,12 L25,15 Q24,18 22,20 L20,22 Q18,25 15,28 L12,30 Q10,28 8,25 L6,22 Q4,18 5,15Z" fill="currentColor" />
