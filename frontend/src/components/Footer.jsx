@@ -87,8 +87,8 @@ export const Footer = () => {
 
       {/* World Map — Global Presence */}
       <div className="border-b" style={{ borderColor: 'var(--border-dark)' }}>
-        <div className="max-w-[1280px] mx-auto px-6 lg:px-12 py-12">
-          <p className="font-mono text-[0.625rem] tracking-[0.2em] uppercase mb-6 text-center" style={{ color: 'var(--text-on-dark-muted)' }}>
+        <div className="max-w-[1100px] mx-auto px-6 lg:px-12 py-10">
+          <p className="font-mono text-[0.625rem] tracking-[0.2em] uppercase mb-4 text-center" style={{ color: 'var(--text-on-dark-muted)' }}>
             Our Global Presence
           </p>
           <WorldMap />
