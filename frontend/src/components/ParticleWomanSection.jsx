@@ -26,9 +26,7 @@ export const ParticleWomanSection = () => (
           <p className="font-body text-[1rem] mt-5 leading-[1.8] max-w-[500px]" style={{ color: 'var(--text-on-dark-muted)' }}>
             With 80% women workforce and pioneering female leadership, Ad Astra Consultants champions diversity and inclusion at every level.
           </p>
-          <p className="font-mono text-[0.625rem] mt-6" style={{ color: 'var(--orange-core)' }}>
-            MOVE YOUR MOUSE TO INTERACT
-          </p>
+          <div className="mt-6" />
         </motion.div>
 
         {/* Particle Woman */}
