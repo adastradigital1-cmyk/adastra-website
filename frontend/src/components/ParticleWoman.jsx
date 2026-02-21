@@ -148,15 +148,15 @@ export const ParticleWoman = () => {
       }
 
       // Connection lines between nearby particles
-      ctx.lineWidth = 0.3;
-      const step = len > 6000 ? 3 : 1;
+      ctx.lineWidth = 0.2;
+      const step = len > 8000 ? 4 : len > 4000 ? 3 : 1;
       for (let i = 0; i < len; i += step) {
         const a = particles[i];
-        for (let j = i + step; j < Math.min(i + 25 * step, len); j += step) {
+        for (let j = i + step; j < Math.min(i + 20 * step, len); j += step) {
           const b = particles[j];
           const dd = (a.x - b.x) ** 2 + (a.y - b.y) ** 2;
-          if (dd < 100) {
-            const op = (1 - Math.sqrt(dd) / 10) * 0.08;
+          if (dd < 36) {
+            const op = (1 - Math.sqrt(dd) / 6) * 0.06;
             ctx.strokeStyle = `rgba(232,96,28,${op})`;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -182,10 +182,10 @@ export const ParticleWoman = () => {
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fill();
 
-        if (l > 0.5) {
+        if (l > 0.6) {
           ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size * 2.8, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(232,96,28,${al * 0.03})`;
+          ctx.arc(p.x, p.y, p.size * 2, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(232,96,28,${al * 0.02})`;
           ctx.fill();
         }
       }
