@@ -77,7 +77,7 @@ export const WorldMap = () => {
                 cy={ry * gap + gap / 2}
                 r={dotSize}
                 fill="var(--text-on-dark-muted)"
-                opacity="0.18"
+                opacity="0.35"
               />
             );
           })
