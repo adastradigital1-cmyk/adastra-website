@@ -61,7 +61,7 @@ export const ParticleWoman = () => {
             y: ty + (Math.random() - 0.5) * 600,
             tx: tx + (Math.random() - 0.5) * 8 * scatter,
             ty: ty + (Math.random() - 0.5) * 8 * scatter,
-            size: (0.5 + p.lum * 1.6) * (0.6 + p.edgeFade * 0.4),
+            size: (0.3 + p.lum * 0.9) * (0.6 + p.edgeFade * 0.4),
             lum: p.lum,
             alpha: (0.25 + p.lum * 0.75) * (0.3 + p.edgeFade * 0.7),
             pulse: Math.random() * Math.PI * 2,
