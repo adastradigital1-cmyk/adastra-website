@@ -10,6 +10,7 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { useCountUp } from '../hooks/useCountUp';
 import { AwardsSection } from '../components/AwardsSection';
 import {
+  ArrowRight, ChevronRight, CheckCircle,
   Search, Users, Settings, Clock, TrendingUp, BarChart3,
   Shield, Eye, Briefcase, Globe, MapPin,
   Award, Handshake, Target, Layers
