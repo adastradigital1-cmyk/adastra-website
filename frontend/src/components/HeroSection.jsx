@@ -41,30 +41,30 @@ export const HeroSection = ({ onFindTalent, onExploreCareers }) => {
         }}
       />
 
-      {/* Background parallax layer */}
-      <motion.div className="absolute inset-0" style={{ y: bgY, zIndex: 1 }}>
+      {/* Background layer */}
+      <div className="absolute inset-0" style={{ zIndex: 1 }}>
         <div className="absolute inset-0 gradient-mesh opacity-50" />
         <div className="noise-overlay absolute inset-0" />
-      </motion.div>
+      </div>
 
       {/* Particle layer */}
-      <motion.div className="absolute inset-0" style={{ y: midY, zIndex: 2 }}>
+      <div className="absolute inset-0" style={{ zIndex: 2 }}>
         <ParticleField id="hero-particles" density="normal" />
-      </motion.div>
+      </div>
 
-      {/* Geometric accent — parallax mid layer */}
-      <motion.div className="absolute inset-0" style={{ y: midY, zIndex: 3 }}>
+      {/* Geometric accent */}
+      <div className="absolute inset-0" style={{ zIndex: 3 }}>
         <svg className="absolute top-[10%] right-[6%] w-[500px] h-[500px] opacity-[0.05] hidden lg:block" viewBox="0 0 500 500" fill="none">
           <circle cx="250" cy="250" r="220" stroke="var(--orange-core)" strokeWidth="0.5" strokeDasharray="8 12" />
           <circle cx="250" cy="250" r="150" stroke="var(--orange-core)" strokeWidth="0.3" />
           <circle cx="250" cy="250" r="80" stroke="var(--orange-core)" strokeWidth="0.2" strokeDasharray="4 8" />
         </svg>
-      </motion.div>
+      </div>
 
-      {/* Foreground content with parallax */}
-      <motion.div
+      {/* Foreground content — no parallax */}
+      <div
         className="relative max-w-[1280px] mx-auto px-6 lg:px-12 w-full pt-32 pb-20"
-        style={{ y: fgY, opacity, zIndex: 50 }}
+        style={{ zIndex: 50 }}
       >
         <div className="max-w-[900px] mx-auto text-center">
           {/* Section label */}
