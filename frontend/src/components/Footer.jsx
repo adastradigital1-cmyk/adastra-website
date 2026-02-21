@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Linkedin, Twitter, Instagram, ArrowRight } from 'lucide-react';
 import { submitNewsletter } from '../services/supabaseService';
 import { toast } from 'sonner';
-import { WorldMap } from './WorldMap';
 
 const footerLinks = {
   company: [
@@ -82,16 +81,6 @@ export const Footer = () => {
               </button>
             </form>
           </div>
-        </div>
-      </div>
-
-      {/* World Map — Global Presence */}
-      <div className="border-b" style={{ borderColor: 'var(--border-dark)' }}>
-        <div className="max-w-[1100px] mx-auto px-6 lg:px-12 py-10">
-          <p className="font-mono text-[0.625rem] tracking-[0.2em] uppercase mb-4 text-center" style={{ color: 'var(--text-on-dark-muted)' }}>
-            Our Global Presence
-          </p>
-          <WorldMap />
         </div>
       </div>
 
