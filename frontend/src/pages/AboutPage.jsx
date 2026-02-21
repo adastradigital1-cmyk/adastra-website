@@ -8,8 +8,8 @@ import { ConsultationModal } from '../components/ConsultationModal';
 import { ParticleField } from '../components/ParticleField';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { useCountUp } from '../hooks/useCountUp';
+import { AwardsSection } from '../components/AwardsSection';
 import {
-  ArrowRight, ChevronRight, CheckCircle,
   Search, Users, Settings, Clock, TrendingUp, BarChart3,
   Shield, Eye, Briefcase, Globe, MapPin,
   Award, Handshake, Target, Layers
@@ -662,6 +662,7 @@ export default function AboutPage() {
       <GlobalSection />
       <DifferentiationSection />
       <ImpactSection />
+      <AwardsSection />
       <FinalCTASection onConsultation={() => setConsultationOpen(true)} />
       <Footer />
       <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
