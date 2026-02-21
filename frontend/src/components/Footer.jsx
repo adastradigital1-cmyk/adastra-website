@@ -119,11 +119,13 @@ export const Footer = () => {
           </div>
 
           {/* Offices */}
-          <div>
+          <div className="col-span-2 lg:col-span-1">
             <h4 className="font-mono text-[0.6875rem] mb-5" style={{ color: 'var(--text-on-dark-muted)' }}>Global Offices</h4>
-            {footerLinks.offices.map((city) => (
-              <p key={city} className="font-body text-[0.875rem] py-1" style={{ color: 'var(--text-on-dark-muted)' }}>{city}</p>
-            ))}
+            <div className="grid grid-cols-2 lg:grid-cols-1 gap-x-6">
+              {footerLinks.offices.map((city) => (
+                <p key={city} className="font-body text-[0.8125rem] py-0.5" style={{ color: 'var(--text-on-dark-muted)' }}>{city}</p>
+              ))}
+            </div>
           </div>
 
           {/* Contact */}
