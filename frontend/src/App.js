@@ -1,5 +1,6 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
@@ -10,11 +11,20 @@ import ImpactPage from "./pages/ImpactPage";
 import FindTalentPage from "./pages/FindTalentPage";
 import FindJobsPage from "./pages/FindJobsPage";
 import IndustriesPage from "./pages/IndustriesPage";
+import { WhatsAppButton } from "./components/WhatsAppButton";
+import { ChatWidget } from "./components/ChatWidget";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
@@ -27,6 +37,8 @@ function App() {
           <Route path="/find-jobs" element={<FindJobsPage />} />
           <Route path="/industries" element={<IndustriesPage />} />
         </Routes>
+        <WhatsAppButton />
+        <ChatWidget />
       </BrowserRouter>
     </div>
   );
