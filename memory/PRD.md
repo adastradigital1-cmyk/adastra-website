@@ -23,10 +23,14 @@ Build a world-class premium website for "Ad Astra Consultants" — a global tale
 - `/contact` — Contact Us
 - `/solutions` — Solutions/Services
 - `/careers` — Careers at Ad Astra
-- `/blog` — Blog/Insights
-- `/impact` — Our Impact
+- `/blog` — Blog/Insights (placeholder)
+- `/impact` — Our Impact (placeholder)
+- `/find-talent` — Find Talent
+- `/find-jobs` — Find Jobs
+- `/industries` — Industries We Serve
 
 ## What's Been Implemented
+
 ### Phase 0: Design System (Feb 2026)
 - New fonts (Fraunces, Outfit, IBM Plex Mono) via Google Fonts
 - Complete CSS variable system for colors, borders, glass effects
@@ -35,36 +39,38 @@ Build a world-class premium website for "Ad Astra Consultants" — a global tale
 - Premium footer (newsletter band, 5-column grid, darkest bg)
 
 ### Phase 1: Homepage Rebuild (Feb 2026)
-- **Video Section** above hero (Adastra Ad.mp4) with play/pause/mute controls
+- Video Section above hero with play/pause/mute controls
 - Dark hero with animated gradient mesh, left-aligned headline, geometric accent
-- ForYou section (warm white, glass cards, asymmetric header)
-- Stats ribbon (dark, animated counters: 18+, 250+, 50+, 10,000+)
-- Services section (numbered glass cards with icons)
-- Industries (dark, infinite scroll strip)
-- Trust/Recognition (cream bg, media logos, awards, pull quote testimonial)
-- CTA band (dark, centered headline + two pill buttons)
+- ForYou section, Stats ribbon, Services section, Industries strip
+- Trust/Recognition, CTA band
 
 ### Phase 2: About Page Redesign (Feb 2026)
-- Dark hero, Who We Are (asymmetric), Mission/Vision (glass-card-dark)
-- Values (numbered cards), Leadership (image treatment with grayscale)
-- Global Footprint (stat counters), Why Ad Astra, Authority quote, CTA
+- Dark hero, Who We Are, Mission/Vision, Values, Leadership, Global Footprint
+
+### Phase 3: Content Pages (Feb 2026)
+- **Find Talent Page** (`/find-talent`) — 8 sections with comprehensive content
+- **Find Jobs Page** (`/find-jobs`) — 8 sections with comprehensive content
+- **Solutions Page** (`/solutions`) — 8 sections revamped with new content
+- **Industries Page** (`/industries`) — 7 sections: Hero, Why Specialisation, Industries We Serve (8 expandable cards), Cross-Sector Capabilities, Global & Local Insight, Why Expertise Matters, Final CTA
 
 ### Previous Work (Retained)
-- Supabase integration for all forms (Contact, CV, Newsletter, Consultation)
-- "Made with Emergent" badge hidden
+- Supabase integration for forms (Contact, CV, Newsletter, Consultation)
+- Contact Page, Careers Page
 
 ## Testing
-- iteration_1.json: About page tests (17/17 PASS) — old design
+- iteration_1.json: About page tests (17/17 PASS)
 - iteration_2.json: Full redesign tests (14/14 frontend, 13/13 backend PASS)
+- iteration_3.json: Glass-morphism UI tests (12/12 PASS)
+- iteration_4.json: Industries page tests (13/13 PASS)
 
 ## API Endpoints
 - `POST /api/newsletter`, `POST /api/contact`, `POST /api/cv`, `POST /api/consultation`
 
 ## Backlog (Sequential)
-- **P0: Contact Page** — Segmented inquiry form, office details, response commitment
-- **P1: Find Talent** — Landing + 5 subpages (Executive Search, Contingency, RPO, Temp Staffing, Workforce Advisory)
-- **P1: Find Jobs** — Landing + 4 subpages (Process, CV Tips, Interview Prep, Submit CV)
-- **P2: Industries** — Landing + 8 subpages
-- **P2: Insights** — Landing + 3 subpages (Research, Blog, Media)
-- **P3:** Leadership photos — replace stock with real team photos
-- **P3:** SEO optimization, performance tuning
+- **P1: Build Insight Detail Page** — Template for individual blog/insight articles
+- **P1: Fix Vercel Deployment** — Build failing with module resolution errors
+- **P2: Individual service detail pages** (e.g., `/services/executive-search`)
+- **P2: Individual industry detail pages**
+- **P2: Connect forms end-to-end** — Test Contact, CV, Consultation submissions
+- **P3: Code Cleanup** — Remove obsolete modals, legacy supabase.js, consolidate deployment configs
+- **P3: SEO optimization, performance tuning**
