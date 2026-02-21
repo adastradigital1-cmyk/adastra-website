@@ -1,170 +1,71 @@
-import React, { useRef, useEffect, useCallback } from 'react';
-
-// Generate a woman's face silhouette - just the face, neck and hair
-function generateFacePoints() {
-  const points = [];
-  const add = (x, y) => points.push([x, y]);
-
-  // Face oval
-  for (let a = 0; a < Math.PI * 2; a += 0.06) {
-    const rx = 0.22;
-    const ry = 0.28;
-    add(0.5 + Math.cos(a) * rx, 0.48 + Math.sin(a) * ry);
-  }
-
-  // Inner face contour
-  for (let a = 0; a < Math.PI * 2; a += 0.10) {
-    const rx = 0.17;
-    const ry = 0.23;
-    add(0.5 + Math.cos(a) * rx, 0.47 + Math.sin(a) * ry);
-  }
-
-  // Left eye
-  for (let a = 0; a < Math.PI * 2; a += 0.25) {
-    add(0.41 + Math.cos(a) * 0.04, 0.42 + Math.sin(a) * 0.015);
-  }
-  // Left eyebrow
-  for (let t = 0; t <= 1; t += 0.15) {
-    add(0.36 + t * 0.10, 0.38 - Math.sin(t * Math.PI) * 0.02);
-  }
-
-  // Right eye
-  for (let a = 0; a < Math.PI * 2; a += 0.25) {
-    add(0.59 + Math.cos(a) * 0.04, 0.42 + Math.sin(a) * 0.015);
-  }
-  // Right eyebrow
-  for (let t = 0; t <= 1; t += 0.15) {
-    add(0.54 + t * 0.10, 0.38 - Math.sin(t * Math.PI) * 0.02);
-  }
-
-  // Nose
-  add(0.50, 0.45); add(0.49, 0.49); add(0.50, 0.51);
-  add(0.51, 0.49); add(0.48, 0.52); add(0.52, 0.52);
-
-  // Lips
-  for (let t = 0; t <= 1; t += 0.12) {
-    // Upper lip
-    add(0.43 + t * 0.14, 0.58 - Math.sin(t * Math.PI) * 0.015);
-    // Lower lip
-    add(0.43 + t * 0.14, 0.59 + Math.sin(t * Math.PI) * 0.018);
-  }
-
-  // Jaw line
-  for (let t = 0; t <= 1; t += 0.06) {
-    const angle = -Math.PI * 0.3 + t * Math.PI * 0.6;
-    add(0.5 + Math.cos(angle) * 0.23, 0.55 + Math.sin(angle) * 0.22);
-  }
-
-  // Chin
-  add(0.49, 0.76); add(0.50, 0.77); add(0.51, 0.76);
-
-  // Neck
-  for (let t = 0; t <= 1; t += 0.12) {
-    add(0.46, 0.76 + t * 0.12);
-    add(0.54, 0.76 + t * 0.12);
-  }
-
-  // Hair — flowing left side
-  for (let t = 0; t <= 1; t += 0.04) {
-    const y = 0.15 + t * 0.65;
-    const curve = Math.sin(t * Math.PI * 0.7) * 0.06;
-    add(0.28 - curve - t * 0.06, y);
-  }
-  // Hair — flowing right side
-  for (let t = 0; t <= 1; t += 0.04) {
-    const y = 0.15 + t * 0.55;
-    const curve = Math.sin(t * Math.PI * 0.7) * 0.04;
-    add(0.72 + curve + t * 0.03, y);
-  }
-
-  // Hair top
-  for (let t = 0; t <= 1; t += 0.04) {
-    const x = 0.30 + t * 0.40;
-    const bump = Math.sin(t * Math.PI) * 0.10;
-    add(x, 0.18 - bump);
-  }
-
-  // Hair crown
-  for (let t = 0; t <= 1; t += 0.05) {
-    const x = 0.32 + t * 0.36;
-    const bump = Math.sin(t * Math.PI) * 0.07;
-    add(x, 0.22 - bump);
-  }
-
-  // Hair parting and volume
-  for (let i = 0; i < 20; i++) {
-    const t = Math.random();
-    add(0.35 + t * 0.30, 0.12 + Math.random() * 0.15);
-  }
-
-  // Hair side volume left
-  for (let t = 0; t <= 1; t += 0.06) {
-    add(0.26 - Math.random() * 0.05, 0.22 + t * 0.40);
-  }
-
-  // Hair side volume right
-  for (let t = 0; t <= 1; t += 0.06) {
-    add(0.74 + Math.random() * 0.04, 0.22 + t * 0.35);
-  }
-
-  // Bindi / forehead accent
-  add(0.50, 0.34); add(0.50, 0.33);
-
-  // Cheek contours
-  for (let i = 0; i < 5; i++) {
-    add(0.35 + Math.random() * 0.04, 0.50 + Math.random() * 0.08);
-    add(0.61 + Math.random() * 0.04, 0.50 + Math.random() * 0.08);
-  }
-
-  // Face fill density
-  for (let i = 0; i < 40; i++) {
-    const angle = Math.random() * Math.PI * 2;
-    const r = Math.random() * 0.18;
-    const x = 0.5 + Math.cos(angle) * r;
-    const y = 0.47 + Math.sin(angle) * r * 1.2;
-    if (y > 0.25 && y < 0.72) add(x, y);
-  }
-
-  // Hair fill
-  for (let i = 0; i < 30; i++) {
-    const x = 0.30 + Math.random() * 0.40;
-    const y = 0.10 + Math.random() * 0.20;
-    add(x, y);
-  }
-
-  // Earring left
-  add(0.28, 0.48); add(0.27, 0.50); add(0.27, 0.52);
-  // Earring right
-  add(0.72, 0.48); add(0.73, 0.50); add(0.73, 0.52);
-
-  return points;
-}
-
-const faceData = generateFacePoints();
+import React, { useRef, useEffect, useCallback, useState } from 'react';
 
 export const ParticleWoman = () => {
   const canvasRef = useRef(null);
   const mouseRef = useRef({ x: -1000, y: -1000 });
   const particlesRef = useRef([]);
   const animRef = useRef(null);
+  const [loaded, setLoaded] = useState(false);
 
-  const initParticles = useCallback((width, height) => {
-    const offsetX = width * 0.05;
-    const offsetY = height * 0.02;
-    const scaleX = width * 0.9;
-    const scaleY = height * 0.96;
+  const sampleSVG = useCallback((canvasW, canvasH) => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => {
+        const offscreen = document.createElement('canvas');
+        const aspect = img.naturalWidth / img.naturalHeight;
+        const drawH = canvasH * 0.92;
+        const drawW = drawH * aspect;
+        offscreen.width = drawW;
+        offscreen.height = drawH;
+        const octx = offscreen.getContext('2d');
+        octx.drawImage(img, 0, 0, drawW, drawH);
 
-    return faceData.map(([nx, ny]) => {
-      const tx = offsetX + nx * scaleX;
-      const ty = offsetY + ny * scaleY;
-      return {
-        x: tx + (Math.random() - 0.5) * 6,
-        y: ty + (Math.random() - 0.5) * 6,
-        tx, ty,
-        size: 1 + Math.random() * 2.5,
-        alpha: 0.3 + Math.random() * 0.7,
-        pulse: Math.random() * Math.PI * 2,
+        const imageData = octx.getImageData(0, 0, drawW, drawH);
+        const data = imageData.data;
+
+        const gap = 3;
+        const points = [];
+        for (let y = 0; y < drawH; y += gap) {
+          for (let x = 0; x < drawW; x += gap) {
+            const i = (y * drawW + x) * 4;
+            const a = data[i + 3];
+            if (a > 30) {
+              const r = data[i];
+              const g = data[i + 1];
+              const b = data[i + 2];
+              const brightness = (r + g + b) / 3;
+              if (brightness < 245) {
+                points.push({ nx: x / drawW, ny: y / drawH, r, g, b });
+              }
+            }
+          }
+        }
+
+        const offsetX = (canvasW - drawW) / 2;
+        const offsetY = (canvasH - drawH) / 2;
+
+        const particles = points.map((p) => {
+          const tx = offsetX + p.nx * drawW;
+          const ty = offsetY + p.ny * drawH;
+          return {
+            x: tx + (Math.random() - 0.5) * 300,
+            y: ty + (Math.random() - 0.5) * 300,
+            tx,
+            ty,
+            size: 1.0 + Math.random() * 1.5,
+            r: p.r,
+            g: p.g,
+            b: p.b,
+            alpha: 0.6 + Math.random() * 0.4,
+            pulse: Math.random() * Math.PI * 2,
+            vx: 0,
+            vy: 0,
+          };
+        });
+        resolve(particles);
       };
+      img.onerror = () => resolve([]);
+      img.src = '/face.svg';
     });
   }, []);
 
@@ -172,80 +73,79 @@ export const ParticleWoman = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
+    let active = true;
 
-    const resize = () => {
+    const init = async () => {
       const rect = canvas.parentElement.getBoundingClientRect();
       canvas.width = rect.width;
       canvas.height = rect.height;
-      particlesRef.current = initParticles(canvas.width, canvas.height);
+      const pts = await sampleSVG(canvas.width, canvas.height);
+      if (!active) return;
+      particlesRef.current = pts;
+      setLoaded(true);
     };
-    resize();
-    window.addEventListener('resize', resize);
+
+    init();
+
+    const handleResize = async () => {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+      const pts = await sampleSVG(canvas.width, canvas.height);
+      if (!active) return;
+      particlesRef.current = pts;
+    };
+
+    window.addEventListener('resize', handleResize);
 
     const handleMove = (e) => {
       const rect = canvas.getBoundingClientRect();
       mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
     };
-    const handleLeave = () => { mouseRef.current = { x: -1000, y: -1000 }; };
+    const handleLeave = () => {
+      mouseRef.current = { x: -1000, y: -1000 };
+    };
     canvas.addEventListener('mousemove', handleMove);
     canvas.addEventListener('mouseleave', handleLeave);
 
     const animate = () => {
+      if (!active) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const { x: mx, y: my } = mouseRef.current;
-      const time = Date.now() * 0.001;
+      const time = performance.now() * 0.001;
+      const particles = particlesRef.current;
+      const len = particles.length;
 
-      for (const p of particlesRef.current) {
-        p.pulse += 0.02;
+      for (let i = 0; i < len; i++) {
+        const p = particles[i];
+        p.pulse += 0.015;
+
         const dx = p.x - mx;
         const dy = p.y - my;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        const radius = 90;
+        const distSq = dx * dx + dy * dy;
+        const radius = 80;
+        const radiusSq = radius * radius;
 
-        let targetX = p.tx + Math.sin(time * 0.5 + p.pulse) * 1.5;
-        let targetY = p.ty + Math.cos(time * 0.3 + p.pulse) * 1.2;
+        let targetX = p.tx + Math.sin(time * 0.4 + p.pulse) * 0.8;
+        let targetY = p.ty + Math.cos(time * 0.3 + p.pulse) * 0.6;
 
-        if (dist < radius) {
-          const force = (1 - dist / radius) * 40;
+        if (distSq < radiusSq) {
+          const dist = Math.sqrt(distSq);
+          const force = (1 - dist / radius) * 35;
           targetX += (dx / dist) * force;
           targetY += (dy / dist) * force;
         }
 
-        p.x += (targetX - p.x) * 0.08;
-        p.y += (targetY - p.y) * 0.08;
+        p.vx = (targetX - p.x) * 0.08;
+        p.vy = (targetY - p.y) * 0.08;
+        p.x += p.vx;
+        p.y += p.vy;
 
-        const glow = Math.sin(p.pulse) * 0.2 + 0.8;
-        const alpha = p.alpha * glow;
+        const glow = Math.sin(p.pulse) * 0.15 + 0.85;
+        const a = p.alpha * glow;
 
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(232, 96, 28, ${alpha})`;
-        ctx.fill();
-
-        if (p.size > 1.8) {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(232, 96, 28, ${alpha * 0.06})`;
-          ctx.fill();
-        }
-      }
-
-      // Connection lines
-      const particles = particlesRef.current;
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const a = particles[i];
-          const b = particles[j];
-          const d = Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
-          if (d < 20) {
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(232, 96, 28, ${0.1 * (1 - d / 20)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        }
+        ctx.fillStyle = `rgba(${p.r},${p.g},${p.b},${a})`;
+        ctx.fillRect(p.x - p.size * 0.5, p.y - p.size * 0.5, p.size, p.size);
       }
 
       animRef.current = requestAnimationFrame(animate);
@@ -253,16 +153,21 @@ export const ParticleWoman = () => {
     animate();
 
     return () => {
+      active = false;
       cancelAnimationFrame(animRef.current);
-      window.removeEventListener('resize', resize);
+      window.removeEventListener('resize', handleResize);
       canvas.removeEventListener('mousemove', handleMove);
       canvas.removeEventListener('mouseleave', handleLeave);
     };
-  }, [initParticles]);
+  }, [sampleSVG]);
 
   return (
     <div className="relative w-full h-full" data-testid="particle-woman">
-      <canvas ref={canvasRef} className="w-full h-full" style={{ display: 'block' }} />
+      <canvas
+        ref={canvasRef}
+        className="w-full h-full"
+        style={{ display: 'block', opacity: loaded ? 1 : 0, transition: 'opacity 0.8s ease' }}
+      />
     </div>
   );
 };
