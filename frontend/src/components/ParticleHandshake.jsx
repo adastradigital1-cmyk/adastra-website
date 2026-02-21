@@ -210,10 +210,10 @@ export const ParticleHandshake = () => {
       canvas.removeEventListener('mousemove', onMove);
       canvas.removeEventListener('mouseleave', onLeave);
     };
-  }, [sampleImage]);
+  }, [inView, sampleImage]);
 
   return (
-    <div className="relative w-full h-full" data-testid="particle-handshake">
+    <div ref={containerRef} className="relative w-full h-full" data-testid="particle-handshake">
       <canvas
         ref={canvasRef}
         className="w-full h-full"
