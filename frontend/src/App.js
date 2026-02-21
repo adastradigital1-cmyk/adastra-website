@@ -9,6 +9,7 @@ import BlogPage from "./pages/BlogPage";
 import ImpactPage from "./pages/ImpactPage";
 import FindTalentPage from "./pages/FindTalentPage";
 import FindJobsPage from "./pages/FindJobsPage";
+import IndustriesPage from "./pages/IndustriesPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/impact" element={<ImpactPage />} />
           <Route path="/find-talent" element={<FindTalentPage />} />
           <Route path="/find-jobs" element={<FindJobsPage />} />
+          <Route path="/industries" element={<IndustriesPage />} />
         </Routes>
       </BrowserRouter>
     </div>
