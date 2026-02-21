@@ -21,6 +21,72 @@ const leaders = [
   },
 ];
 
+const QuoteIcon = () => (
+  <svg width="32" height="24" viewBox="0 0 32 24" fill="none" className="mb-5 opacity-20">
+    <path d="M0 24V14.4C0 10.4 0.8 7.2 2.4 4.8C4 2.4 6.667 0.533 10.4 0.2L11.2 3C8.8 3.533 7 4.6 5.8 6.2C4.6 7.8 4 9.733 4 12H10V24H0ZM18 24V14.4C18 10.4 18.8 7.2 20.4 4.8C22 2.4 24.667 0.533 28.4 0.2L29.2 3C26.8 3.533 25 4.6 23.8 6.2C22.6 7.8 22 9.733 22 12H28V24H18Z" fill="var(--orange-core)" />
+  </svg>
+);
+
+const LeaderCard = ({ leader, index }) => {
+  const isEven = index % 2 === 0;
+
+  return (
+    <motion.div
+      className={`grid lg:grid-cols-[1fr_1fr] gap-0 items-stretch overflow-hidden rounded-2xl ${isEven ? '' : 'lg:[direction:rtl]'}`}
+      style={{ border: '1px solid rgba(0,0,0,0.06)' }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ staggerChildren: 0.15 }}
+      data-testid={`leader-card-${index}`}
+    >
+      {/* Photo Side */}
+      <motion.div
+        variants={fadeUp}
+        transition={{ duration: 0.8, ease }}
+        className="relative min-h-[400px] lg:min-h-[500px] lg:[direction:ltr]"
+      >
+        <img
+          src={leader.img}
+          alt={leader.name}
+          className="w-full h-full object-cover object-top"
+          loading="lazy"
+        />
+        <div className={`absolute inset-0 bg-gradient-to-${isEven ? 'r' : 'l'} from-transparent via-transparent to-[var(--white-warm)] opacity-60 hidden lg:block`} />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent lg:hidden" />
+        <div className="absolute bottom-6 left-6 lg:hidden">
+          <h3 className="font-display text-[1.25rem] font-600 text-white">{leader.name}</h3>
+          <p className="font-mono text-[0.625rem] mt-1" style={{ color: 'var(--orange-core)' }}>{leader.role}</p>
+        </div>
+      </motion.div>
+
+      {/* Message Side */}
+      <motion.div
+        variants={fadeUp}
+        transition={{ duration: 0.8, ease }}
+        className="p-8 lg:p-12 flex flex-col justify-center lg:[direction:ltr]"
+        style={{ backgroundColor: 'var(--white-warm)' }}
+      >
+        <div className="hidden lg:block mb-6">
+          <h3 className="font-display text-[1.375rem] font-600" style={{ color: 'var(--text-on-light)' }}>{leader.name}</h3>
+          <p className="font-mono text-[0.625rem] mt-1" style={{ color: 'var(--orange-core)' }}>{leader.role}</p>
+        </div>
+        <QuoteIcon />
+        <div className="space-y-4">
+          {leader.message.split('\n\n').map((para, j) => (
+            <p key={j} className="font-body text-[0.9375rem] leading-[1.85]" style={{ color: 'var(--text-on-light-muted)' }}>
+              {para}
+            </p>
+          ))}
+        </div>
+        <p className="font-display text-[1.125rem] font-600 mt-8 italic" style={{ color: 'var(--text-on-light)' }}>
+          — {leader.signoff}
+        </p>
+      </motion.div>
+    </motion.div>
+  );
+};
+
 export const LeadersMessageSection = () => (
   <section
     className="py-28 lg:py-36 relative overflow-hidden"
@@ -48,50 +114,9 @@ export const LeadersMessageSection = () => (
         </h2>
       </motion.div>
 
-      <div className="space-y-16">
+      <div className="space-y-12">
         {leaders.map((leader, i) => (
-          <motion.div
-            key={leader.name}
-            className="grid lg:grid-cols-[280px_1fr] gap-10 lg:gap-14 items-start"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ staggerChildren: 0.15 }}
-          >
-            {/* Photo & Name */}
-            <motion.div variants={fadeUp} transition={{ duration: 0.8, ease }} className={`${i % 2 === 1 ? 'lg:order-2' : ''}`}>
-              <div className="relative w-full max-w-[280px] aspect-square rounded-2xl overflow-hidden mx-auto lg:mx-0">
-                <img
-                  src={leader.img}
-                  alt={leader.name}
-                  className="w-full h-full object-cover object-top"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              </div>
-              <div className="mt-5 text-center lg:text-left">
-                <h3 className="font-display text-[1.25rem] font-600" style={{ color: 'var(--text-on-light)' }}>{leader.name}</h3>
-                <p className="font-mono text-[0.625rem] mt-1" style={{ color: 'var(--orange-core)' }}>{leader.role}</p>
-              </div>
-            </motion.div>
-
-            {/* Message */}
-            <motion.div variants={fadeUp} transition={{ duration: 0.8, ease }} className={`${i % 2 === 1 ? 'lg:order-1' : ''}`}>
-              <div className="glass-card-light p-8 lg:p-10" data-testid={`leader-message-${i}`}>
-                <svg width="32" height="24" viewBox="0 0 32 24" fill="none" className="mb-5 opacity-20">
-                  <path d="M0 24V14.4C0 10.4 0.8 7.2 2.4 4.8C4 2.4 6.667 0.533 10.4 0.2L11.2 3C8.8 3.533 7 4.6 5.8 6.2C4.6 7.8 4 9.733 4 12H10V24H0ZM18 24V14.4C18 10.4 18.8 7.2 20.4 4.8C22 2.4 24.667 0.533 28.4 0.2L29.2 3C26.8 3.533 25 4.6 23.8 6.2C22.6 7.8 22 9.733 22 12H28V24H18Z" fill="var(--orange-core)" />
-                </svg>
-                {leader.message.split('\n\n').map((para, j) => (
-                  <p key={j} className="font-body text-[0.9375rem] leading-[1.85] mb-4 last:mb-0" style={{ color: 'var(--text-on-light-muted)' }}>
-                    {para}
-                  </p>
-                ))}
-                <p className="font-display text-[1.125rem] font-600 mt-6 italic" style={{ color: 'var(--text-on-light)' }}>
-                  — {leader.signoff}
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
+          <LeaderCard key={leader.name} leader={leader} index={i} />
         ))}
       </div>
     </div>
