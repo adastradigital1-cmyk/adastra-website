@@ -1,12 +1,12 @@
-import "@/App.css";
+import "App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "@/pages/HomePage";
-import AboutPage from "@/pages/AboutPage";
-import ContactPage from "@/pages/ContactPage";
-import SolutionsPage from "@/pages/SolutionsPage";
-import CareersPage from "@/pages/CareersPage";
-import BlogPage from "@/pages/BlogPage";
-import ImpactPage from "@/pages/ImpactPage";
+import HomePage from "pages/HomePage";
+import AboutPage from "pages/AboutPage";
+import ContactPage from "pages/ContactPage";
+import SolutionsPage from "pages/SolutionsPage";
+import CareersPage from "pages/CareersPage";
+import BlogPage from "pages/BlogPage";
+import ImpactPage from "pages/ImpactPage";
 
 function App() {
   return (
