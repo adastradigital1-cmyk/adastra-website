@@ -26,7 +26,12 @@ function ScrollToTop() {
   
   // Use layoutEffect for synchronous scroll before paint
   useLayoutEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    // Immediate scroll
+    window.scrollTo(0, 0);
+    // Also schedule after a microtask in case of async rendering
+    requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
+    });
   }, [pathname]);
   
   return null;
